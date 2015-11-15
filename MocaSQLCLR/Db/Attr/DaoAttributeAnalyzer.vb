@@ -1,11 +1,11 @@
-
+ï»¿
 Imports Moca.Attr
 Imports Moca.Util
 
 Namespace Db.Attr
 
 	''' <summary>
-	''' DAO‘®«‰ğÍ
+	''' DAOå±æ€§è§£æ
 	''' </summary>
 	''' <remarks></remarks>
 	Public Class DaoAttributeAnalyzer

@@ -1,23 +1,23 @@
-
+ï»¿
 Namespace Db.Attr
 
 	''' <summary>
-	''' DBMS‘®«
+	''' DBMSå±æ€§
 	''' </summary>
 	''' <remarks>
-	''' <see cref="IDbAccess"/> ƒNƒ‰ƒX‚É DBMS ‚ğŠÖ˜A•t‚¯‚é‚Æ‚«‚Ég—p‚·‚éB
+	''' <see cref="IDbAccess"/> ã‚¯ãƒ©ã‚¹ã« DBMS ã‚’é–¢é€£ä»˜ã‘ã‚‹ã¨ãã«ä½¿ç”¨ã™ã‚‹ã€‚
 	''' </remarks>
 	<AttributeUsage(AttributeTargets.Class Or AttributeTargets.Interface)> _
 	Public Class DbmsAttribute
 		Inherits Attribute
 
-		''' <summary>ƒL[’l</summary>
+		''' <summary>ã‚­ãƒ¼å€¤</summary>
 		Private _connectionString As String
 
-#Region " ƒRƒ“ƒXƒgƒ‰ƒNƒ^ "
+#Region " ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ "
 
 		''' <summary>
-		''' ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		''' ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		''' </summary>
 		''' <param name="connectionString">ConnectionString</param>
 		''' <remarks></remarks>
@@ -27,7 +27,7 @@ Namespace Db.Attr
 
 #End Region
 
-#Region " ƒvƒƒpƒeƒB "
+#Region " ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ "
 
 		''' <summary>ConnectionString</summary>
 		Public Property ConnectionString() As String
@@ -42,7 +42,7 @@ Namespace Db.Attr
 #End Region
 
 		''' <summary>
-		''' DBMS‚ğ•Ô‚·
+		''' DBMSã‚’è¿”ã™
 		''' </summary>
 		''' <returns></returns>
 		''' <remarks></remarks>

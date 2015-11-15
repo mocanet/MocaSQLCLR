@@ -1,25 +1,25 @@
-
+ï»¿
 Namespace Db.Attr
 
 	''' <summary>
-	''' —ñ–¼‘®«
+	''' åˆ—åå±æ€§
 	''' </summary>
 	''' <remarks>
-	''' —ñ–¼‚ªƒvƒƒpƒeƒB–¼‚Æ‚ÍˆÙ‚È‚é‚Æ‚«‚Éw’è‚·‚éB
+	''' åˆ—åãŒãƒ—ãƒ­ãƒ‘ãƒ†ã‚£åã¨ã¯ç•°ãªã‚‹ã¨ãã«æŒ‡å®šã™ã‚‹ã€‚
 	''' </remarks>
 	<AttributeUsage(AttributeTargets.Property)> _
 	Public Class ColumnAttribute
 		Inherits Attribute
 
-		''' <summary>ƒJƒ‰ƒ€–¼</summary>
+		''' <summary>ã‚«ãƒ©ãƒ å</summary>
 		Private _columnName As String
 
-#Region " ƒRƒ“ƒXƒgƒ‰ƒNƒ^ "
+#Region " ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ "
 
 		''' <summary>
-		''' ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		''' ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		''' </summary>
-		''' <param name="columnName">—ñ–¼</param>
+		''' <param name="columnName">åˆ—å</param>
 		''' <remarks></remarks>
 		Public Sub New(ByVal columnName As String)
 			_columnName = columnName
@@ -27,10 +27,10 @@ Namespace Db.Attr
 
 #End Region
 
-#Region " ƒvƒƒpƒeƒB "
+#Region " ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ "
 
 		''' <summary>
-		''' —ñ–¼ƒvƒƒpƒeƒB
+		''' åˆ—åãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>

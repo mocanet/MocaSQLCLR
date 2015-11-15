@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
 	<metadata>
 		<id>Moca.NETConfiguration</id>
-		<version>1.0.0.0-Beta</version>
+		<version>1.0.0.0</version>
 		<title>Moca.NET Configuration</title>
 		<authors>MiYABiS</authors>
 		<owners>MiYABiS</owners>

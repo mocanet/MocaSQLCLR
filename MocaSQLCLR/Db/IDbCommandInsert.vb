@@ -1,8 +1,8 @@
-
+ï»¿
 Namespace Db
 
 	''' <summary>
-	''' INSERT•¶‚ðŽÀs‚·‚éˆ×‚ÌDBCommand‚ðƒ‰ƒbƒsƒ“ƒO‚·‚éƒCƒ“ƒ^ƒtƒF[ƒX
+	''' INSERTæ–‡ã‚’å®Ÿè¡Œã™ã‚‹ç‚ºã®DBCommandã‚’ãƒ©ãƒƒãƒ”ãƒ³ã‚°ã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹
 	''' </summary>
 	''' <remarks>
 	''' <example>

@@ -1,4 +1,4 @@
-
+ï»¿
 Imports System.Configuration
 Imports System.Data.Common
 Imports System.Threading
@@ -10,40 +10,40 @@ Namespace Db
 	''' DBMS
 	''' </summary>
 	''' <remarks>
-	''' DataBase Management System‚Ì—ªB
-	''' ƒf[ƒ^ƒx[ƒX‚ğ\’zE‰^—p‚·‚é‚½‚ß‚É—p‚¢‚ç‚ê‚éŠÇ—ƒ\ƒtƒgƒEƒFƒA‚Ì‚±‚Æ‚ÅA
-	''' ‚±‚ÌƒNƒ‰ƒX‚Å‚PÚ‘±æ‚ğ•\‚µ‚Ü‚·B
+	''' DataBase Management Systemã®ç•¥ã€‚
+	''' ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‚’æ§‹ç¯‰ãƒ»é‹ç”¨ã™ã‚‹ãŸã‚ã«ç”¨ã„ã‚‰ã‚Œã‚‹ç®¡ç†ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã®ã“ã¨ã§ã€
+	''' ã“ã®ã‚¯ãƒ©ã‚¹ã§ï¼‘æ¥ç¶šå…ˆã‚’è¡¨ã—ã¾ã™ã€‚
 	''' </remarks>
 	Public Class Dbms
 
-		''' <summary>\¬ƒtƒ@ƒCƒ‹‚ÌÚ‘±•¶š—ñƒZƒNƒVƒ‡ƒ“–”‚ÍDBÚ‘±•¶š—ñ‚ğŠÇ—</summary>
+		''' <summary>æ§‹æˆãƒ•ã‚¡ã‚¤ãƒ«ã®æ¥ç¶šæ–‡å­—åˆ—ã‚»ã‚¯ã‚·ãƒ§ãƒ³åˆã¯DBæ¥ç¶šæ–‡å­—åˆ—ã‚’ç®¡ç†</summary>
 		Private _dbSetting As DbSetting
-		''' <summary>\¬ƒtƒ@ƒCƒ‹‚ÌÚ‘±•¶š—ñƒZƒNƒVƒ‡ƒ““à‚Ì–¼‘O•t‚«‚Å’Pˆê‚ÌÚ‘±•¶š—ñ‚ğ•\‚µ‚Ü‚·B</summary>
+		''' <summary>æ§‹æˆãƒ•ã‚¡ã‚¤ãƒ«ã®æ¥ç¶šæ–‡å­—åˆ—ã‚»ã‚¯ã‚·ãƒ§ãƒ³å†…ã®åå‰ä»˜ãã§å˜ä¸€ã®æ¥ç¶šæ–‡å­—åˆ—ã‚’è¡¨ã—ã¾ã™ã€‚</summary>
 		Private _connectionStringSettings As ConnectionStringSettings
-		''' <summary>ƒvƒƒoƒCƒ_‚Ìƒf[ƒ^ ƒ\[ƒX ƒNƒ‰ƒX‚ÌÀ‘•‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğì¬‚·‚é‚½‚ß‚Ìƒƒ\ƒbƒh‚ÌƒZƒbƒg‚ğ•\‚µ‚Ü‚·B</summary>
+		''' <summary>ãƒ—ãƒ­ãƒã‚¤ãƒ€ã®ãƒ‡ãƒ¼ã‚¿ ã‚½ãƒ¼ã‚¹ ã‚¯ãƒ©ã‚¹ã®å®Ÿè£…ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ä½œæˆã™ã‚‹ãŸã‚ã®ãƒ¡ã‚½ãƒƒãƒ‰ã®ã‚»ãƒƒãƒˆã‚’è¡¨ã—ã¾ã™ã€‚</summary>
 		Private _providerFactory As DbProviderFactory
 
 		Private _helperFactory As Helper.DbAccessHelperFactory
 
-#Region " ƒRƒ“ƒXƒgƒ‰ƒNƒ^ "
+#Region " ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ "
 
 		''' <summary>
-		''' ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		''' ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		''' </summary>
 		''' <param name="connectionString">ConnectionString</param>
 		''' <remarks>
-		''' app.config ‚©‚çÚ‘±•¶š—ñAƒvƒƒpƒCƒ_‚ğæ“¾‚µƒRƒlƒNƒVƒ‡ƒ“‚ğì¬‚·‚é
+		''' app.config ã‹ã‚‰æ¥ç¶šæ–‡å­—åˆ—ã€ãƒ—ãƒ­ãƒ‘ã‚¤ãƒ€ã‚’å–å¾—ã—ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’ä½œæˆã™ã‚‹
 		''' </remarks>
 		''' <exception cref="ArgumentException">
-		''' DBÚ‘±‚·‚éˆ×‚ÌÚ‘±•¶š—ñ‚ªİ’è‚³‚ê‚Ä‚¢‚È‚¢‚Æ‚«‚É”­¶‚·‚éB
+		''' DBæ¥ç¶šã™ã‚‹ç‚ºã®æ¥ç¶šæ–‡å­—åˆ—ãŒè¨­å®šã•ã‚Œã¦ã„ãªã„ã¨ãã«ç™ºç”Ÿã™ã‚‹ã€‚
 		''' </exception>
 		Public Sub New(ByVal connectionString As String)
 			Try
-				' Ú‘±•¶š—ñ‚ğapp.configƒtƒ@ƒCƒ‹‚©‚çæ“¾
+				' æ¥ç¶šæ–‡å­—åˆ—ã‚’app.configãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰å–å¾—
 				_connectionStringSettings = New ConnectionStringSettings(connectionString, connectionString, "System.Data.SqlClient")
 				_dbSetting = New DbSetting(_connectionStringSettings)
 
-				' DBƒAƒNƒZƒX—p‚ÌƒvƒƒpƒCƒ_‚ğƒCƒ“ƒXƒ^ƒ“ƒX‰»
+				' DBã‚¢ã‚¯ã‚»ã‚¹ç”¨ã®ãƒ—ãƒ­ãƒ‘ã‚¤ãƒ€ã‚’ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–
 				_providerFactory = DbProviderFactories.GetFactory(_connectionStringSettings.ProviderName)
 
 				_helperFactory = New Helper.DbAccessHelperFactory(_dbSetting)
@@ -55,17 +55,17 @@ Namespace Db
 		End Sub
 
 		''' <summary>
-		''' ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		''' ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		''' </summary>
-		''' <param name="name">Ú‘±æ–¼Ì</param>
-		''' <param name="providerName">ƒvƒƒpƒCƒ_–¼</param>
-		''' <param name="connectionString">Ú‘±•¶š—ñ</param>
+		''' <param name="name">æ¥ç¶šå…ˆåç§°</param>
+		''' <param name="providerName">ãƒ—ãƒ­ãƒ‘ã‚¤ãƒ€å</param>
+		''' <param name="connectionString">æ¥ç¶šæ–‡å­—åˆ—</param>
 		''' <remarks>
-		''' w’è‚³‚ê‚½î•ñ‚ğŒ³‚ÉÚ‘±•¶š—ñAƒvƒƒpƒCƒ_‚ğæ“¾‚µƒRƒlƒNƒVƒ‡ƒ“‚ğì¬‚·‚é
+		''' æŒ‡å®šã•ã‚ŒãŸæƒ…å ±ã‚’å…ƒã«æ¥ç¶šæ–‡å­—åˆ—ã€ãƒ—ãƒ­ãƒ‘ã‚¤ãƒ€ã‚’å–å¾—ã—ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚’ä½œæˆã™ã‚‹
 		''' </remarks>
 		Public Sub New(ByVal name As String, ByVal providerName As String, ByVal connectionString As String)
 			Try
-				' DBƒAƒNƒZƒX—p‚ÌƒvƒƒpƒCƒ_‚ğƒCƒ“ƒXƒ^ƒ“ƒX‰»
+				' DBã‚¢ã‚¯ã‚»ã‚¹ç”¨ã®ãƒ—ãƒ­ãƒ‘ã‚¤ãƒ€ã‚’ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–
 				_providerFactory = DbProviderFactories.GetFactory(providerName)
 
 				_connectionStringSettings = New ConnectionStringSettings(name, connectionString, providerName)
@@ -81,23 +81,23 @@ Namespace Db
 
 #End Region
 
-#Region " ƒvƒƒpƒeƒB "
+#Region " ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ "
 
-		''' <summary>\¬ƒtƒ@ƒCƒ‹‚ÌÚ‘±•¶š—ñƒZƒNƒVƒ‡ƒ“–”‚ÍDBÚ‘±•¶š—ñ‚ğŠÇ—</summary>
+		''' <summary>æ§‹æˆãƒ•ã‚¡ã‚¤ãƒ«ã®æ¥ç¶šæ–‡å­—åˆ—ã‚»ã‚¯ã‚·ãƒ§ãƒ³åˆã¯DBæ¥ç¶šæ–‡å­—åˆ—ã‚’ç®¡ç†</summary>
 		Public ReadOnly Property Setting() As DbSetting
 			Get
 				Return _dbSetting
 			End Get
 		End Property
 
-		''' <summary>\¬ƒtƒ@ƒCƒ‹‚ÌÚ‘±•¶š—ñƒZƒNƒVƒ‡ƒ““à‚Ì–¼‘O•t‚«‚Å’Pˆê‚ÌÚ‘±•¶š—ñ‚ğ•\‚µ‚Ü‚·B</summary>
+		''' <summary>æ§‹æˆãƒ•ã‚¡ã‚¤ãƒ«ã®æ¥ç¶šæ–‡å­—åˆ—ã‚»ã‚¯ã‚·ãƒ§ãƒ³å†…ã®åå‰ä»˜ãã§å˜ä¸€ã®æ¥ç¶šæ–‡å­—åˆ—ã‚’è¡¨ã—ã¾ã™ã€‚</summary>
 		Public ReadOnly Property ConnectionStringSettings() As ConnectionStringSettings
 			Get
 				Return _connectionStringSettings
 			End Get
 		End Property
 
-		''' <summary>ƒvƒƒoƒCƒ_‚Ìƒf[ƒ^ ƒ\[ƒX ƒNƒ‰ƒX‚ÌÀ‘•‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğì¬‚·‚é‚½‚ß‚Ìƒƒ\ƒbƒh‚ÌƒZƒbƒg‚ğ•\‚µ‚Ü‚·B</summary>
+		''' <summary>ãƒ—ãƒ­ãƒã‚¤ãƒ€ã®ãƒ‡ãƒ¼ã‚¿ ã‚½ãƒ¼ã‚¹ ã‚¯ãƒ©ã‚¹ã®å®Ÿè£…ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ä½œæˆã™ã‚‹ãŸã‚ã®ãƒ¡ã‚½ãƒƒãƒ‰ã®ã‚»ãƒƒãƒˆã‚’è¡¨ã—ã¾ã™ã€‚</summary>
 		Public ReadOnly Property ProviderFactory() As DbProviderFactory
 			Get
 				Return _providerFactory
@@ -107,16 +107,16 @@ Namespace Db
 #End Region
 
 		''' <summary>
-		''' ƒwƒ‹ƒp[ƒNƒ‰ƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‰»
+		''' ãƒ˜ãƒ«ãƒ‘ãƒ¼ã‚¯ãƒ©ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–
 		''' </summary>
-		''' <param name="dba">DB‚ÖƒAƒNƒZƒX‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX</param>
+		''' <param name="dba">DBã¸ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</param>
 		''' <remarks></remarks>
 		Public Function GetHelper(ByVal dba As IDao) As IDbAccessHelper
 			Return _helperFactory.Create(dba)
 		End Function
 
 		''' <summary>
-		''' V‚µ‚¢Ú‘±‚ğì¬‚·‚é
+		''' æ–°ã—ã„æ¥ç¶šã‚’ä½œæˆã™ã‚‹
 		''' </summary>
 		''' <returns></returns>
 		''' <remarks></remarks>
@@ -130,9 +130,9 @@ Namespace Db
 		End Function
 
 		''' <summary>
-		''' V‚µ‚¢ DBAccess ƒCƒ“ƒXƒ^ƒ“ƒX‚ğì¬‚·‚éB
+		''' æ–°ã—ã„ DBAccess ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ä½œæˆã™ã‚‹ã€‚
 		''' </summary>
-		''' <returns>V‚µ‚¢ DBAccess ƒCƒ“ƒXƒ^ƒ“ƒX</returns>
+		''' <returns>æ–°ã—ã„ DBAccess ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</returns>
 		''' <remarks></remarks>
 		Public Function CreateDbAccess() As IDbAccess
 			Dim dba As IDbAccess
@@ -143,14 +143,14 @@ Namespace Db
 		End Function
 
 		''' <summary>
-		''' V‚µ‚¢ DBAccess ƒCƒ“ƒXƒ^ƒ“ƒX‚ğì¬‚·‚éB
+		''' æ–°ã—ã„ DBAccess ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ä½œæˆã™ã‚‹ã€‚
 		''' </summary>
-		''' <returns>V‚µ‚¢ DBAccess ƒCƒ“ƒXƒ^ƒ“ƒX</returns>
+		''' <returns>æ–°ã—ã„ DBAccess ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</returns>
 		''' <remarks></remarks>
 		Public Function CreateDbAccess(Of T)() As T
 			Dim dba As Object
 
-			' Œ^ƒ`ƒFƒbƒN
+			' å‹ãƒã‚§ãƒƒã‚¯
 			Dim ok As Boolean
 			For Each item As Type In GetType(T).GetInterfaces
 				If item.Equals(GetType(IDbAccess)) Then
@@ -158,7 +158,7 @@ Namespace Db
 				End If
 			Next
 			If Not ok Then
-				Throw New ArgumentException(GetType(T).FullName & " ‚ÍA" & GetType(IDbAccess).FullName & " ‚ğÀ‘•‚µ‚½ƒNƒ‰ƒX‚Å‚Í‚ ‚è‚Ü‚¹‚ñB")
+				Throw New ArgumentException(GetType(T).FullName & " ã¯ã€" & GetType(IDbAccess).FullName & " ã‚’å®Ÿè£…ã—ãŸã‚¯ãƒ©ã‚¹ã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚")
 			End If
 
 			dba = ClassUtil.NewInstance(GetType(T), New Object() {Me})

@@ -1,25 +1,25 @@
-
+ï»¿
 Namespace Db
 
 	''' <summary>
-	''' ƒXƒgƒAƒhƒvƒƒV[ƒWƒƒî•ñ‚Ìƒ‚ƒfƒ‹
+	''' ã‚¹ãƒˆã‚¢ãƒ‰ãƒ—ãƒ­ã‚·ãƒ¼ã‚¸ãƒ£æƒ…å ±ã®ãƒ¢ãƒ‡ãƒ«
 	''' </summary>
 	''' <remarks></remarks>
 	Public Class DbInfoProcedure
 		Inherits DbInfo
 
-		''' <summary>ƒ\[ƒX</summary>
+		''' <summary>ã‚½ãƒ¼ã‚¹</summary>
 		Private _src As String
 
-#Region " ƒRƒ“ƒXƒgƒ‰ƒNƒ^ "
+#Region " ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ "
 
 		''' <summary>
-		''' ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		''' ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		''' </summary>
-		''' <param name="catalog">ƒJƒ^ƒƒO–¼</param>
-		''' <param name="schema">ƒXƒL[ƒ}–¼</param>
-		''' <param name="name">–¼Ì</param>
-		''' <param name="typ">Œ^</param>
+		''' <param name="catalog">ã‚«ã‚¿ãƒ­ã‚°å</param>
+		''' <param name="schema">ã‚¹ã‚­ãƒ¼ãƒå</param>
+		''' <param name="name">åç§°</param>
+		''' <param name="typ">å‹</param>
 		''' <remarks></remarks>
 		Public Sub New(ByVal catalog As String, ByVal schema As String, ByVal name As String, ByVal typ As String)
 			MyBase.New(catalog, schema, name, typ)
@@ -27,10 +27,10 @@ Namespace Db
 
 #End Region
 
-#Region " ƒvƒƒpƒeƒB "
+#Region " ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ "
 
 		''' <summary>
-		''' ƒ\[ƒXƒvƒƒpƒeƒB
+		''' ã‚½ãƒ¼ã‚¹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>

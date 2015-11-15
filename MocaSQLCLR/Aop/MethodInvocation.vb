@@ -1,39 +1,39 @@
-
+﻿
 Imports System.Reflection
 Imports Moca.Exceptions
 
 Namespace Aop
 
 	''' <summary>
-	''' Interceptor����C���^�[�Z�v�g����Ă��郁�\�b�h�̏��
+	''' Interceptorからインターセプトされているメソッドの情報
 	''' </summary>
 	''' <remarks></remarks>
 	Public Class MethodInvocation
 		Implements IMethodInvocation
 
-		''' <summary>���s�Ώۂ̃C���X�^���X</summary>
+		''' <summary>実行対象のインスタンス</summary>
 		Private _this As Object
 
-		''' <summary>���\�b�h��`</summary>
+		''' <summary>メソッド定義</summary>
 		Private _method As MethodBase
 
-		''' <summary>���\�b�h�̈���</summary>
+		''' <summary>メソッドの引数</summary>
 		Private _args() As Object
 
-		''' <summary>���s����Advice(Interceptor)</summary>
+		''' <summary>実行するAdvice(Interceptor)</summary>
 		Private _advice As IMethodInterceptor
 
-		''' <summary>���Ɏ��s����Interceptor����C���^�[�Z�v�g����Ă��郁�\�b�h�̏��</summary>
+		''' <summary>次に実行するInterceptorからインターセプトされているメソッドの情報</summary>
 		Private _nextInvocation As MethodInvocation
 
-#Region " �R���X�g���N�^ "
+#Region " コンストラクタ "
 
 		''' <summary>
-		''' �R���X�g���N�^
+		''' コンストラクタ
 		''' </summary>
-		''' <param name="this">���s�ΏۂƂȂ�C���X�^���X</param>
-		''' <param name="method">���s�ΏۂƂȂ郁�\�b�h��`</param>
-		''' <param name="args">���s���郁�\�b�h�̈����z��</param>
+		''' <param name="this">実行対象となるインスタンス</param>
+		''' <param name="method">実行対象となるメソッド定義</param>
+		''' <param name="args">実行するメソッドの引数配列</param>
 		''' <remarks></remarks>
 		Public Sub New(ByVal this As Object, ByVal method As MethodBase, ByVal args() As Object)
 			_this = this
@@ -42,10 +42,10 @@ Namespace Aop
 		End Sub
 
 		''' <summary>
-		''' �R���X�g���N�^
+		''' コンストラクタ
 		''' </summary>
-		''' <param name="interceptor">���s����Advice</param>
-		''' <param name="forwardInvocation">��O��Interceptor����C���^�[�Z�v�g����Ă��郁�\�b�h�̏��</param>
+		''' <param name="interceptor">実行するAdvice</param>
+		''' <param name="forwardInvocation">一つ前のInterceptorからインターセプトされているメソッドの情報</param>
 		''' <remarks></remarks>
 		Public Sub New(ByVal interceptor As IMethodInterceptor, ByVal forwardInvocation As MethodInvocation)
 			_this = forwardInvocation.This
@@ -59,7 +59,7 @@ Namespace Aop
 
 #Region " Implements IMethodInvocation "
 
-#Region " �v���p�e�B "
+#Region " プロパティ "
 
 		Public ReadOnly Property Arguments() As Object() Implements IMethodInvocation.Args
 			Get
@@ -82,13 +82,13 @@ Namespace Aop
 #End Region
 
 		Public Function Proceed() As Object Implements IMethodInvocation.Proceed
-			' ���� Interceptor �����s����
+			' 次の Interceptor を実行する
 			If _nextInvocation IsNot Nothing Then
 				Return _nextInvocation.Advice.Invoke(_nextInvocation)
 			End If
 
-			'TODO: ����ł����̂��Ȃ��E�E�E
-			'' �^�[�Q�b�g�� Object �^�͌��^�Ȃ��̉��z�I�u�W�F�N�g�Ȃ̂ňȉ��͏����Ȃ�
+			'TODO: これでいいのかなぁ・・・
+			'' ターゲットが Object 型は原型なしの仮想オブジェクトなので以下は処理なし
 			'If TypeOf _this Is Object Then
 			'	Return Nothing
 			'End If
@@ -102,10 +102,10 @@ Namespace Aop
 
 #End Region
 
-#Region " �v���p�e�B "
+#Region " プロパティ "
 
 		''' <summary>
-		''' ���Ɏ��s����Interceptor����C���^�[�Z�v�g����Ă��郁�\�b�h�̏�� �v���p�e�B
+		''' 次に実行するInterceptorからインターセプトされているメソッドの情報 プロパティ
 		''' </summary>
 		''' <value></value>
 		''' <remarks></remarks>
@@ -116,7 +116,7 @@ Namespace Aop
 		End Property
 
 		''' <summary>
-		''' ���s����Advice(Interceptor) �v���p�e�B
+		''' 実行するAdvice(Interceptor) プロパティ
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>

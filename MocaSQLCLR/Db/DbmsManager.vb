@@ -1,4 +1,4 @@
-
+ï»¿
 Imports System.Reflection
 Imports Moca.Aop
 Imports Moca.Attr
@@ -8,7 +8,7 @@ Imports Moca.Db.Attr
 Namespace Db
 
 	''' <summary>
-	''' DBMS ‚ğŠÇ—‚µ‚Ü‚·B
+	''' DBMS ã‚’ç®¡ç†ã—ã¾ã™ã€‚
 	''' </summary>
 	''' <remarks>
 	''' </remarks>
@@ -17,19 +17,19 @@ Namespace Db
 
 		Private Shared ReadOnly _instance As DbmsManager = New DbmsManager()
 
-		''' <summary>DBMS ‚ÌƒLƒƒƒbƒVƒ…</summary>
+		''' <summary>DBMS ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥</summary>
 		Private _dbms As New Dictionary(Of String, Dbms)
 
-		''' <summary>AopProxy ‚ÌƒLƒƒƒbƒVƒ…</summary>
+		''' <summary>AopProxy ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥</summary>
 		Private _daoProxy As New Dictionary(Of Type, AopProxy)
 
-		''' <summary>DbAccess ‚ÌƒLƒƒƒbƒVƒ…</summary>
+		''' <summary>DbAccess ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥</summary>
 		Private _daos As New List(Of IDao)
 
-#Region " ƒRƒ“ƒXƒgƒ‰ƒNƒ^^ƒfƒRƒ“ƒXƒgƒ‰ƒNƒ^ "
+#Region " ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ï¼ãƒ‡ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ "
 
 		''' <summary>
-		''' ƒfƒtƒHƒ‹ƒgƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		''' ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		''' </summary>
 		''' <remarks></remarks>
 		Private Sub New()
@@ -39,16 +39,16 @@ Namespace Db
 
 #Region " IDisposable Support "
 
-		Private disposedValue As Boolean = False		' d•¡‚·‚éŒÄ‚Ño‚µ‚ğŒŸo‚·‚é‚É‚Í
+		Private disposedValue As Boolean = False		' é‡è¤‡ã™ã‚‹å‘¼ã³å‡ºã—ã‚’æ¤œå‡ºã™ã‚‹ã«ã¯
 
 		' IDisposable
 		Protected Overridable Sub Dispose(ByVal disposing As Boolean)
 			If Not Me.disposedValue Then
 				If disposing Then
-					' TODO: –¾¦“I‚ÉŒÄ‚Ño‚³‚ê‚½‚Æ‚«‚Éƒ}ƒl[ƒW ƒŠƒ\[ƒX‚ğ‰ğ•ú‚µ‚Ü‚·
+					' TODO: æ˜ç¤ºçš„ã«å‘¼ã³å‡ºã•ã‚ŒãŸã¨ãã«ãƒãƒãƒ¼ã‚¸ ãƒªã‚½ãƒ¼ã‚¹ã‚’è§£æ”¾ã—ã¾ã™
 				End If
 
-				' TODO: ‹¤—L‚ÌƒAƒ“ƒ}ƒl[ƒW ƒŠƒ\[ƒX‚ğ‰ğ•ú‚µ‚Ü‚·
+				' TODO: å…±æœ‰ã®ã‚¢ãƒ³ãƒãƒãƒ¼ã‚¸ ãƒªã‚½ãƒ¼ã‚¹ã‚’è§£æ”¾ã—ã¾ã™
 				For Each dba As IDao In _daos
 					If dba Is Nothing Then
 						Continue For
@@ -59,9 +59,9 @@ Namespace Db
 			Me.disposedValue = True
 		End Sub
 
-		' ‚±‚ÌƒR[ƒh‚ÍA”jŠü‰Â”\‚Èƒpƒ^[ƒ“‚ğ³‚µ‚­À‘•‚Å‚«‚é‚æ‚¤‚É Visual Basic ‚É‚æ‚Á‚Ä’Ç‰Á‚³‚ê‚Ü‚µ‚½B
+		' ã“ã®ã‚³ãƒ¼ãƒ‰ã¯ã€ç ´æ£„å¯èƒ½ãªãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’æ­£ã—ãå®Ÿè£…ã§ãã‚‹ã‚ˆã†ã« Visual Basic ã«ã‚ˆã£ã¦è¿½åŠ ã•ã‚Œã¾ã—ãŸã€‚
 		Public Sub Dispose() Implements IDisposable.Dispose
-			' ‚±‚ÌƒR[ƒh‚ğ•ÏX‚µ‚È‚¢‚Å‚­‚¾‚³‚¢BƒNƒŠ[ƒ“ƒAƒbƒv ƒR[ƒh‚ğã‚Ì Dispose(ByVal disposing As Boolean) ‚É‹Lq‚µ‚Ü‚·B
+			' ã“ã®ã‚³ãƒ¼ãƒ‰ã‚’å¤‰æ›´ã—ãªã„ã§ãã ã•ã„ã€‚ã‚¯ãƒªãƒ¼ãƒ³ã‚¢ãƒƒãƒ— ã‚³ãƒ¼ãƒ‰ã‚’ä¸Šã® Dispose(ByVal disposing As Boolean) ã«è¨˜è¿°ã—ã¾ã™ã€‚
 			Dispose(True)
 			GC.SuppressFinalize(Me)
 		End Sub
@@ -69,21 +69,21 @@ Namespace Db
 #End Region
 
 		''' <summary>
-		''' DBMS‚ğƒAƒvƒŠƒP[ƒVƒ‡ƒ“\¬ƒtƒ@ƒCƒ‹“à‚©‚çæ“¾‚µ‚Ü‚·B
+		''' DBMSã‚’ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³æ§‹æˆãƒ•ã‚¡ã‚¤ãƒ«å†…ã‹ã‚‰å–å¾—ã—ã¾ã™ã€‚
 		''' </summary>
 		''' <param name="connectionString">ConnectionString</param>
 		''' <returns>DBMS</returns>
 		''' <remarks>
-		''' ˆê“x“Ç‚Ü‚ê‚½Ú‘±æî•ñ‚Í•Û‘¶‚³‚ê‚Ü‚·B
+		''' ä¸€åº¦èª­è¾¼ã¾ã‚ŒãŸæ¥ç¶šå…ˆæƒ…å ±ã¯ä¿å­˜ã•ã‚Œã¾ã™ã€‚
 		''' </remarks>
 		Public Shared Function GetDbms(ByVal connectionString As String) As Dbms
 			Return _instance._getDbms(connectionString)
 		End Function
 
 		'''' <summary>
-		'''' w’è‚³‚ê‚½Œ^‚Åƒf[ƒ^ƒx[ƒXƒAƒNƒZƒXƒIƒuƒWƒFƒNƒg‚ğƒCƒ“ƒXƒ^ƒ“ƒX‰»‚µ‚Ü‚·B
+		'''' æŒ‡å®šã•ã‚ŒãŸå‹ã§ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‚¢ã‚¯ã‚»ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã—ã¾ã™ã€‚
 		'''' </summary>
-		'''' <typeparam name="T"><see cref="AbstractDao"/>‚ğŒp³‚µ‚½ƒNƒ‰ƒX</typeparam>
+		'''' <typeparam name="T"><see cref="AbstractDao"/>ã‚’ç¶™æ‰¿ã—ãŸã‚¯ãƒ©ã‚¹</typeparam>
 		'''' <returns></returns>
 		'''' <remarks></remarks>
 		'Public Shared Function CreateDao(Of T)() As T
@@ -91,7 +91,7 @@ Namespace Db
 		'End Function
 
 		'''' <summary>
-		'''' w’è‚³‚ê‚½Œ^‚Åƒf[ƒ^ƒx[ƒXƒAƒNƒZƒXƒIƒuƒWƒFƒNƒg‚ğƒCƒ“ƒXƒ^ƒ“ƒX‰»‚µ‚Ü‚·B
+		'''' æŒ‡å®šã•ã‚ŒãŸå‹ã§ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‚¢ã‚¯ã‚»ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã—ã¾ã™ã€‚
 		'''' </summary>
 		'''' <returns></returns>
 		'''' <remarks></remarks>
@@ -100,12 +100,12 @@ Namespace Db
 		'End Function
 
 		''' <summary>
-		''' DBMS‚ğƒAƒvƒŠƒP[ƒVƒ‡ƒ“\¬ƒtƒ@ƒCƒ‹“à‚©‚çæ“¾‚µ‚Ü‚·B
+		''' DBMSã‚’ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³æ§‹æˆãƒ•ã‚¡ã‚¤ãƒ«å†…ã‹ã‚‰å–å¾—ã—ã¾ã™ã€‚
 		''' </summary>
 		''' <param name="connectionString">ConnectionString</param>
 		''' <returns>DBMS</returns>
 		''' <remarks>
-		''' ˆê“x“Ç‚Ü‚ê‚½Ú‘±æî•ñ‚Í•Û‘¶‚³‚ê‚Ü‚·B
+		''' ä¸€åº¦èª­è¾¼ã¾ã‚ŒãŸæ¥ç¶šå…ˆæƒ…å ±ã¯ä¿å­˜ã•ã‚Œã¾ã™ã€‚
 		''' </remarks>
 		Private Function _getDbms(ByVal connectionString As String) As Dbms
 			Dim value As Dbms
@@ -122,11 +122,11 @@ Namespace Db
 		End Function
 
 		''' <summary>
-		''' DBMS‚ğˆø”‚©‚çw’è‚µ‚Ü‚·B
+		''' DBMSã‚’å¼•æ•°ã‹ã‚‰æŒ‡å®šã—ã¾ã™ã€‚
 		''' </summary>
-		''' <param name="name">Ú‘±–¼Ì</param>
-		''' <param name="providerName">ƒvƒƒpƒCƒ_–¼</param>
-		''' <param name="connectionString">Ú‘±•¶š—ñ</param>
+		''' <param name="name">æ¥ç¶šåç§°</param>
+		''' <param name="providerName">ãƒ—ãƒ­ãƒ‘ã‚¤ãƒ€å</param>
+		''' <param name="connectionString">æ¥ç¶šæ–‡å­—åˆ—</param>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		Private Function _getDbms(ByVal name As String, ByVal providerName As String, ByVal connectionString As String) As Dbms
@@ -146,9 +146,9 @@ Namespace Db
 		End Function
 
 		'''' <summary>
-		'''' w’è‚³‚ê‚½Œ^‚Åƒf[ƒ^ƒx[ƒXƒAƒNƒZƒXƒIƒuƒWƒFƒNƒg‚ğƒCƒ“ƒXƒ^ƒ“ƒX‰»‚µ‚Ü‚·B
+		'''' æŒ‡å®šã•ã‚ŒãŸå‹ã§ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‚¢ã‚¯ã‚»ã‚¹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã—ã¾ã™ã€‚
 		'''' </summary>
-		'''' <typeparam name="T"><see cref="AbstractDao"/>‚ğŒp³‚µ‚½ƒNƒ‰ƒX</typeparam>
+		'''' <typeparam name="T"><see cref="AbstractDao"/>ã‚’ç¶™æ‰¿ã—ãŸã‚¯ãƒ©ã‚¹</typeparam>
 		'''' <returns></returns>
 		'''' <remarks></remarks>
 		'Private Function _createDao(Of T)() As T
@@ -161,14 +161,14 @@ Namespace Db
 
 		'	implType = GetType(T)
 
-		'	' DaoAttribute ‘®«‚ª‚ ‚éH
+		'	' DaoAttribute å±æ€§ãŒã‚ã‚‹ï¼Ÿ
 		'	Dim daoAttr As DaoAttribute
 		'	daoAttr = ClassUtil.GetCustomAttribute(Of DaoAttribute)(implType)
 		'	If daoAttr IsNot Nothing Then
 		'		Return DirectCast(_createDao(GetType(T), daoAttr), T)
 		'	End If
 
-		'	' ƒvƒƒLƒV‚ª‘¶İ‚·‚é‚©H
+		'	' ãƒ—ãƒ­ã‚­ã‚·ãŒå­˜åœ¨ã™ã‚‹ã‹ï¼Ÿ
 		'	If _daoProxy.ContainsKey(implType) Then
 		'		proxy = _daoProxy.Item(implType)
 		'		dao = proxy.Create(Of T)()
@@ -176,30 +176,30 @@ Namespace Db
 		'		Return dao
 		'	End If
 
-		'	' Interface H
+		'	' Interface ï¼Ÿ
 		'	If implType.IsInterface() Then
-		'		Throw New ArgumentException(implType.FullName & " ‚ÍA" & GetType(DaoAttribute).FullName & " ‘®«‚ğw’è‚µ‚Ä‚­‚¾‚³‚¢B")
+		'		Throw New ArgumentException(implType.FullName & " ã¯ã€" & GetType(DaoAttribute).FullName & " å±æ€§ã‚’æŒ‡å®šã—ã¦ãã ã•ã„ã€‚")
 		'	End If
 
-		'	' Œ^ƒ`ƒFƒbƒN
+		'	' å‹ãƒã‚§ãƒƒã‚¯
 		'	If Not ClassUtil.IsInterfaceImpl(implType, GetType(IDao)) Then
-		'		Throw New ArgumentException(implType.FullName & " ‚ÍA" & GetType(IDao).FullName & " ‚ğÀ‘•‚µ‚½ƒNƒ‰ƒX‚Å‚Í‚ ‚è‚Ü‚¹‚ñB")
+		'		Throw New ArgumentException(implType.FullName & " ã¯ã€" & GetType(IDao).FullName & " ã‚’å®Ÿè£…ã—ãŸã‚¯ãƒ©ã‚¹ã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚")
 		'	End If
 
-		'	' DBMS “Á’è
+		'	' DBMS ç‰¹å®š
 		'	dbmsAttr = ClassUtil.GetCustomAttribute(Of DbmsAttribute)(implType)
 		'	If dbmsAttr Is Nothing Then
-		'		Throw New ArgumentException(implType.FullName & " ‚ÍA" & GetType(DbmsAttribute).FullName & " ‘®«‚ªw’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB")
+		'		Throw New ArgumentException(implType.FullName & " ã¯ã€" & GetType(DbmsAttribute).FullName & " å±æ€§ãŒæŒ‡å®šã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚")
 		'	End If
 		'	dbmsVal = dbmsAttr.Create()
 
-		'	' “§‰ßƒvƒƒLƒVì¬
+		'	' é€éãƒ—ãƒ­ã‚­ã‚·ä½œæˆ
 		'	proxy = New AopProxy(ClassUtil.NewInstance(implType))
 		'	dao = proxy.Create(Of T)()
 		'	daoi = DirectCast(dao, IDao)
 		'	DirectCast(daoi, AbstractDao).TargetDbms = dbmsVal
 
-		'	' Transaction ‘®«‚Ì‚ ‚éƒƒ\ƒbƒh‚Ö TransactionInterceptor ‚Ì’“ü
+		'	' Transaction å±æ€§ã®ã‚ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ã¸ TransactionInterceptor ã®æ³¨å…¥
 		'	For Each method As MethodBase In implType.GetMethods
 		'		Dim attr As TransactionAttribute
 		'		attr = ClassUtil.GetCustomAttribute(Of TransactionAttribute)(method)
@@ -223,7 +223,7 @@ Namespace Db
 
 		'	implType = daoAttr.ImplType
 
-		'	' ƒvƒƒLƒV‚ª‘¶İ‚·‚é‚©H
+		'	' ãƒ—ãƒ­ã‚­ã‚·ãŒå­˜åœ¨ã™ã‚‹ã‹ï¼Ÿ
 		'	If _daoProxy.ContainsKey(implType) Then
 		'		proxy = _daoProxy.Item(implType)
 		'		dao = proxy.Create()
@@ -232,21 +232,21 @@ Namespace Db
 		'		Return daoi
 		'	End If
 
-		'	' Œ^ƒ`ƒFƒbƒN
+		'	' å‹ãƒã‚§ãƒƒã‚¯
 		'	If Not ClassUtil.IsInterfaceImpl(implType, GetType(IDao)) Then
-		'		Throw New ArgumentException(implType.FullName & " ‚ÍA" & GetType(IDao).FullName & " ‚ğÀ‘•‚µ‚½ƒNƒ‰ƒX‚Å‚Í‚ ‚è‚Ü‚¹‚ñB")
+		'		Throw New ArgumentException(implType.FullName & " ã¯ã€" & GetType(IDao).FullName & " ã‚’å®Ÿè£…ã—ãŸã‚¯ãƒ©ã‚¹ã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚")
 		'	End If
 
-		'	' DBMS “Á’è
+		'	' DBMS ç‰¹å®š
 		'	dbmsVal = GetDbms(daoAttr.Appkey)
 
-		'	' “§‰ßƒvƒƒLƒVì¬
+		'	' é€éãƒ—ãƒ­ã‚­ã‚·ä½œæˆ
 		'	proxy = New AopProxy(ClassUtil.NewInstance(implType))
 		'	dao = proxy.Create()
 		'	daoi = DirectCast(dao, IDao)
 		'	DirectCast(daoi, AbstractDao).TargetDbms = dbmsVal
 
-		'	' Transaction ‘®«‚Ì‚ ‚éƒƒ\ƒbƒh‚Ö TransactionInterceptor ‚Ì’“ü
+		'	' Transaction å±æ€§ã®ã‚ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ã¸ TransactionInterceptor ã®æ³¨å…¥
 		'	For Each method As MethodBase In implType.GetMethods
 		'		Dim attr As TransactionAttribute
 		'		attr = ClassUtil.GetCustomAttribute(Of TransactionAttribute)(method, True)

@@ -1,8 +1,8 @@
-
+ï»¿
 Namespace Aop
 
 	''' <summary>
-	''' Interceptor‚ÌƒCƒ“ƒ^[ƒtƒFƒCƒX
+	''' Interceptorã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹
 	''' </summary>
 	''' <remarks></remarks>
 	Public Interface IInterceptor

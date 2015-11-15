@@ -1,27 +1,27 @@
-
+ï»¿
 Imports System.Threading
 
 Namespace Di
 
 	''' <summary>
-	''' ƒRƒ“ƒ|[ƒlƒ“ƒg‚½‚¿‚ÌƒRƒ“ƒeƒi
+	''' ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŸã¡ã®ã‚³ãƒ³ãƒ†ãƒŠ
 	''' </summary>
 	''' <remarks>
-	''' <see cref="ReaderWriterLock"/> ‚ğg‚Á‚ÄƒXƒŒƒbƒhƒZ[ƒt‚É‚µ‚Ä‚Ü‚·B<br/>
+	''' <see cref="ReaderWriterLock"/> ã‚’ä½¿ã£ã¦ã‚¹ãƒ¬ãƒƒãƒ‰ã‚»ãƒ¼ãƒ•ã«ã—ã¦ã¾ã™ã€‚<br/>
 	''' </remarks>
 	Public Class MocaContainer
 		Implements IContainer, IDisposable
 
-		''' <summary>ƒRƒ“ƒ|[ƒlƒ“ƒgŠi”[</summary>
+		''' <summary>ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆæ ¼ç´</summary>
 		Private _components As Dictionary(Of Object, MocaComponent)
 
-		''' <summary>ƒƒbƒN—p</summary>
+		''' <summary>ãƒ­ãƒƒã‚¯ç”¨</summary>
 		Private _rwLock As New ReaderWriterLock()
 
-#Region " ƒRƒ“ƒXƒgƒ‰ƒNƒ^ "
+#Region " ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ "
 
 		''' <summary>
-		''' ƒfƒtƒHƒ‹ƒgƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		''' ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		''' </summary>
 		''' <remarks></remarks>
 		Public Sub New()
@@ -30,33 +30,33 @@ Namespace Di
 #End Region
 #Region " IDisposable Support "
 
-		Private disposedValue As Boolean = False		' d•¡‚·‚éŒÄ‚Ño‚µ‚ğŒŸo‚·‚é‚É‚Í
+		Private disposedValue As Boolean = False		' é‡è¤‡ã™ã‚‹å‘¼ã³å‡ºã—ã‚’æ¤œå‡ºã™ã‚‹ã«ã¯
 
 		' IDisposable
 		Protected Overridable Sub Dispose(ByVal disposing As Boolean)
 			If Not Me.disposedValue Then
 				If disposing Then
-					' TODO: –¾¦“I‚ÉŒÄ‚Ño‚³‚ê‚½‚Æ‚«‚Éƒ}ƒl[ƒW ƒŠƒ\[ƒX‚ğ‰ğ•ú‚µ‚Ü‚·
+					' TODO: æ˜ç¤ºçš„ã«å‘¼ã³å‡ºã•ã‚ŒãŸã¨ãã«ãƒãƒãƒ¼ã‚¸ ãƒªã‚½ãƒ¼ã‚¹ã‚’è§£æ”¾ã—ã¾ã™
 				End If
 
-				' TODO: ‹¤—L‚ÌƒAƒ“ƒ}ƒl[ƒW ƒŠƒ\[ƒX‚ğ‰ğ•ú‚µ‚Ü‚·
+				' TODO: å…±æœ‰ã®ã‚¢ãƒ³ãƒãƒãƒ¼ã‚¸ ãƒªã‚½ãƒ¼ã‚¹ã‚’è§£æ”¾ã—ã¾ã™
 
-				' ƒRƒ“ƒ|[ƒlƒ“ƒg‚½‚¿‚ğ‰ğ•ú
+				' ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŸã¡ã‚’è§£æ”¾
 				Destroy()
 			End If
 			Me.disposedValue = True
 		End Sub
 
-		' ‚±‚ÌƒR[ƒh‚ÍA”jŠü‰Â”\‚Èƒpƒ^[ƒ“‚ğ³‚µ‚­À‘•‚Å‚«‚é‚æ‚¤‚É Visual Basic ‚É‚æ‚Á‚Ä’Ç‰Á‚³‚ê‚Ü‚µ‚½B
+		' ã“ã®ã‚³ãƒ¼ãƒ‰ã¯ã€ç ´æ£„å¯èƒ½ãªãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’æ­£ã—ãå®Ÿè£…ã§ãã‚‹ã‚ˆã†ã« Visual Basic ã«ã‚ˆã£ã¦è¿½åŠ ã•ã‚Œã¾ã—ãŸã€‚
 		Public Sub Dispose() Implements IDisposable.Dispose
-			' ‚±‚ÌƒR[ƒh‚ğ•ÏX‚µ‚È‚¢‚Å‚­‚¾‚³‚¢BƒNƒŠ[ƒ“ƒAƒbƒv ƒR[ƒh‚ğã‚Ì Dispose(ByVal disposing As Boolean) ‚É‹Lq‚µ‚Ü‚·B
+			' ã“ã®ã‚³ãƒ¼ãƒ‰ã‚’å¤‰æ›´ã—ãªã„ã§ãã ã•ã„ã€‚ã‚¯ãƒªãƒ¼ãƒ³ã‚¢ãƒƒãƒ— ã‚³ãƒ¼ãƒ‰ã‚’ä¸Šã® Dispose(ByVal disposing As Boolean) ã«è¨˜è¿°ã—ã¾ã™ã€‚
 			Dispose(True)
 			GC.SuppressFinalize(Me)
 		End Sub
 #End Region
 
 		''' <summary>
-		''' ‰Šú‰»ˆ—
+		''' åˆæœŸåŒ–å‡¦ç†
 		''' </summary>
 		''' <remarks></remarks>
 		Public Sub Init() Implements IContainer.Init
@@ -67,14 +67,14 @@ Namespace Di
 		End Sub
 
 		''' <summary>
-		''' Ši”[‚µ‚Ä‚¢‚éƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ•Ô‚·B
+		''' æ ¼ç´ã—ã¦ã„ã‚‹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’è¿”ã™ã€‚
 		''' </summary>
-		''' <param name="componentType">æ“¾‚·‚éŒ^</param>
-		''' <returns>ŠY“–‚·‚éƒRƒ“ƒ|[ƒlƒ“ƒgBŠY“–‚µ‚È‚¢‚Æ‚«‚Í Nothing ‚ğ•Ô‚·B</returns>
+		''' <param name="componentType">å–å¾—ã™ã‚‹å‹</param>
+		''' <returns>è©²å½“ã™ã‚‹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã€‚è©²å½“ã—ãªã„ã¨ãã¯ Nothing ã‚’è¿”ã™ã€‚</returns>
 		''' <remarks></remarks>
 		Public Function GetComponent(ByVal componentType As System.Type) As MocaComponent Implements IContainer.GetComponent
 			Try
-				' ƒŠ[ƒ_[ƒƒbƒN‚ğæ“¾
+				' ãƒªãƒ¼ãƒ€ãƒ¼ãƒ­ãƒƒã‚¯ã‚’å–å¾—
 				_rwLock.AcquireReaderLock(Timeout.Infinite)
 
 				If Not _components.ContainsKey(componentType) Then
@@ -82,20 +82,20 @@ Namespace Di
 				End If
 				Return _components(componentType)
 			Finally
-				' ƒŠ[ƒ_[ƒƒbƒN‚ğ‰ğ•ú
+				' ãƒªãƒ¼ãƒ€ãƒ¼ãƒ­ãƒƒã‚¯ã‚’è§£æ”¾
 				_rwLock.ReleaseReaderLock()
 			End Try
 		End Function
 
 		''' <summary>
-		''' Ši”[‚µ‚Ä‚¢‚éƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ•Ô‚·B
+		''' æ ¼ç´ã—ã¦ã„ã‚‹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’è¿”ã™ã€‚
 		''' </summary>
-		''' <param name="componentKey">æ“¾‚·‚éƒL[</param>
-		''' <returns>ŠY“–‚·‚éƒRƒ“ƒ|[ƒlƒ“ƒgBŠY“–‚µ‚È‚¢‚Æ‚«‚Í Nothing ‚ğ•Ô‚·B</returns>
+		''' <param name="componentKey">å–å¾—ã™ã‚‹ã‚­ãƒ¼</param>
+		''' <returns>è©²å½“ã™ã‚‹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã€‚è©²å½“ã—ãªã„ã¨ãã¯ Nothing ã‚’è¿”ã™ã€‚</returns>
 		''' <remarks></remarks>
 		Public Function GetComponent(ByVal componentKey As String) As MocaComponent Implements IContainer.GetComponent
 			Try
-				' ƒŠ[ƒ_[ƒƒbƒN‚ğæ“¾
+				' ãƒªãƒ¼ãƒ€ãƒ¼ãƒ­ãƒƒã‚¯ã‚’å–å¾—
 				_rwLock.AcquireReaderLock(Timeout.Infinite)
 
 				If Not _components.ContainsKey(componentKey) Then
@@ -103,23 +103,23 @@ Namespace Di
 				End If
 				Return _components(componentKey)
 			Finally
-				' ƒŠ[ƒ_[ƒƒbƒN‚ğ‰ğ•ú
+				' ãƒªãƒ¼ãƒ€ãƒ¼ãƒ­ãƒƒã‚¯ã‚’è§£æ”¾
 				_rwLock.ReleaseReaderLock()
 			End Try
 		End Function
 
 		''' <summary>
-		''' ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğŠi”[‚·‚éB
+		''' ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’æ ¼ç´ã™ã‚‹ã€‚
 		''' </summary>
-		''' <param name="component">‘ÎÛ‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg</param>
+		''' <param name="component">å¯¾è±¡ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ</param>
 		''' <remarks></remarks>
 		Public Sub SetComponent(ByVal component As MocaComponent) Implements IContainer.SetComponent
 			Try
-				' ƒ‰ƒCƒ^[ƒƒbƒN‚ğæ“¾
+				' ãƒ©ã‚¤ã‚¿ãƒ¼ãƒ­ãƒƒã‚¯ã‚’å–å¾—
 				_rwLock.AcquireWriterLock(Timeout.Infinite)
 
 				If component.ImplType Is Nothing Then
-					' ƒL[‚ÅŠi”[
+					' ã‚­ãƒ¼ã§æ ¼ç´
 					If GetComponent(component.Key) IsNot Nothing Then
 						Exit Sub
 					End If
@@ -127,19 +127,19 @@ Namespace Di
 					Exit Sub
 				End If
 
-				' Œ^‚ÅŠi”[
+				' å‹ã§æ ¼ç´
 				If GetComponent(component.ImplType) IsNot Nothing Then
 					Exit Sub
 				End If
 				_components.Add(component.ImplType, component)
 			Finally
-				' ƒ‰ƒCƒ^[ƒƒbƒN‚ğ‰ğ•ú
+				' ãƒ©ã‚¤ã‚¿ãƒ¼ãƒ­ãƒƒã‚¯ã‚’è§£æ”¾
 				_rwLock.ReleaseWriterLock()
 			End Try
 		End Sub
 
 		''' <summary>
-		''' ƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌÁ‹
+		''' ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®æ¶ˆå»
 		''' </summary>
 		''' <remarks></remarks>
 		Public Sub Destroy() Implements IContainer.Destroy
@@ -155,7 +155,7 @@ Namespace Di
 		End Sub
 
 		''' <summary>
-		''' <see cref="MocaComponent"/> ‚ğ”½•œˆ—‚·‚é—ñ‹“q‚ğ•Ô‚µ‚Ü‚·B
+		''' <see cref="MocaComponent"/> ã‚’åå¾©å‡¦ç†ã™ã‚‹åˆ—æŒ™å­ã‚’è¿”ã—ã¾ã™ã€‚
 		''' </summary>
 		''' <returns></returns>
 		''' <remarks></remarks>

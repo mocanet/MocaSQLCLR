@@ -1,26 +1,26 @@
-
+ï»¿
 Imports Moca.Db
 
 Namespace Di
 
 	''' <summary>
-	''' ƒRƒ“ƒeƒi‚ÉŠi”[‚·‚éƒf[ƒ^ƒx[ƒX‚ğˆµ‚¤ƒRƒ“ƒ|[ƒlƒ“ƒg
+	''' ã‚³ãƒ³ãƒ†ãƒŠã«æ ¼ç´ã™ã‚‹ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‚’æ‰±ã†ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ
 	''' </summary>
 	''' <remarks></remarks>
 	Public Class MocaComponent4Db
 		Inherits MocaComponent
 
-		''' <summary>ˆµ‚¤DBMS</summary>
+		''' <summary>æ‰±ã†DBMS</summary>
 		Private _dbms As Dbms
 
-#Region " ƒRƒ“ƒXƒgƒ‰ƒNƒ^ "
+#Region " ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ "
 
 		''' <summary>
-		''' ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		''' ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		''' </summary>
-		''' <param name="implType">À‘Ô‚ÌŒ^</param>
-		''' <param name="fieldType">ƒtƒB[ƒ‹ƒh‚ÌŒ^</param>
-		''' <param name="targetDbms">‘ÎÛ‚Æ‚È‚éDBMS</param>
+		''' <param name="implType">å®Ÿæ…‹ã®å‹</param>
+		''' <param name="fieldType">ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®å‹</param>
+		''' <param name="targetDbms">å¯¾è±¡ã¨ãªã‚‹DBMS</param>
 		''' <remarks></remarks>
 		Public Sub New(ByVal implType As Type, ByVal fieldType As Type, ByVal targetDbms As Dbms)
 			MyBase.New(implType, fieldType)
@@ -28,7 +28,7 @@ Namespace Di
 		End Sub
 
 #End Region
-#Region " ƒvƒƒpƒeƒB "
+#Region " ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ "
 
 		''' <summary>
 		''' DBMS
@@ -45,10 +45,10 @@ Namespace Di
 #End Region
 
 		''' <summary>
-		''' ƒIƒuƒWƒFƒNƒg‚ğƒCƒ“ƒXƒ^ƒ“ƒX‰»‚µ‚Ä•Ô‚µ‚Ü‚·B
+		''' ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã—ã¦è¿”ã—ã¾ã™ã€‚
 		''' </summary>
 		''' <returns></returns>
-		''' <remarks>ƒI[ƒo[ƒ‰ƒCƒhƒƒ\ƒbƒh</remarks>
+		''' <remarks>ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ãƒ¡ã‚½ãƒƒãƒ‰</remarks>
 		Protected Overrides Function createObject(ByVal target As Object) As Object
 			Dim val As Object
 			val = MyBase.createObject(target)
@@ -57,10 +57,10 @@ Namespace Di
 		End Function
 
 		''' <summary>
-		''' ƒIƒuƒWƒFƒNƒg‚ğƒvƒƒLƒV‚Æ‚µ‚ÄƒCƒ“ƒXƒ^ƒ“ƒX‰»‚µ‚Ä•Ô‚µ‚Ü‚·B
+		''' ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒ—ãƒ­ã‚­ã‚·ã¨ã—ã¦ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã—ã¦è¿”ã—ã¾ã™ã€‚
 		''' </summary>
 		''' <returns></returns>
-		''' <remarks>ƒI[ƒo[ƒ‰ƒCƒhƒƒ\ƒbƒh</remarks>
+		''' <remarks>ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ãƒ¡ã‚½ãƒƒãƒ‰</remarks>
 		Protected Overrides Function createProxyObject(ByVal target As Object) As Object
 			Dim val As Object
 			val = MyBase.createProxyObject(target)

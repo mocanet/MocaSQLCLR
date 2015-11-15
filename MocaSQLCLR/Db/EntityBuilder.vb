@@ -1,4 +1,4 @@
-Imports System.Reflection
+ï»¿Imports System.Reflection
 
 Imports Moca.Aop
 Imports Moca.Attr
@@ -9,19 +9,19 @@ Imports Moca.Util
 Namespace Db
 
 	''' <summary>
-	''' ƒf[ƒ^ƒx[ƒX‚©‚çæ“¾‚µ‚½ƒf[ƒ^‚ÌŠi”[æ‚Æ‚È‚é Entity ‚ğì¬‚·‚é
+	''' ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‹ã‚‰å–å¾—ã—ãŸãƒ‡ãƒ¼ã‚¿ã®æ ¼ç´å…ˆã¨ãªã‚‹ Entity ã‚’ä½œæˆã™ã‚‹
 	''' </summary>
 	''' <remarks>
-	''' ˆê“x‰ğÍ‚µ‚½Entityî•ñ‚Í“à•”‚Å•Û‘¶‚µ‚Ü‚·B<br/>
-	''' 2‰ñ–ÚˆÈ~‚Í‰ğÍ‚¹‚¸•Û‘¶‚µ‚½î•ñ‚ğŒ³‚É‚µ‚Ü‚·B
+	''' ä¸€åº¦è§£æã—ãŸEntityæƒ…å ±ã¯å†…éƒ¨ã§ä¿å­˜ã—ã¾ã™ã€‚<br/>
+	''' 2å›ç›®ä»¥é™ã¯è§£æã›ãšä¿å­˜ã—ãŸæƒ…å ±ã‚’å…ƒã«ã—ã¾ã™ã€‚
 	''' </remarks>
 	Public Class EntityBuilder
 
-		''' <summary>ˆê“x‰ğÍ‚µ‚½Entity‚ğŠi”[‚µ‚Ä‚¨‚­</summary>
+		''' <summary>ä¸€åº¦è§£æã—ãŸEntityã‚’æ ¼ç´ã—ã¦ãŠã</summary>
 		Private _entityMap As New Hashtable
 
 		''' <summary>
-		''' DataTable‚ÌƒJƒ‰ƒ€\¬‚ğ\’z‚·‚é
+		''' DataTableã®ã‚«ãƒ©ãƒ æ§‹æˆã‚’æ§‹ç¯‰ã™ã‚‹
 		''' </summary>
 		''' <typeparam name="T"></typeparam>
 		''' <typeparam name="Order"></typeparam>
@@ -57,10 +57,10 @@ Namespace Db
 		End Function
 
 		''' <summary>
-		''' ˆø”‚Ì DataTable ‚©‚çw’è‚³‚ê‚½ƒ^ƒCƒv‚Ìƒf[ƒ^”z—ñ‚Ö•ÏŠ·‚µ‚Ä•Ô‚·B
+		''' å¼•æ•°ã® DataTable ã‹ã‚‰æŒ‡å®šã•ã‚ŒãŸã‚¿ã‚¤ãƒ—ã®ãƒ‡ãƒ¼ã‚¿é…åˆ—ã¸å¤‰æ›ã—ã¦è¿”ã™ã€‚
 		''' </summary>
-		''' <typeparam name="T">•ÏŠ·æ‚Ìƒ^ƒCƒv</typeparam>
-		''' <param name="tbl">•ÏŠ·Œ³ƒe[ƒuƒ‹ƒf[ƒ^</param>
+		''' <typeparam name="T">å¤‰æ›å…ˆã®ã‚¿ã‚¤ãƒ—</typeparam>
+		''' <param name="tbl">å¤‰æ›å…ƒãƒ†ãƒ¼ãƒ–ãƒ«ãƒ‡ãƒ¼ã‚¿</param>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		Public Function Create(Of T)(ByVal tbl As DataTable) As T()
@@ -85,10 +85,10 @@ Namespace Db
 		End Function
 
 		''' <summary>
-		''' ˆø”‚Ì DataRow ‚©‚çw’è‚³‚ê‚½ƒ^ƒCƒv‚Ìƒf[ƒ^”z—ñ‚Ö•ÏŠ·‚µ‚Ä•Ô‚·B
+		''' å¼•æ•°ã® DataRow ã‹ã‚‰æŒ‡å®šã•ã‚ŒãŸã‚¿ã‚¤ãƒ—ã®ãƒ‡ãƒ¼ã‚¿é…åˆ—ã¸å¤‰æ›ã—ã¦è¿”ã™ã€‚
 		''' </summary>
-		''' <typeparam name="T">•ÏŠ·æ‚Ìƒ^ƒCƒv</typeparam>
-		''' <param name="row">•ÏŠ·Œ³sƒf[ƒ^</param>
+		''' <typeparam name="T">å¤‰æ›å…ˆã®ã‚¿ã‚¤ãƒ—</typeparam>
+		''' <param name="row">å¤‰æ›å…ƒè¡Œãƒ‡ãƒ¼ã‚¿</param>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		Public Function Create(Of T)(ByVal row As DataRow) As T
@@ -109,7 +109,7 @@ Namespace Db
 		''' </summary>
 		''' <typeparam name="T"></typeparam>
 		''' <param name="row"></param>
-		''' <param name="version">•ÏŠ·‚·‚éƒf[ƒ^‚Ìƒo[ƒWƒ‡ƒ“</param>
+		''' <param name="version">å¤‰æ›ã™ã‚‹ãƒ‡ãƒ¼ã‚¿ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³</param>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		Public Function Create(Of T)(ByVal row As DataRow, ByVal version As DataRowVersion) As T
@@ -151,10 +151,10 @@ Namespace Db
 		End Function
 
 		''' <summary>
-		''' ˆø”‚ÌƒGƒ“ƒeƒBƒeƒB‚©‚ç DataRow ‚Ö•ÏŠ·
+		''' å¼•æ•°ã®ã‚¨ãƒ³ãƒ†ã‚£ãƒ†ã‚£ã‹ã‚‰ DataRow ã¸å¤‰æ›
 		''' </summary>
-		''' <param name="entity">•ÏŠ·Œ³</param>
-		''' <param name="row">•ÏŠ·æ</param>
+		''' <param name="entity">å¤‰æ›å…ƒ</param>
+		''' <param name="row">å¤‰æ›å…ˆ</param>
 		''' <remarks></remarks>
 		Public Sub Convert(ByVal entity As Object, ByVal row As DataRow)
 			Dim typ As Type
@@ -175,9 +175,9 @@ Namespace Db
 		End Sub
 
 		''' <summary>
-		''' ˆø”‚ÌƒIƒuƒWƒFƒNƒg“à‚ÉTable‘®«‚ÌƒtƒB[ƒ‹ƒh‚ª‘¶İ‚·‚éê‡‚Í—ñî•ñ‚ğİ’è‚·‚é
+		''' å¼•æ•°ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå†…ã«Tableå±æ€§ã®ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ãŒå­˜åœ¨ã™ã‚‹å ´åˆã¯åˆ—æƒ…å ±ã‚’è¨­å®šã™ã‚‹
 		''' </summary>
-		''' <param name="obj">‘ÎÛ‚ÌƒCƒ“ƒXƒ^ƒ“ƒX</param>
+		''' <param name="obj">å¯¾è±¡ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</param>
 		''' <remarks></remarks>
 		Public Sub SetColumnInfo(ByVal obj As Object)
 			Dim analyzer As AttributeAnalyzer
@@ -187,7 +187,7 @@ Namespace Db
 		End Sub
 
 		''' <summary>
-		''' Entity ‚ğƒCƒ“ƒXƒ^ƒ“ƒX‰»‚µAsƒf[ƒ^‚ğ Entity ‚Öİ’è‚·‚é
+		''' Entity ã‚’ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã—ã€è¡Œãƒ‡ãƒ¼ã‚¿ã‚’ Entity ã¸è¨­å®šã™ã‚‹
 		''' </summary>
 		''' <typeparam name="T"></typeparam>
 		''' <param name="keys"></param>
@@ -273,7 +273,7 @@ Namespace Db
 		End Function
 
 		''' <summary>
-		''' Entity ‚ğƒCƒ“ƒXƒ^ƒ“ƒX‰»‚µAsƒf[ƒ^‚ğ Entity ‚Öİ’è‚·‚é
+		''' Entity ã‚’ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã—ã€è¡Œãƒ‡ãƒ¼ã‚¿ã‚’ Entity ã¸è¨­å®šã™ã‚‹
 		''' </summary>
 		''' <typeparam name="T"></typeparam>
 		''' <param name="keys"></param>
@@ -289,7 +289,7 @@ Namespace Db
 		End Function
 
 		''' <summary>
-		''' Entity î•ñ‚ğæ“¾‚·‚é
+		''' Entity æƒ…å ±ã‚’å–å¾—ã™ã‚‹
 		''' </summary>
 		''' <param name="typ"></param>
 		''' <returns></returns>
@@ -307,12 +307,12 @@ Namespace Db
 
 	End Class
 
-#Region " –¢g—p‚Å‚Í‚ ‚é‚ªAƒTƒ“ƒvƒ‹‚Æ‚µ‚Ä‚Æ‚Á‚Ä‚¨‚«‚½‚¢‚Ì‚ÅƒRƒƒ“ƒg‚É‚µ‚Äc‚µ‚Ä‚Ü‚· "
+#Region " æœªä½¿ç”¨ã§ã¯ã‚ã‚‹ãŒã€ã‚µãƒ³ãƒ—ãƒ«ã¨ã—ã¦ã¨ã£ã¦ãŠããŸã„ã®ã§ã‚³ãƒ¡ãƒ³ãƒˆã«ã—ã¦æ®‹ã—ã¦ã¾ã™ "
 
 	'''' <summary>
-	'''' ˆø”‚Ì DataRow ‚©‚çw’è‚³‚ê‚½ƒ^ƒCƒv‚Ìƒf[ƒ^”z—ñ‚Ö•ÏŠ·‚µ‚Ä•Ô‚·B
+	'''' å¼•æ•°ã® DataRow ã‹ã‚‰æŒ‡å®šã•ã‚ŒãŸã‚¿ã‚¤ãƒ—ã®ãƒ‡ãƒ¼ã‚¿é…åˆ—ã¸å¤‰æ›ã—ã¦è¿”ã™ã€‚
 	'''' </summary>
-	'''' <typeparam name="T">•ÏŠ·æ‚Ìƒ^ƒCƒv</typeparam>
+	'''' <typeparam name="T">å¤‰æ›å…ˆã®ã‚¿ã‚¤ãƒ—</typeparam>
 	'''' <returns></returns>
 	'''' <remarks></remarks>
 	'Public Function Create(Of T)() As T
@@ -389,10 +389,10 @@ Namespace Db
 	'		''' <summary>log4net logger</summary>
 	'		Private ReadOnly _mylog As log4net.ILog = log4net.LogManager.GetLogger(String.Empty)
 
-	'#Region " ƒRƒ“ƒXƒgƒ‰ƒNƒ^ "
+	'#Region " ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ "
 
 	'		''' <summary>
-	'		''' ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	'		''' ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 	'		''' </summary>
 	'		''' <remarks></remarks>
 	'		Public Sub New(ByVal length As Integer)
@@ -405,7 +405,7 @@ Namespace Db
 	'			Dim valid As Validator = New Validator
 
 	'			If valid.Verify(invocation.Args(0), ValidateTypes.LenghtMax, max:=_length) <> ValidateTypes.None Then
-	'				Throw New ArgumentException("“ü—ÍŒ…”‚ª‘½‚·‚¬‚Ü‚·B")
+	'				Throw New ArgumentException("å…¥åŠ›æ¡æ•°ãŒå¤šã™ãã¾ã™ã€‚")
 	'			End If
 	'			Return invocation.Proceed()
 	'		End Function

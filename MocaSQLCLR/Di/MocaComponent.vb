@@ -1,4 +1,4 @@
-
+﻿
 Imports System.Reflection
 Imports Moca.Aop
 Imports Moca.Attr
@@ -7,28 +7,28 @@ Imports Moca.Util
 Namespace Di
 
 	''' <summary>
-	''' �R���e�i�Ɋi�[����W���I�ȃR���|�[�l���g
+	''' コンテナに格納する標準的なコンポーネント
 	''' </summary>
 	''' <remarks></remarks>
 	Public Class MocaComponent
 		Implements IDisposable
 
-		''' <summary>�R���|�[�l���g�̃L�[</summary>
+		''' <summary>コンポーネントのキー</summary>
 		Private _key As String
-		''' <summary>���Ԃ̌^</summary>
+		''' <summary>実態の型</summary>
 		Private _implType As Type
-		''' <summary>�t�B�[���h�̌^</summary>
+		''' <summary>フィールドの型</summary>
 		Private _fieldType As Type
-		''' <summary>�A�X�y�N�g�z��</summary>
+		''' <summary>アスペクト配列</summary>
 		Private _aspects() As IAspect
 
-#Region " �R���X�g���N�^ "
+#Region " コンストラクタ "
 
 		''' <summary>
-		''' �R���X�g���N�^
+		''' コンストラクタ
 		''' </summary>
-		''' <param name="implType">���Ԃ̌^</param>
-		''' <param name="fieldType">�t�B�[���h�̌^</param>
+		''' <param name="implType">実態の型</param>
+		''' <param name="fieldType">フィールドの型</param>
 		''' <remarks></remarks>
 		Public Sub New(ByVal implType As Type, ByVal fieldType As Type)
 			_implType = implType
@@ -37,10 +37,10 @@ Namespace Di
 		End Sub
 
 		''' <summary>
-		''' �R���X�g���N�^
+		''' コンストラクタ
 		''' </summary>
-		''' <param name="key">�R���|�[�l���g�̃L�[</param>
-		''' <param name="fieldType">�t�B�[���h�̌^</param>
+		''' <param name="key">コンポーネントのキー</param>
+		''' <param name="fieldType">フィールドの型</param>
 		''' <remarks></remarks>
 		Public Sub New(ByVal key As String, ByVal fieldType As Type)
 			_implType = Nothing
@@ -51,33 +51,33 @@ Namespace Di
 #End Region
 #Region " IDisposable Support "
 
-		Private disposedValue As Boolean = False		' �d������Ăяo�������o����ɂ�
+		Private disposedValue As Boolean = False		' 重複する呼び出しを検出するには
 
 		' IDisposable
 		Protected Overridable Sub Dispose(ByVal disposing As Boolean)
 			If Not Me.disposedValue Then
 				If disposing Then
-					' TODO: �����I�ɌĂяo���ꂽ�Ƃ��Ƀ}�l�[�W ���\�[�X��������܂�
+					' TODO: 明示的に呼び出されたときにマネージ リソースを解放します
 				End If
 
-				' TODO: ���L�̃A���}�l�[�W ���\�[�X��������܂�
+				' TODO: 共有のアンマネージ リソースを解放します
 
-				' �ێ����Ă���I�u�W�F�N�g�̊J��
+				' 保持しているオブジェクトの開放
 			End If
 			Me.disposedValue = True
 		End Sub
 
-		' ���̃R�[�h�́A�j���\�ȃp�^�[���𐳂��������ł���悤�� Visual Basic �ɂ���Ēǉ�����܂����B
+		' このコードは、破棄可能なパターンを正しく実装できるように Visual Basic によって追加されました。
 		Public Sub Dispose() Implements IDisposable.Dispose
-			' ���̃R�[�h��ύX���Ȃ��ł��������B�N���[���A�b�v �R�[�h����� Dispose(ByVal disposing As Boolean) �ɋL�q���܂��B
+			' このコードを変更しないでください。クリーンアップ コードを上の Dispose(ByVal disposing As Boolean) に記述します。
 			Dispose(True)
 			GC.SuppressFinalize(Me)
 		End Sub
 #End Region
-#Region " �v���p�e�B "
+#Region " プロパティ "
 
 		''' <summary>
-		''' �A�X�y�N�g�z��v���p�e�B
+		''' アスペクト配列プロパティ
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -92,7 +92,7 @@ Namespace Di
 		End Property
 
 		''' <summary>
-		''' ���Ԃ̌^�v���p�e�B
+		''' 実態の型プロパティ
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -104,7 +104,7 @@ Namespace Di
 		End Property
 
 		''' <summary>
-		''' �L�[�v���p�e�B
+		''' キープロパティ
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -116,7 +116,7 @@ Namespace Di
 		End Property
 
 		''' <summary>
-		''' �t�B�[���h�̌^�v���p�e�B
+		''' フィールドの型プロパティ
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -130,7 +130,7 @@ Namespace Di
 #End Region
 
 		''' <summary>
-		''' �I�u�W�F�N�g���C���X�^���X�����ĕԂ��܂��B
+		''' オブジェクトをインスタンス化して返します。
 		''' </summary>
 		''' <returns></returns>
 		''' <remarks></remarks>
@@ -145,7 +145,7 @@ Namespace Di
 		End Function
 
 		''' <summary>
-		''' �I�u�W�F�N�g���C���X�^���X�����ĕԂ��܂��B
+		''' オブジェクトをインスタンス化して返します。
 		''' </summary>
 		''' <returns></returns>
 		''' <remarks></remarks>
@@ -160,7 +160,7 @@ Namespace Di
 		End Function
 
 		''' <summary>
-		''' �I�u�W�F�N�g���C���X�^���X�����ĕԂ��܂��B
+		''' オブジェクトをインスタンス化して返します。
 		''' </summary>
 		''' <returns></returns>
 		''' <remarks></remarks>
@@ -171,7 +171,7 @@ Namespace Di
 		End Function
 
 		''' <summary>
-		''' �I�u�W�F�N�g���v���L�V�Ƃ��ăC���X�^���X�����ĕԂ��܂��B
+		''' オブジェクトをプロキシとしてインスタンス化して返します。
 		''' </summary>
 		''' <returns></returns>
 		''' <remarks></remarks>

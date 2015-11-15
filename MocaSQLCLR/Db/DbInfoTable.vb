@@ -1,25 +1,25 @@
-
+ï»¿
 Namespace Db
 
 	''' <summary>
-	''' ƒe[ƒuƒ‹î•ñ‚Ìƒ‚ƒfƒ‹
+	''' ãƒ†ãƒ¼ãƒ–ãƒ«æƒ…å ±ã®ãƒ¢ãƒ‡ãƒ«
 	''' </summary>
 	''' <remarks></remarks>
 	Public Class DbInfoTable
 		Inherits DbInfo
 
-		''' <summary>—ñî•ñ</summary>
+		''' <summary>åˆ—æƒ…å ±</summary>
 		Private _columns As DbInfoColumnCollection
 
-#Region " ƒRƒ“ƒXƒgƒ‰ƒNƒ^ "
+#Region " ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ "
 
 		''' <summary>
-		''' ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		''' ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		''' </summary>
-		''' <param name="catalog">ƒJƒ^ƒƒO–¼</param>
-		''' <param name="schema">ƒXƒL[ƒ}–¼</param>
-		''' <param name="name">–¼Ì</param>
-		''' <param name="typ">Œ^</param>
+		''' <param name="catalog">ã‚«ã‚¿ãƒ­ã‚°å</param>
+		''' <param name="schema">ã‚¹ã‚­ãƒ¼ãƒå</param>
+		''' <param name="name">åç§°</param>
+		''' <param name="typ">å‹</param>
 		''' <remarks></remarks>
 		Public Sub New(ByVal catalog As String, ByVal schema As String, ByVal name As String, ByVal typ As String)
 			MyBase.New(catalog, schema, name, typ)
@@ -27,10 +27,10 @@ Namespace Db
 
 #End Region
 
-#Region " ƒvƒƒpƒeƒB "
+#Region " ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ "
 
 		''' <summary>
-		''' —ñî•ñ
+		''' åˆ—æƒ…å ±
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -45,7 +45,7 @@ Namespace Db
 		End Property
 
 		''' <summary>
-		''' ƒe[ƒuƒ‹–¼‚Ì‚İ•Ô‚·
+		''' ãƒ†ãƒ¼ãƒ–ãƒ«åã®ã¿è¿”ã™
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>

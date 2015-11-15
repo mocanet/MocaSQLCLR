@@ -1,19 +1,19 @@
-
+ï»¿
 Imports Moca.Exceptions
 
 Namespace Di
 
 	''' <summary>
-	''' ƒRƒ“ƒeƒi‚Ìƒtƒ@ƒNƒgƒŠƒNƒ‰ƒX
+	''' ã‚³ãƒ³ãƒ†ãƒŠã®ãƒ•ã‚¡ã‚¯ãƒˆãƒªã‚¯ãƒ©ã‚¹
 	''' </summary>
 	''' <remarks></remarks>
 	Public Class MocaContainerFactory
 
-		''' <summary>ƒVƒ“ƒOƒ‹ƒgƒ“—pƒRƒ“ƒeƒiƒCƒ“ƒXƒ^ƒ“ƒX</summary>
+		''' <summary>ã‚·ãƒ³ã‚°ãƒ«ãƒˆãƒ³ç”¨ã‚³ãƒ³ãƒ†ãƒŠã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</summary>
 		Private Shared ReadOnly _instance As IContainer = New MocaContainer
 
 		''' <summary>
-		''' ‰Šú‰»ˆ—
+		''' åˆæœŸåŒ–å‡¦ç†
 		''' </summary>
 		''' <remarks></remarks>
 		Public Shared Sub Init()
@@ -21,7 +21,7 @@ Namespace Di
 		End Sub
 
 		''' <summary>
-		''' ƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌÁ‹
+		''' ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®æ¶ˆå»
 		''' </summary>
 		''' <remarks></remarks>
 		Public Shared Sub Destroy()
@@ -32,14 +32,14 @@ Namespace Di
 		End Sub
 
 		''' <summary>
-		''' ƒfƒtƒHƒ‹ƒg‚ÌƒRƒ“ƒeƒiƒCƒ“ƒXƒ^ƒ“ƒXì¬
+		''' ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚³ãƒ³ãƒ†ãƒŠã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ä½œæˆ
 		''' </summary>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		Public Shared ReadOnly Property Container() As IContainer
 			Get
 				If _instance Is Nothing Then
-					Throw New MocaRuntimeException("ƒRƒ“ƒeƒi‚Ì‰Šú‰»‚ªÀs‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB")
+					Throw New MocaRuntimeException("ã‚³ãƒ³ãƒ†ãƒŠã®åˆæœŸåŒ–ãŒå®Ÿè¡Œã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚")
 				End If
 				Return _instance
 			End Get

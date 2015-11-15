@@ -1,30 +1,30 @@
-
+ï»¿
 Namespace Db
 
 	''' <summary>
-	''' ƒf[ƒ^ƒx[ƒXî•ñ‚Ì‹¤’Êƒ‚ƒfƒ‹
+	''' ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹æƒ…å ±ã®å…±é€šãƒ¢ãƒ‡ãƒ«
 	''' </summary>
 	''' <remarks></remarks>
 	Public Class DbInfo
 
-		''' <summary>ƒJƒ^ƒƒO–¼Ì</summary>
+		''' <summary>ã‚«ã‚¿ãƒ­ã‚°åç§°</summary>
 		Private _catalog As String
-		''' <summary>ƒXƒL[ƒ}–¼</summary>
+		''' <summary>ã‚¹ã‚­ãƒ¼ãƒå</summary>
 		Private _schema As String
-		''' <summary>–¼Ì</summary>
+		''' <summary>åç§°</summary>
 		Private _name As String
-		''' <summary>Œ^</summary>
+		''' <summary>å‹</summary>
 		Private _typ As String
 
-#Region " ƒRƒ“ƒXƒgƒ‰ƒNƒ^ "
+#Region " ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ "
 
 		''' <summary>
-		''' ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		''' ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		''' </summary>
-		''' <param name="catalog">ƒJƒ^ƒƒO–¼</param>
-		''' <param name="schema">ƒXƒL[ƒ}–¼</param>
-		''' <param name="name">–¼Ì</param>
-		''' <param name="typ">Œ^</param>
+		''' <param name="catalog">ã‚«ã‚¿ãƒ­ã‚°å</param>
+		''' <param name="schema">ã‚¹ã‚­ãƒ¼ãƒå</param>
+		''' <param name="name">åç§°</param>
+		''' <param name="typ">å‹</param>
 		''' <remarks></remarks>
 		Public Sub New(ByVal catalog As String, ByVal schema As String, ByVal name As String, ByVal typ As String)
 			Me._catalog = catalog
@@ -35,10 +35,10 @@ Namespace Db
 
 #End Region
 
-#Region " ƒvƒƒpƒeƒB "
+#Region " ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ "
 
 		''' <summary>
-		''' ƒJƒ^ƒƒO–¼ÌƒvƒƒpƒeƒB
+		''' ã‚«ã‚¿ãƒ­ã‚°åç§°ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -53,7 +53,7 @@ Namespace Db
 		End Property
 
 		''' <summary>
-		''' ƒXƒL[ƒ}–¼ƒvƒƒpƒeƒB
+		''' ã‚¹ã‚­ãƒ¼ãƒåãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -68,7 +68,7 @@ Namespace Db
 		End Property
 
 		''' <summary>
-		''' –¼ÌƒvƒƒpƒeƒB
+		''' åç§°ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -83,7 +83,7 @@ Namespace Db
 		End Property
 
 		''' <summary>
-		''' Œ^ƒvƒƒpƒeƒB
+		''' å‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -102,7 +102,7 @@ Namespace Db
 #Region " Overrides "
 
 		''' <summary>
-		''' ToString ‚Ìã‘‚«ˆ—
+		''' ToString ã®ä¸Šæ›¸ãå‡¦ç†
 		''' </summary>
 		''' <returns></returns>
 		''' <remarks></remarks>

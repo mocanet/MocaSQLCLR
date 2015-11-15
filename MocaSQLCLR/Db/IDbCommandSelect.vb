@@ -1,11 +1,11 @@
-
+﻿
 Namespace Db
 
 	''' <summary>
-	''' SELECT�������s����ׂ�DBCommand�����b�s���O����C���^�t�F�[�X
+	''' SELECT文を実行する為のDBCommandをラッピングするインタフェース
 	''' </summary>
 	''' <remarks>
-	''' �f�[�^���o�n�̃X�g�A�h���s�ł��g�p�o���܂����A�X�g�A�h�̎���<see cref="IDbCommandStoredProcedure"/>���g�p���Ă��������B<br/>
+	''' データ抽出系のストアド実行でも使用出来ますが、ストアドの時は<see cref="IDbCommandStoredProcedure"/>を使用してください。<br/>
 	''' <example>
 	''' <code lang="vb">
 	''' Using dba As IDbAccess = New DbAccess("Connection String")
@@ -25,22 +25,22 @@ Namespace Db
 #Region " Property "
 
 		''' <summary>
-		''' Select�������s�������ʂ�ݒ�^�Q��
+		''' Select文を実行した結果を設定／参照
 		''' </summary>
-		''' <value>Select�������s��������</value>
+		''' <value>Select文を実行した結果</value>
 		''' <remarks></remarks>
 		Property ResultDataSet() As DataSet
 
 		''' <summary>
-		''' DataSet���̐擪�e�[�u����Ԃ�
+		''' DataSet内の先頭テーブルを返す
 		''' </summary>
 		''' <value></value>
-		''' <returns>�擪�e�[�u��</returns>
+		''' <returns>先頭テーブル</returns>
 		''' <remarks></remarks>
 		ReadOnly Property Result1stTable() As DataTable
 
 		''' <summary>
-		''' DataSet���̐擪�e�[�u���ɑ��݂���s�f�[�^��Enumerator��Ԃ�
+		''' DataSet内の先頭テーブルに存在する行データのEnumeratorを返す
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -50,57 +50,57 @@ Namespace Db
 #End Region
 
 		''' <summary>
-		''' DataSet���̐擪�e�[�u����Ԃ�
+		''' DataSet内の先頭テーブルを返す
 		''' </summary>
 		''' <typeparam name="T"></typeparam>
-		''' <returns>�擪�e�[�u���̃f�[�^���w�肳�ꂽEntity���g�p�����z��ɕϊ����ĕԂ�</returns>
+		''' <returns>先頭テーブルのデータを指定されたEntityを使用した配列に変換して返す</returns>
 		''' <remarks>
-		''' Execute ��ɓ����\�b�h�ŃG���e�B�e�B���擾������<see cref="Execute(OF T)"></see>���g�������������ŃX�e�b�v�����点�܂��B
+		''' Execute 後に当メソッドでエンティティを取得するより<see cref="Execute(OF T)"></see>を使った方が高速でステップを減らせます。
 		''' </remarks>
-		<Obsolete("Execute(Of T)() ���g���悤�ɂ��Ă��������B")> _
+		<Obsolete("Execute(Of T)() を使うようにしてください。")> _
 		Function Result1stTableEntitis(Of T)() As T()
 
 		''' <summary>
-		''' DataSet���̐擪�e�[�u���̎w�肳�ꂽ�s��Ԃ�
+		''' DataSet内の先頭テーブルの指定された行を返す
 		''' </summary>
 		''' <typeparam name="T"></typeparam>
 		''' <param name="index"></param>
-		''' <returns>�擪�e�[�u���̃f�[�^���w�肳�ꂽEntity���g�p�����z��ɕϊ����ĕԂ�</returns>
+		''' <returns>先頭テーブルのデータを指定されたEntityを使用した配列に変換して返す</returns>
 		''' <remarks></remarks>
 		Function Result1stTableEntity(Of T)(ByVal index As Integer) As T
 
 		''' <summary>
-		''' �N�G�������s���iExecuteScalar�j�A���̃N�G�����Ԃ����ʃZ�b�g�̍ŏ��̍s�ɂ���ŏ��̗��Ԃ��܂��B�]���ȗ�܂��͍s�͖�������܂��B
+		''' クエリを実行し（ExecuteScalar）、そのクエリが返す結果セットの最初の行にある最初の列を返します。余分な列または行は無視されます。
 		''' </summary>
-		''' <returns>���ʃZ�b�g�̍ŏ��̍s�ɂ���ŏ��̗�B</returns>
+		''' <returns>結果セットの最初の行にある最初の列。</returns>
 		''' <remarks>
-		''' �����\�b�h�͗\�߃f�[�^�x�[�X���I�[�v�����Ă����K�v������܂����A
-		''' �I�[�v������Ă��Ȃ��Ƃ��́A�����ŃI�[�v�����ďI�����ɃN���[�Y���܂��B<br/>
-		''' �ڍׂ́A<seealso cref="IDbCommand.ExecuteScalar"/> ���Q�Ƃ��Ă��������B
+		''' 当メソッドは予めデータベースをオープンしておく必要がありますが、
+		''' オープンされていないときは、自動でオープンして終了時にクローズします。<br/>
+		''' 詳細は、<seealso cref="IDbCommand.ExecuteScalar"/> を参照してください。
 		''' </remarks>
 		Function ExecuteScalar() As Object
 
 		''' <summary>
-		''' �N�G�������s���iExecuteReader�j�A�w�肳�ꂽ�G���e�B�e�B�ɕϊ����ĕԂ��܂��B
+		''' クエリを実行し（ExecuteReader）、指定されたエンティティに変換して返します。
 		''' </summary>
-		''' <typeparam name="T">�G���e�B�e�B</typeparam>
-		''' <returns>�G���e�B�e�B�̃��X�g</returns>
+		''' <typeparam name="T">エンティティ</typeparam>
+		''' <returns>エンティティのリスト</returns>
 		''' <remarks>
-		''' �����\�b�h�͗\�߃f�[�^�x�[�X���I�[�v�����Ă����K�v������܂����A
-		''' �I�[�v������Ă��Ȃ��Ƃ��́A�����ŃI�[�v�����ďI�����ɃN���[�Y���܂��B<br/>
-		''' �ڍׂ́A<seealso cref="IDbCommand.ExecuteReader"/> ���Q�Ƃ��Ă��������B<br/>
+		''' 当メソッドは予めデータベースをオープンしておく必要がありますが、
+		''' オープンされていないときは、自動でオープンして終了時にクローズします。<br/>
+		''' 詳細は、<seealso cref="IDbCommand.ExecuteReader"/> を参照してください。<br/>
 		''' <br/>
-		''' �Ȃ��A�����\�b�h���g�p�����ꍇ�͌��ʂ��G���e�B�e�B�Ƃ��Ĉ������Ƃ�O��Ƃ��Ă��邽�߁A<see cref="DataSet"></see>��<see cref="DataTable"></see>�Ƃ��Ă͈����܂���B<br/>
-		''' �����<see cref="ResultDataSet"></see>, <see cref="Result1stTable"></see>�Ȃǂ̃��\�b�h�͎g�p�ł��܂���B<br/>
-		''' �o�b�`SQL�X�e�[�g�����g����<see cref="NextResult"></see>�ɂĎ��̌��ʂ��擾���Ă��������B
+		''' なお、当メソッドを使用した場合は結果をエンティティとして扱うことを前提としているため、<see cref="DataSet"></see>や<see cref="DataTable"></see>としては扱えません。<br/>
+		''' よって<see cref="ResultDataSet"></see>, <see cref="Result1stTable"></see>などのメソッドは使用できません。<br/>
+		''' バッチSQLステートメント時は<see cref="NextResult"></see>にて次の結果を取得してください。
 		''' </remarks>
 		Overloads Function Execute(Of T)(Optional ByVal behavior As CommandBehavior = CommandBehavior.Default) As IList(Of T)
 
 		''' <summary>
-		''' ���̌��ʂ�Ԃ�
+		''' 次の結果を返す
 		''' </summary>
-		''' <typeparam name="T">�G���e�B�e�B</typeparam>
-		''' <returns>���݂��Ȃ��Ƃ��� Nothing ��������</returns>
+		''' <typeparam name="T">エンティティ</typeparam>
+		''' <returns>存在しないときは Nothing をかえす</returns>
 		''' <remarks></remarks>
 		Function NextResult(Of T)() As IList(Of T)
 

@@ -1,11 +1,11 @@
-
+ï»¿
 Imports Moca.Util
 
 Namespace Aop
 
 	''' <summary>
-	''' ‰¡’f“I‚ÈŠÖS–‚ª‚ÂU‚é•‘‚¢iˆ—‚Ì‚±‚Æj‚ÆA‚¢‚ÂU‚é•‘‚¢‚ğ“K—p‚·‚é‚©‚ğŠÖ˜A•t‚¯‚µ‚Ü‚·B
-	''' Advice(Interceptor)‚ÆPointcut‚ğ‚Ü‚Æ‚ß‚½‚à‚Ì‚ğAspect(ƒAƒXƒyƒNƒg)‚Æ‚¢‚¢‚Ü‚·B
+	''' æ¨ªæ–­çš„ãªé–¢å¿ƒäº‹ãŒæŒã¤æŒ¯ã‚‹èˆã„ï¼ˆå‡¦ç†ã®ã“ã¨ï¼‰ã¨ã€ã„ã¤æŒ¯ã‚‹èˆã„ã‚’é©ç”¨ã™ã‚‹ã‹ã‚’é–¢é€£ä»˜ã‘ã—ã¾ã™ã€‚
+	''' Advice(Interceptor)ã¨Pointcutã‚’ã¾ã¨ã‚ãŸã‚‚ã®ã‚’Aspect(ã‚¢ã‚¹ãƒšã‚¯ãƒˆ)ã¨ã„ã„ã¾ã™ã€‚
 	''' </summary>
 	''' <remarks></remarks>
 	Public Class Aspect
@@ -13,16 +13,16 @@ Namespace Aop
 
 		''' <summary>Advice(Interceptor)</summary>
 		Private _advice As IMethodInterceptor
-		''' <summary>Advice(Interceptor)‚ÌŒ^</summary>
+		''' <summary>Advice(Interceptor)ã®å‹</summary>
 		Private _adviceType As Type
 
 		''' <summary>Pointcut</summary>
 		Private _pointcut As IPointcut
 
-#Region " ƒRƒ“ƒXƒgƒ‰ƒNƒ^ "
+#Region " ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ "
 
 		''' <summary>
-		''' ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		''' ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		''' </summary>
 		''' <param name="advice">Advice(Interceptor)</param>
 		''' <param name="pointcut">Pointcut</param>
@@ -33,14 +33,14 @@ Namespace Aop
 		End Sub
 
 		''' <summary>
-		''' ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		''' ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		''' </summary>
-		''' <param name="adviceType">Advice(Interceptor)‚ÌŒ^</param>
+		''' <param name="adviceType">Advice(Interceptor)ã®å‹</param>
 		''' <param name="pointcut">Pointcut</param>
 		''' <remarks></remarks>
 		Public Sub New(ByVal adviceType As Type, ByVal pointcut As IPointcut)
 			If Not ClassUtil.IsInterfaceImpl(adviceType, GetType(IMethodInterceptor)) Then
-				Throw New ArgumentException("w’è‚³‚ê‚½Advice(Interceptor)‚ÌŒ^‚ª IMethodInterceptor ‚ğÀ‘•‚µ‚½‚à‚Ì‚Å‚Í‚ ‚è‚Ü‚¹‚ñB")
+				Throw New ArgumentException("æŒ‡å®šã•ã‚ŒãŸAdvice(Interceptor)ã®å‹ãŒ IMethodInterceptor ã‚’å®Ÿè£…ã—ãŸã‚‚ã®ã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚")
 			End If
 			_advice = Nothing
 			_adviceType = adviceType
@@ -49,10 +49,10 @@ Namespace Aop
 
 #End Region
 
-#Region " ƒvƒƒpƒeƒB "
+#Region " ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ "
 
 		''' <summary>
-		''' Advice(Interceptor) ƒvƒƒpƒeƒB
+		''' Advice(Interceptor) ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -67,7 +67,7 @@ Namespace Aop
 		End Property
 
 		''' <summary>
-		''' Pointcut ƒvƒƒpƒeƒB
+		''' Pointcut ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>

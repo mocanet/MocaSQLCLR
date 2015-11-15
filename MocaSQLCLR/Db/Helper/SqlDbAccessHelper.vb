@@ -1,67 +1,67 @@
-
+﻿
 Imports System.Data.Common
 Imports System.Data.SqlClient
 
 Namespace Db.Helper
 
-	''' <summary>�r�p�k�G���[�R�[�h</summary>
+	''' <summary>ＳＱＬエラーコード</summary>
 	<Flags()> _
 	Public Enum SqlDbErrorNumbers
-		''' <summary>�d���G���[�R�[�h</summary>
+		''' <summary>重複エラーコード</summary>
 		DuplicationPKey = 2627
 
-		''' <summary>�^�C���A�E�g�G���[�R�[�h</summary>
+		''' <summary>タイムアウトエラーコード</summary>
 		''' <remarks>
-		''' �ڑ�����r�����b�N���̃f�b�h���b�N�Ń^�C���A�E�g����Ƃ��̃G���[<br/>
-		''' �ڑ��G���[���́u�^�C���A�E�g�ɒB���܂����B���삪��������O�Ƀ^�C���A�E�g���Ԃ��߂������A�܂��̓T�[�o�[���������Ă��܂���B�v�ƂȂ�A
-		''' SQL���s���́u�^�C���A�E�g�ɒB���܂����B���삪��������O�Ƀ^�C���A�E�g���Ԃ��߂������A�܂��̓T�[�o�[���������Ă��܂���B �X�e�[�g�����g�͏I������܂����B�v�ƂȂ�B<br/>
+		''' 接続時や排他ロック時のデッドロックでタイムアウトするとこのエラー<br/>
+		''' 接続エラー時は「タイムアウトに達しました。操作が完了する前にタイムアウト期間が過ぎたか、またはサーバーが応答していません。」となり、
+		''' SQL実行時は「タイムアウトに達しました。操作が完了する前にタイムアウト期間が過ぎたか、またはサーバーが応答していません。 ステートメントは終了されました。」となる。<br/>
 		''' 
-		''' �������A�f�b�h���b�N���� <see cref="SqlException.Number"></see> ���ς��\��������B<br/>
-		''' lock_timeout �� 0 �ȊO�̎��́A-2 �ƂȂ�A0 �̂Ƃ��́A�^�C���A�E�g�����ɒ����ɃG���[���������A1222 ���Ԃ��Ă���B<br/>
-		''' 1222�́u���b�N�v�����^�C���A�E�g���܂����B�v
+		''' ただし、デッドロック時は <see cref="SqlException.Number"></see> が変わる可能性がある。<br/>
+		''' lock_timeout が 0 以外の時は、-2 となり、0 のときは、タイムアウトせずに直ぐにエラーが発生し、1222 が返ってくる。<br/>
+		''' 1222は「ロック要求がタイムアウトしました。」
 		''' </remarks>
 		LockTimeOut = -2
-		''' <summary>�^�C���A�E�g�G���[�R�[�h</summary>
+		''' <summary>タイムアウトエラーコード</summary>
 		''' <remarks>
-		''' �ڑ�����r�����b�N���̃f�b�h���b�N�Ń^�C���A�E�g����Ƃ��̃G���[<br/>
-		''' �ڑ��G���[���́u�^�C���A�E�g�ɒB���܂����B���삪��������O�Ƀ^�C���A�E�g���Ԃ��߂������A�܂��̓T�[�o�[���������Ă��܂���B�v�ƂȂ�A
-		''' SQL���s���́u�^�C���A�E�g�ɒB���܂����B���삪��������O�Ƀ^�C���A�E�g���Ԃ��߂������A�܂��̓T�[�o�[���������Ă��܂���B �X�e�[�g�����g�͏I������܂����B�v�ƂȂ�B<br/>
+		''' 接続時や排他ロック時のデッドロックでタイムアウトするとこのエラー<br/>
+		''' 接続エラー時は「タイムアウトに達しました。操作が完了する前にタイムアウト期間が過ぎたか、またはサーバーが応答していません。」となり、
+		''' SQL実行時は「タイムアウトに達しました。操作が完了する前にタイムアウト期間が過ぎたか、またはサーバーが応答していません。 ステートメントは終了されました。」となる。<br/>
 		''' 
-		''' �������A�f�b�h���b�N���� <see cref="SqlException.Number"></see> ���ς��\��������B<br/>
-		''' lock_timeout �� 0 �ȊO�̎��́A-2 �ƂȂ�A0 �̂Ƃ��́A�^�C���A�E�g�����ɒ����ɃG���[���������A1222 ���Ԃ��Ă���B<br/>
-		''' 1222�́u���b�N�v�����^�C���A�E�g���܂����B�v
+		''' ただし、デッドロック時は <see cref="SqlException.Number"></see> が変わる可能性がある。<br/>
+		''' lock_timeout が 0 以外の時は、-2 となり、0 のときは、タイムアウトせずに直ぐにエラーが発生し、1222 が返ってくる。<br/>
+		''' 1222は「ロック要求がタイムアウトしました。」
 		''' </remarks>
 		LockTimeOut0 = 1222
 
 		''' <summary>
-		''' �X�e�[�g�����g�͏I������܂����B
+		''' ステートメントは終了されました。
 		''' </summary>
 		''' <remarks></remarks>
 		StatementEnd = 3621
 	End Enum
 
 	''' <summary>
-	''' SqlClient���g�p����DB�A�N�Z�X
+	''' SqlClientを使用したDBアクセス
 	''' </summary>
 	''' <remarks>
-	''' �f�[�^�x�[�X�ڑ���SqlClient���g�p����Ƃ��́A���N���X���g�p���܂��B
+	''' データベース接続にSqlClientを使用するときは、当クラスを使用します。
 	''' </remarks>
 	Public Class SqlDbAccessHelper
 		Inherits DbAccessHelper
 		Implements IDbAccessHelper
 
-		''' <summary>�r�p�k�G���[�R�[�h</summary>
+		''' <summary>ＳＱＬエラーコード</summary>
 		Public Const C_ERRORCODE As Integer = -2146232060
 
-		''' <summary>�r�p�k�R�l�N�V����</summary>
+		''' <summary>ＳＱＬコネクション</summary>
 		Private _conn As SqlConnection
 
-#Region " �R���X�g���N�^ "
+#Region " コンストラクタ "
 
 		''' <summary>
-		''' �R���X�g���N�^
+		''' コンストラクタ
 		''' </summary>
-		''' <param name="dba">�g�p����f�[�^�x�[�X�A�N�Z�X</param>
+		''' <param name="dba">使用するデータベースアクセス</param>
 		''' <remarks></remarks>
 		Public Sub New(ByVal dba As IDao)
 			MyBase.New(dba)
@@ -73,12 +73,12 @@ Namespace Db.Helper
 #Region " Implements IDbAccessHelper "
 
 		''' <summary>
-		''' SQL�X�e�[�^�X�̃p�����[�^����ϊ�����B
+		''' SQLステータスのパラメータ名を変換する。
 		''' </summary>
-		''' <param name="name">�p�����[�^��</param>
+		''' <param name="name">パラメータ名</param>
 		''' <returns></returns>
 		''' <remarks>
-		''' �p�����[�^���̐擪�������u���v�łȂ��Ƃ��́u���v��t������B
+		''' パラメータ名の先頭文字が「＠」でないときは「＠」を付加する。
 		''' </remarks>
 		Public Function CDbParameterName(ByVal name As String) As String Implements IDbAccessHelper.CDbParameterName
 			If Not name.StartsWith(PlaceholderMark) Then
@@ -88,10 +88,10 @@ Namespace Db.Helper
 		End Function
 
 		''' <summary>
-		''' �G���[�̌�����Ԃ�
+		''' エラーの件数を返す
 		''' </summary>
-		''' <param name="ex">�G���[�������擾��������O</param>
-		''' <returns>�G���[����</returns>
+		''' <param name="ex">エラー件数を取得したい例外</param>
+		''' <returns>エラー件数</returns>
 		''' <remarks>
 		''' </remarks>
 		Public Function ErrorCount(ByVal ex As System.Exception) As Integer Implements IDbAccessHelper.ErrorCount
@@ -107,10 +107,10 @@ Namespace Db.Helper
 		End Function
 
 		''' <summary>
-		''' �G���[�ԍ���Ԃ�
+		''' エラー番号を返す
 		''' </summary>
-		''' <param name="ex">�G���[�ԍ����擾��������O</param>
-		''' <returns>�G���[�ԍ��z��</returns>
+		''' <param name="ex">エラー番号を取得したい例外</param>
+		''' <returns>エラー番号配列</returns>
 		''' <remarks>
 		''' </remarks>
 		Public Function ErrorNumbers(ex As System.Exception) As String() Implements IDbAccessHelper.ErrorNumbers
@@ -131,17 +131,17 @@ Namespace Db.Helper
 		End Function
 
 		''' <summary>
-		''' ������擾����
+		''' 列情報を取得する
 		''' </summary>
-		''' <param name="table">�擾�ΏۂƂȂ�e�[�u�����̃��f��</param>
-		''' <returns>�擾�������񃂃f���̃R���N�V����</returns>
+		''' <param name="table">取得対象となるテーブル情報のモデル</param>
+		''' <returns>取得した列情報モデルのコレクション</returns>
 		''' <remarks>
-		''' �񖼂̎擾�́uCOLUMN_NAME�v��ƂȂ�B<br/>
-		''' ���̑��͉��L���Q�Ƃ��Ă��������B<br/>
+		''' 列名の取得は「COLUMN_NAME」列となる。<br/>
+		''' その他は下記を参照してください。<br/>
 		''' http://msdn.microsoft.com/ja-jp/library/ms254969(VS.80).aspx <br/>
 		''' </remarks>
 		''' <exception cref="DbAccessException">
-		''' DB�A�N�Z�X�ŃG���[����������
+		''' DBアクセスでエラーが発生した
 		''' </exception>
 		Public Function GetSchemaColumns(ByVal table As DbInfoTable) As DbInfoColumnCollection Implements IDbAccessHelper.GetSchemaColumns
 			Dim dt As DataTable
@@ -184,12 +184,12 @@ Namespace Db.Helper
 		End Function
 
 		''' <summary>
-		''' �֐������擾����
+		''' 関数情報を取得する
 		''' </summary>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		''' <exception cref="DbAccessException">
-		''' DB�A�N�Z�X�ŃG���[����������
+		''' DBアクセスでエラーが発生した
 		''' </exception>
 		Public Function GetSchemaFunctions() As DbInfoFunctionCollection Implements IDbAccessHelper.GetSchemaFunctions
 			Const C_SQL As String = "SELECT sys_o.name AS name, sys_o.type AS type, sys_c.text AS src, sys_c.ctext FROM syscomments sys_c ,sysobjects sys_o WHERE(sys_c.id=sys_o.id)AND(sys_o.xtype in ('FN','TF'))AND(sys_o.schema_ver=0)"
@@ -228,12 +228,12 @@ Namespace Db.Helper
 		End Function
 
 		''' <summary>
-		''' �v���V�[�W�������擾����
+		''' プロシージャ情報を取得する
 		''' </summary>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		''' <exception cref="DbAccessException">
-		''' DB�A�N�Z�X�ŃG���[����������
+		''' DBアクセスでエラーが発生した
 		''' </exception>
 		Public Function GetSchemaProcedures() As DbInfoProcedureCollection Implements IDbAccessHelper.GetSchemaProcedures
 			Const C_SQL As String = "SELECT sys_o.name AS name, sys_o.type AS type, sys_c.text AS src, sys_c.ctext FROM syscomments sys_c ,sysobjects sys_o WHERE(sys_c.id=sys_o.id)AND(sys_o.xtype in ('P'))AND(sys_o.schema_ver=0)"
@@ -272,12 +272,12 @@ Namespace Db.Helper
 		End Function
 
 		''' <summary>
-		''' �e�[�u�������擾����
+		''' テーブル情報を取得する
 		''' </summary>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		''' <exception cref="DbAccessException">
-		''' DB�A�N�Z�X�ŃG���[����������
+		''' DBアクセスでエラーが発生した
 		''' </exception>
 		Public Function GetSchemaTables() As DbInfoTableCollection Implements IDbAccessHelper.GetSchemaTables
 			Dim dt As DataTable
@@ -315,13 +315,13 @@ Namespace Db.Helper
 		End Function
 
 		''' <summary>
-		''' �e�[�u�������擾����
+		''' テーブル情報を取得する
 		''' </summary>
-		''' <param name="tablename">�e�[�u����</param>
+		''' <param name="tablename">テーブル名</param>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		''' <exception cref="DbAccessException">
-		''' DB�A�N�Z�X�ŃG���[����������
+		''' DBアクセスでエラーが発生した
 		''' </exception>
 		Public Function GetSchemaTable(tablename As String) As DbInfoTable Implements IDbAccessHelper.GetSchemaTable
 			Dim dt As DataTable
@@ -357,11 +357,11 @@ Namespace Db.Helper
 		End Function
 
 		''' <summary>
-		''' �w�肳�ꂽ�G���[�ԍ�������������O�ɑ��݂��邩�Ԃ�
+		''' 指定されたエラー番号が発生した例外に存在するか返す
 		''' </summary>
-		''' <param name="ex">�ΏۂƂȂ��O</param>
-		''' <param name="errorNumber">�G���[�ԍ�</param>
-		''' <returns>True:���݂���AFalse:���݂��Ȃ�</returns>
+		''' <param name="ex">対象となる例外</param>
+		''' <param name="errorNumber">エラー番号</param>
+		''' <returns>True:存在する、False:存在しない</returns>
 		''' <remarks>
 		''' </remarks>
 		Public Function HasSqlNativeError(ByVal ex As System.Exception, ByVal errorNumber As Long) As Boolean Implements IDbAccessHelper.HasSqlNativeError
@@ -384,10 +384,10 @@ Namespace Db.Helper
 		End Function
 
 		''' <summary>
-		''' �d���G���[������������O�ɑ��݂��邩�Ԃ�
+		''' 重複エラーが発生した例外に存在するか返す
 		''' </summary>
-		''' <param name="ex">�ΏۂƂȂ��O</param>
-		''' <returns>True:���݂���AFalse:���݂��Ȃ�</returns>
+		''' <param name="ex">対象となる例外</param>
+		''' <returns>True:存在する、False:存在しない</returns>
 		''' <remarks>
 		''' </remarks>
 		Public Function HasSqlNativeErrorDuplicationPKey(ByVal ex As System.Exception) As Boolean Implements IDbAccessHelper.HasSqlNativeErrorDuplicationPKey
@@ -395,10 +395,10 @@ Namespace Db.Helper
 		End Function
 
 		''' <summary>
-		''' �^�C���A�E�g�G���[������������O�ɑ��݂��邩�Ԃ�
+		''' タイムアウトエラーが発生した例外に存在するか返す
 		''' </summary>
-		''' <param name="ex">�ΏۂƂȂ��O</param>
-		''' <returns>True:���݂���AFalse:���݂��Ȃ�</returns>
+		''' <param name="ex">対象となる例外</param>
+		''' <returns>True:存在する、False:存在しない</returns>
 		''' <remarks>
 		''' </remarks>
 		Public Function HasSqlNativeErrorTimtout(ByVal ex As System.Exception) As Boolean Implements IDbAccessHelper.HasSqlNativeErrorTimtout
@@ -406,7 +406,7 @@ Namespace Db.Helper
 		End Function
 
 		''' <summary>
-		''' SQL�v���[�X�t�H���_�̃}�[�N��Ԃ��B
+		''' SQLプレースフォルダのマークを返す。
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -418,24 +418,24 @@ Namespace Db.Helper
 		End Property
 
 		''' <summary>
-		''' �v���V�[�W���̃p�����[�^�����擾����
+		''' プロシージャのパラメータ情報を取得する
 		''' </summary>
 		''' <param name="cmd"></param>
 		''' <remarks></remarks>
 		''' <exception cref="DbAccessException">
-		''' DB�A�N�Z�X�ŃG���[����������
+		''' DBアクセスでエラーが発生した
 		''' </exception>
 		Public Sub RefreshProcedureParameters(ByVal cmd As System.Data.IDbCommand) Implements IDbAccessHelper.RefreshProcedureParameters
 			Try
 				Dim openFlg As Boolean = False
 
-				' �R�l�N�V���������Ă�ꍇ�͈�U�ڑ�����
+				' コネクションが閉じてる場合は一旦接続する
 				If cmd.Connection.State = ConnectionState.Closed Then
 					cmd.Connection.Open()
 					openFlg = True
 				End If
 				SqlCommandBuilder.DeriveParameters(DirectCast(cmd, SqlCommand))
-				' �R�l�N�V���������Ă��ꍇ�͐ڑ���؂�
+				' コネクションが閉じてた場合は接続を切る
 				If openFlg Then
 					cmd.Connection.Close()
 				End If
@@ -453,43 +453,43 @@ Namespace Db.Helper
 #Region " Methods "
 
 		''' <summary>
-		''' ��̍ő包����Ԃ�
+		''' 列の最大桁数を返す
 		''' </summary>
-		''' <param name="row">�s�f�[�^</param>
+		''' <param name="row">行データ</param>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		Protected Function getColumnMaxLength(ByVal row As DataRow, ByRef length As Integer, ByRef scale As Integer) As Integer
 			Dim wlength As Object = getColumnLength(row)
 
-			' ���̎w�肪���鎞�́A���ݒ肵�ďI��
-			' �i�o�C�i�� �f�[�^�A�����f�[�^�A�܂��̓e�L�X�g/�C���[�W �f�[�^�̍ő咷�j
+			' 桁の指定がある時は、桁設定して終了
+			' （バイナリ データ、文字データ、またはテキスト/イメージ データの最大長）
 			If Not DBNull.Value.Equals(wlength) Then
 				length = 0
 				scale = 0
 				Return CInt(wlength)
 			End If
 
-			' ���̎w�肪�����Ƃ����l�n�̌������擾
+			' 桁の指定が無いとき数値系の桁数を取得
 			wlength = getColumnPrecision(row)
 
-			' �������݂��Ȃ����͌��w��Ȃ��ŏI��
+			' 桁が存在しない時は桁指定なしで終了
 			If DBNull.Value.Equals(wlength) Then
 				length = 0
 				scale = 0
 				Return length
 			End If
 
-			' �T���f�[�^�A�^���f�[�^�A�����f�[�^�A�܂��͒ʉ݂̂Ƃ�
+			' 概数データ、真数データ、整数データ、または通貨のとき
 			Dim wscale As Object = getColumnScale(row)
 
-			' �����_���Ȃ���
+			' 小数点がない時
 			If DBNull.Value.Equals(wscale) Then
 				length = CInt(wlength)
 				scale = 0
 				Return length
 			End If
 
-			' �����_�����鎞
+			' 小数点がある時
 			'Return CInt(length) + CInt(scale) + 1
 			length = CInt(wlength)
 			scale = CInt(wscale)
@@ -497,14 +497,14 @@ Namespace Db.Helper
 		End Function
 
 		''' <summary>
-		''' ��̌�����Ԃ��܂��B
+		''' 列の桁数を返します。
 		''' </summary>
-		''' <param name="row">�s�f�[�^</param>
-		''' <returns>�e�[�u�����͗񂪑��݂��Ȃ��Ƃ���A�����̎w�肪�s�v�Ȍ^�̎��� DBNull.Value ��Ԃ��܂��B</returns>
+		''' <param name="row">行データ</param>
+		''' <returns>テーブル又は列が存在しないときや、桁数の指定が不要な型の時は DBNull.Value を返します。</returns>
 		''' <remarks>
-		''' �o�C�i�� �f�[�^�A�����f�[�^�A�܂��̓e�L�X�g/�C���[�W �f�[�^�̍ő咷 (�����P��)�B
-		''' ����ȊO�̏ꍇ�́ANULL ���Ԃ���܂��B
-		''' �ڍׂɂ��ẮA�wMicrosoft SQL Server 2000 Transact-SQL �v���O���}�[�Y���t�@�����X��x�́u�� 3 �� Transact-SQL �̃f�[�^�^�v���Q�Ƃ��Ă��������B
+		''' バイナリ データ、文字データ、またはテキスト/イメージ データの最大長 (文字単位)。
+		''' それ以外の場合は、NULL が返されます。
+		''' 詳細については、『Microsoft SQL Server 2000 Transact-SQL プログラマーズリファレンス上』の「第 3 章 Transact-SQL のデータ型」を参照してください。
 		''' </remarks>
 		Protected Function getColumnLength(ByVal row As DataRow) As Object
 			If row Is Nothing Then
@@ -515,12 +515,12 @@ Namespace Db.Helper
 		End Function
 
 		''' <summary>
-		''' ��̌�����Ԃ��܂��B
+		''' 列の桁数を返します。
 		''' </summary>
-		''' <param name="row">�s�f�[�^</param>
-		''' <returns>�e�[�u�����͗񂪑��݂��Ȃ��Ƃ���A�����̎w�肪�s�v�Ȍ^�̎��� DBNull.Value ��Ԃ��܂��B</returns>
+		''' <param name="row">行データ</param>
+		''' <returns>テーブル又は列が存在しないときや、桁数の指定が不要な型の時は DBNull.Value を返します。</returns>
 		''' <remarks>
-		''' �T���f�[�^�A�^���f�[�^�A�����f�[�^�A�܂��͒ʉ݃f�[�^�̗L�������B����ȊO�̏ꍇ�́ANULL ���Ԃ���܂��B
+		''' 概数データ、真数データ、整数データ、または通貨データの有効桁数。それ以外の場合は、NULL が返されます。
 		''' </remarks>
 		Protected Function getColumnPrecision(ByVal row As DataRow) As Object
 			If row Is Nothing Then
@@ -531,12 +531,12 @@ Namespace Db.Helper
 		End Function
 
 		''' <summary>
-		''' ��̌�����Ԃ��܂��B
+		''' 列の桁数を返します。
 		''' </summary>
-		''' <param name="row">�s�f�[�^</param>
-		''' <returns>�e�[�u�����͗񂪑��݂��Ȃ��Ƃ���A�����̎w�肪�s�v�Ȍ^�̎��� DBNull.Value ��Ԃ��܂��B</returns>
+		''' <param name="row">行データ</param>
+		''' <returns>テーブル又は列が存在しないときや、桁数の指定が不要な型の時は DBNull.Value を返します。</returns>
 		''' <remarks>
-		''' �T���f�[�^�A�^���f�[�^�A�����f�[�^�A�܂��͒ʉ݃f�[�^�̌����B����ȊO�̏ꍇ�́ANULL ���Ԃ���܂��B
+		''' 概数データ、真数データ、整数データ、または通貨データの桁数。それ以外の場合は、NULL が返されます。
 		''' </remarks>
 		Protected Function getColumnScale(ByVal row As DataRow) As Object
 			If row Is Nothing Then
@@ -547,13 +547,13 @@ Namespace Db.Helper
 		End Function
 
 		''' <summary>
-		''' ��̌^���������܂��B
+		''' 列の型をかえします。
 		''' </summary>
-		''' <typeparam name="T">�g�p����^��DbType���w�肷��</typeparam>
-		''' <param name="row">�s�f�[�^</param>
-		''' <returns>�e�[�u�����͗񂪑��݂��Ȃ��Ƃ��� DBNull.Value ��Ԃ��܂��B</returns>
+		''' <typeparam name="T">使用する型のDbTypeを指定する</typeparam>
+		''' <param name="row">行データ</param>
+		''' <returns>テーブル又は列が存在しないときは DBNull.Value を返します。</returns>
 		''' <remarks>
-		''' SQLServer �� numeric �� SqlDbType �ɂ͑��݂��Ȃ����� Decimal �Ƀ}�b�v���܂��B
+		''' SQLServer は numeric は SqlDbType には存在しないから Decimal にマップします。
 		''' </remarks>
 		Protected Function getColumnDbType(Of T)(ByVal row As DataRow) As T
 			Dim typ As String
@@ -565,7 +565,7 @@ Namespace Db.Helper
 			typ = CStr(row.Item("DATA_TYPE"))
 
 			If GetType(T).Name.Equals("SqlDbType") Then
-				' numeric �� SqlDbType �ɂ͑��݂��Ȃ����� Decimal �Ƀ}�b�v����
+				' numeric は SqlDbType には存在しないから Decimal にマップする
 				If typ.Equals("numeric") Then
 					typ = SqlDbType.Decimal.ToString
 				End If
@@ -575,7 +575,7 @@ Namespace Db.Helper
 		End Function
 
 		''' <summary>
-		''' �^��UniCode������
+		''' 型がUniCodeか判定
 		''' </summary>
 		''' <param name="typ"></param>
 		''' <returns></returns>

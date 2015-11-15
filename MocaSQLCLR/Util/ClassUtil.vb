@@ -1,10 +1,10 @@
-
+ï»¿
 Imports System.Reflection
 
 Namespace Util
 
 	''' <summary>
-	''' ƒ^ƒCƒv‚ğ‘€ì‚·‚é‚Ì‚É•Ö—˜‚Èƒƒ\ƒbƒhW
+	''' ã‚¿ã‚¤ãƒ—ã‚’æ“ä½œã™ã‚‹ã®ã«ä¾¿åˆ©ãªãƒ¡ã‚½ãƒƒãƒ‰é›†
 	''' </summary>
 	''' <remarks></remarks>
 	Public Class ClassUtil
@@ -12,142 +12,142 @@ Namespace Util
 #Region " CreateInstance "
 
 		''' <summary>
-		''' w’è‚³‚ê‚½Œ^‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‰»
+		''' æŒ‡å®šã•ã‚ŒãŸå‹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–
 		''' </summary>
-		''' <param name="type">ƒCƒ“ƒXƒ^ƒ“ƒX‰»‚µ‚½‚¢Œ^</param>
-		''' <returns>¶¬‚µ‚½ƒCƒ“ƒXƒ^ƒ“ƒX</returns>
+		''' <param name="type">ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã—ãŸã„å‹</param>
+		''' <returns>ç”Ÿæˆã—ãŸã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</returns>
 		''' <remarks>
-		''' ˆø”–³‚µƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Ì‚Æ‚«
+		''' å¼•æ•°ç„¡ã—ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã®ã¨ã
 		''' </remarks>
 		Public Shared Function NewInstance(ByVal type As Type) As Object
 			Return Activator.CreateInstance(type)
 		End Function
 
 		''' <summary>
-		''' w’è‚³‚ê‚½Œ^‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‰»
+		''' æŒ‡å®šã•ã‚ŒãŸå‹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–
 		''' </summary>
-		''' <param name="type">ƒCƒ“ƒXƒ^ƒ“ƒX‰»‚µ‚½‚¢Œ^</param>
-		''' <param name="args">ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Ìˆø”</param>
-		''' <returns>¶¬‚µ‚½ƒCƒ“ƒXƒ^ƒ“ƒX</returns>
+		''' <param name="type">ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã—ãŸã„å‹</param>
+		''' <param name="args">ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã®å¼•æ•°</param>
+		''' <returns>ç”Ÿæˆã—ãŸã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</returns>
 		''' <remarks>
-		''' ˆø”—L‚èƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Ì‚Æ‚«
+		''' å¼•æ•°æœ‰ã‚Šã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã®ã¨ã
 		''' </remarks>
 		Public Shared Function NewInstance(ByVal type As Type, ByVal args() As Object) As Object
 			Return Activator.CreateInstance(type, args)
 		End Function
 
 #End Region
-#Region " ƒvƒƒpƒeƒB’è‹`‚Ìæ“¾ "
+#Region " ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å®šç¾©ã®å–å¾— "
 
 		''' <summary>
-		''' ˆø”ƒ^ƒCƒv“à‚ÌƒvƒƒpƒeƒB’è‹`‚ğ•Ô‚·
+		''' å¼•æ•°ã‚¿ã‚¤ãƒ—å†…ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å®šç¾©ã‚’è¿”ã™
 		''' </summary>
-		''' <param name="typ">ƒ^ƒCƒv</param>
-		''' <returns>ƒvƒƒpƒeƒB’è‹`”z—ñ</returns>
+		''' <param name="typ">ã‚¿ã‚¤ãƒ—</param>
+		''' <returns>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å®šç¾©é…åˆ—</returns>
 		''' <remarks></remarks>
 		Public Shared Function GetProperties(ByVal typ As Type) As PropertyInfo()
 			Return typ.GetProperties(BindingFlags.Public Or BindingFlags.NonPublic Or BindingFlags.Instance)
 		End Function
 
 		''' <summary>
-		''' ˆø”ƒCƒ“ƒXƒ^ƒ“ƒX“à‚ÌƒvƒƒpƒeƒBî•ñ‚ğ•Ô‚·
+		''' å¼•æ•°ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å†…ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æƒ…å ±ã‚’è¿”ã™
 		''' </summary>
-		''' <param name="target">ƒCƒ“ƒXƒ^ƒ“ƒX</param>
-		''' <returns>ƒvƒƒpƒeƒB’è‹`”z—ñ</returns>
+		''' <param name="target">ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</param>
+		''' <returns>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å®šç¾©é…åˆ—</returns>
 		''' <remarks></remarks>
 		Public Shared Function GetProperties(ByVal target As Object) As PropertyInfo()
 			Return GetProperties(target.GetType)
 		End Function
 
 		''' <summary>
-		''' ˆø”ƒ^ƒCƒv“à‚ÌƒvƒƒpƒeƒB’è‹`‚ğ•Ô‚·
+		''' å¼•æ•°ã‚¿ã‚¤ãƒ—å†…ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å®šç¾©ã‚’è¿”ã™
 		''' </summary>
-		''' <param name="typ">ƒ^ƒCƒv</param>
-		''' <returns>ƒvƒƒpƒeƒB’è‹`”z—ñ</returns>
+		''' <param name="typ">ã‚¿ã‚¤ãƒ—</param>
+		''' <returns>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å®šç¾©é…åˆ—</returns>
 		''' <remarks></remarks>
 		Public Shared Function GetProperties(ByVal typ As Type, ByVal name As String) As PropertyInfo
 			Return typ.GetProperty(name, BindingFlags.Public Or BindingFlags.NonPublic Or BindingFlags.Instance)
 		End Function
 
 #End Region
-#Region " ƒtƒB[ƒ‹ƒh’è‹`‚Ìæ“¾ "
+#Region " ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰å®šç¾©ã®å–å¾— "
 
 		''' <summary>
-		''' ˆø”ƒ^ƒCƒv“à‚ÌƒtƒB[ƒ‹ƒh’è‹`‚ğ•Ô‚·
+		''' å¼•æ•°ã‚¿ã‚¤ãƒ—å†…ã®ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰å®šç¾©ã‚’è¿”ã™
 		''' </summary>
-		''' <param name="typ">ƒ^ƒCƒv</param>
-		''' <returns>ƒtƒB[ƒ‹ƒh’è‹`”z—ñ</returns>
+		''' <param name="typ">ã‚¿ã‚¤ãƒ—</param>
+		''' <returns>ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰å®šç¾©é…åˆ—</returns>
 		''' <remarks></remarks>
 		Public Shared Function GetFields(ByVal typ As Type) As FieldInfo()
 			Return typ.GetFields(BindingFlags.Public Or BindingFlags.NonPublic Or BindingFlags.Instance)
 		End Function
 
 		''' <summary>
-		''' ˆø”ƒCƒ“ƒXƒ^ƒ“ƒX“à‚ÌƒtƒB[ƒ‹ƒhî•ñ‚ğ•Ô‚·
+		''' å¼•æ•°ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å†…ã®ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰æƒ…å ±ã‚’è¿”ã™
 		''' </summary>
-		''' <param name="target">ƒCƒ“ƒXƒ^ƒ“ƒX</param>
-		''' <returns>ƒtƒB[ƒ‹ƒh’è‹`”z—ñ</returns>
+		''' <param name="target">ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</param>
+		''' <returns>ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰å®šç¾©é…åˆ—</returns>
 		''' <remarks></remarks>
 		Public Shared Function GetFields(ByVal target As Object) As FieldInfo()
 			Return GetFields(target.GetType)
 		End Function
 
 #End Region
-#Region " ƒƒ\ƒbƒh’è‹`‚Ìæ“¾ "
+#Region " ãƒ¡ã‚½ãƒƒãƒ‰å®šç¾©ã®å–å¾— "
 
 		''' <summary>
-		''' ˆø”ƒ^ƒCƒv“à‚Ìƒƒ\ƒbƒh’è‹`‚ğ•Ô‚·
+		''' å¼•æ•°ã‚¿ã‚¤ãƒ—å†…ã®ãƒ¡ã‚½ãƒƒãƒ‰å®šç¾©ã‚’è¿”ã™
 		''' </summary>
-		''' <param name="typ">ƒ^ƒCƒv</param>
-		''' <returns>ƒƒ\ƒbƒh’è‹`”z—ñ</returns>
+		''' <param name="typ">ã‚¿ã‚¤ãƒ—</param>
+		''' <returns>ãƒ¡ã‚½ãƒƒãƒ‰å®šç¾©é…åˆ—</returns>
 		''' <remarks></remarks>
 		Public Shared Function GetMethods(ByVal typ As Type) As MethodInfo()
 			Return typ.GetMethods(BindingFlags.Public Or BindingFlags.NonPublic Or BindingFlags.Instance)
 		End Function
 
 		''' <summary>
-		''' ˆø”ƒCƒ“ƒXƒ^ƒ“ƒX“à‚Ìƒƒ\ƒbƒhî•ñ‚ğ•Ô‚·
+		''' å¼•æ•°ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å†…ã®ãƒ¡ã‚½ãƒƒãƒ‰æƒ…å ±ã‚’è¿”ã™
 		''' </summary>
-		''' <param name="target">ƒCƒ“ƒXƒ^ƒ“ƒX</param>
-		''' <returns>ƒƒ\ƒbƒh’è‹`”z—ñ</returns>
+		''' <param name="target">ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</param>
+		''' <returns>ãƒ¡ã‚½ãƒƒãƒ‰å®šç¾©é…åˆ—</returns>
 		''' <remarks></remarks>
 		Public Shared Function GetMethods(ByVal target As Object) As MethodInfo()
 			Return GetMethods(target.GetType)
 		End Function
 
 #End Region
-#Region " ƒCƒxƒ“ƒg’è‹`‚Ìæ“¾ "
+#Region " ã‚¤ãƒ™ãƒ³ãƒˆå®šç¾©ã®å–å¾— "
 
 		''' <summary>
-		''' ˆø”ƒ^ƒCƒv“à‚ÌƒCƒxƒ“ƒg’è‹`‚ğ•Ô‚·
+		''' å¼•æ•°ã‚¿ã‚¤ãƒ—å†…ã®ã‚¤ãƒ™ãƒ³ãƒˆå®šç¾©ã‚’è¿”ã™
 		''' </summary>
-		''' <param name="typ">ƒ^ƒCƒv</param>
-		''' <returns>ƒCƒxƒ“ƒg’è‹`”z—ñ</returns>
+		''' <param name="typ">ã‚¿ã‚¤ãƒ—</param>
+		''' <returns>ã‚¤ãƒ™ãƒ³ãƒˆå®šç¾©é…åˆ—</returns>
 		''' <remarks></remarks>
 		Public Shared Function GetEvents(ByVal typ As Type) As EventInfo()
 			Return typ.GetEvents(BindingFlags.Public Or BindingFlags.NonPublic Or BindingFlags.Instance)
 		End Function
 
 		''' <summary>
-		''' ˆø”ƒCƒ“ƒXƒ^ƒ“ƒX“à‚ÌƒCƒxƒ“ƒgî•ñ‚ğ•Ô‚·
+		''' å¼•æ•°ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å†…ã®ã‚¤ãƒ™ãƒ³ãƒˆæƒ…å ±ã‚’è¿”ã™
 		''' </summary>
-		''' <param name="target">ƒCƒ“ƒXƒ^ƒ“ƒX</param>
-		''' <returns>ƒCƒxƒ“ƒg’è‹`”z—ñ</returns>
+		''' <param name="target">ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</param>
+		''' <returns>ã‚¤ãƒ™ãƒ³ãƒˆå®šç¾©é…åˆ—</returns>
 		''' <remarks></remarks>
 		Public Shared Function GetEvents(ByVal target As Object) As EventInfo()
 			Return GetEvents(target.GetType)
 		End Function
 
 #End Region
-#Region " ƒJƒXƒ^ƒ€‘®«‚Ìæ“¾ "
+#Region " ã‚«ã‚¹ã‚¿ãƒ å±æ€§ã®å–å¾— "
 
 #Region " Type "
 
 		''' <summary>
-		''' w’è‚³‚ê‚½Œ^‚É‘¶İ‚·‚éw’è‚³‚ê‚½ƒJƒXƒ^ƒ€‘®«‚ğŠÜ‚Ş”z—ñ‚ğ•Ô‚µ‚Ü‚·B
+		''' æŒ‡å®šã•ã‚ŒãŸå‹ã«å­˜åœ¨ã™ã‚‹æŒ‡å®šã•ã‚ŒãŸã‚«ã‚¹ã‚¿ãƒ å±æ€§ã‚’å«ã‚€é…åˆ—ã‚’è¿”ã—ã¾ã™ã€‚
 		''' </summary>
-		''' <typeparam name="T">‘ÎÛ‚Æ‚È‚éƒJƒXƒ^ƒ€‘®«</typeparam>
-		''' <param name="typ">‘ÎÛ‚Æ‚È‚éŒ^</param>
+		''' <typeparam name="T">å¯¾è±¡ã¨ãªã‚‹ã‚«ã‚¹ã‚¿ãƒ å±æ€§</typeparam>
+		''' <param name="typ">å¯¾è±¡ã¨ãªã‚‹å‹</param>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		Public Shared Function GetCustomAttributes(Of T)(ByVal typ As Type) As T()
@@ -159,10 +159,10 @@ Namespace Util
 		End Function
 
 		''' <summary>
-		''' w’è‚³‚ê‚½Œ^‚É‘¶İ‚·‚éw’è‚³‚ê‚½ƒJƒXƒ^ƒ€‘®«‚ğŠÜ‚Ş”z—ñ‚ğ•Ô‚µ‚Ü‚·B
+		''' æŒ‡å®šã•ã‚ŒãŸå‹ã«å­˜åœ¨ã™ã‚‹æŒ‡å®šã•ã‚ŒãŸã‚«ã‚¹ã‚¿ãƒ å±æ€§ã‚’å«ã‚€é…åˆ—ã‚’è¿”ã—ã¾ã™ã€‚
 		''' </summary>
-		''' <typeparam name="T">‘ÎÛ‚Æ‚È‚éƒJƒXƒ^ƒ€‘®«</typeparam>
-		''' <param name="typ">‘ÎÛ‚Æ‚È‚éŒ^</param>
+		''' <typeparam name="T">å¯¾è±¡ã¨ãªã‚‹ã‚«ã‚¹ã‚¿ãƒ å±æ€§</typeparam>
+		''' <param name="typ">å¯¾è±¡ã¨ãªã‚‹å‹</param>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		Public Shared Function GetCustomAttribute(Of T)(ByVal typ As Type) As T
@@ -175,9 +175,9 @@ Namespace Util
 		End Function
 
 		''' <summary>
-		''' w’è‚³‚ê‚½ƒtƒB[ƒ‹ƒh‚Éw’è‚³‚ê‚½ƒJƒXƒ^ƒ€‘®«‚ğŠÜ‚Ş”z—ñ‚ğ•Ô‚µ‚Ü‚·B
+		''' æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã«æŒ‡å®šã•ã‚ŒãŸã‚«ã‚¹ã‚¿ãƒ å±æ€§ã‚’å«ã‚€é…åˆ—ã‚’è¿”ã—ã¾ã™ã€‚
 		''' </summary>
-		''' <param name="typ">‘ÎÛ‚Æ‚È‚éƒtƒB[ƒ‹ƒh</param>
+		''' <param name="typ">å¯¾è±¡ã¨ãªã‚‹ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰</param>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		Public Shared Function GetCustomAttributes(ByVal typ As Type) As Attribute()
@@ -190,10 +190,10 @@ Namespace Util
 #Region " PropertyInfo "
 
 		''' <summary>
-		''' w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚É‘¶İ‚·‚éw’è‚³‚ê‚½ƒJƒXƒ^ƒ€‘®«‚ğŠÜ‚Ş”z—ñ‚ğ•Ô‚µ‚Ü‚·B
+		''' æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å­˜åœ¨ã™ã‚‹æŒ‡å®šã•ã‚ŒãŸã‚«ã‚¹ã‚¿ãƒ å±æ€§ã‚’å«ã‚€é…åˆ—ã‚’è¿”ã—ã¾ã™ã€‚
 		''' </summary>
-		''' <typeparam name="T">‘ÎÛ‚Æ‚È‚éƒJƒXƒ^ƒ€‘®«</typeparam>
-		''' <param name="prop">‘ÎÛ‚Æ‚È‚éƒvƒƒpƒeƒB</param>
+		''' <typeparam name="T">å¯¾è±¡ã¨ãªã‚‹ã‚«ã‚¹ã‚¿ãƒ å±æ€§</typeparam>
+		''' <param name="prop">å¯¾è±¡ã¨ãªã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£</param>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		Public Shared Function GetCustomAttributes(Of T)(ByVal prop As PropertyInfo) As T()
@@ -205,10 +205,10 @@ Namespace Util
 		End Function
 
 		''' <summary>
-		''' w’è‚³‚ê‚½ƒvƒƒpƒeƒB‚É‘¶İ‚·‚éw’è‚³‚ê‚½ƒJƒXƒ^ƒ€‘®«‚ğ•Ô‚µ‚Ü‚·B
+		''' æŒ‡å®šã•ã‚ŒãŸãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã«å­˜åœ¨ã™ã‚‹æŒ‡å®šã•ã‚ŒãŸã‚«ã‚¹ã‚¿ãƒ å±æ€§ã‚’è¿”ã—ã¾ã™ã€‚
 		''' </summary>
-		''' <typeparam name="T">‘ÎÛ‚Æ‚È‚éƒJƒXƒ^ƒ€‘®«</typeparam>
-		''' <param name="prop">‘ÎÛ‚Æ‚È‚éƒvƒƒpƒeƒB</param>
+		''' <typeparam name="T">å¯¾è±¡ã¨ãªã‚‹ã‚«ã‚¹ã‚¿ãƒ å±æ€§</typeparam>
+		''' <param name="prop">å¯¾è±¡ã¨ãªã‚‹ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£</param>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		Public Shared Function GetCustomAttribute(Of T)(ByVal prop As PropertyInfo) As T
@@ -224,10 +224,10 @@ Namespace Util
 #Region " FieldInfo "
 
 		''' <summary>
-		''' w’è‚³‚ê‚½ƒtƒB[ƒ‹ƒh‚Éw’è‚³‚ê‚½ƒJƒXƒ^ƒ€‘®«‚ğ•Ô‚µ‚Ü‚·B
+		''' æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã«æŒ‡å®šã•ã‚ŒãŸã‚«ã‚¹ã‚¿ãƒ å±æ€§ã‚’è¿”ã—ã¾ã™ã€‚
 		''' </summary>
-		''' <typeparam name="T">‘ÎÛ‚Æ‚È‚éƒJƒXƒ^ƒ€‘®«</typeparam>
-		''' <param name="field">‘ÎÛ‚Æ‚È‚éƒtƒB[ƒ‹ƒh</param>
+		''' <typeparam name="T">å¯¾è±¡ã¨ãªã‚‹ã‚«ã‚¹ã‚¿ãƒ å±æ€§</typeparam>
+		''' <param name="field">å¯¾è±¡ã¨ãªã‚‹ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰</param>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		Public Shared Function GetCustomAttribute(Of T)(ByVal field As FieldInfo) As T
@@ -240,10 +240,10 @@ Namespace Util
 		End Function
 
 		''' <summary>
-		''' w’è‚³‚ê‚½ƒtƒB[ƒ‹ƒh‚Éw’è‚³‚ê‚½ƒJƒXƒ^ƒ€‘®«‚ğŠÜ‚Ş”z—ñ‚ğ•Ô‚µ‚Ü‚·B
+		''' æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã«æŒ‡å®šã•ã‚ŒãŸã‚«ã‚¹ã‚¿ãƒ å±æ€§ã‚’å«ã‚€é…åˆ—ã‚’è¿”ã—ã¾ã™ã€‚
 		''' </summary>
-		''' <typeparam name="T">‘ÎÛ‚Æ‚È‚éƒJƒXƒ^ƒ€‘®«</typeparam>
-		''' <param name="field">‘ÎÛ‚Æ‚È‚éƒtƒB[ƒ‹ƒh</param>
+		''' <typeparam name="T">å¯¾è±¡ã¨ãªã‚‹ã‚«ã‚¹ã‚¿ãƒ å±æ€§</typeparam>
+		''' <param name="field">å¯¾è±¡ã¨ãªã‚‹ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰</param>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		Public Shared Function GetCustomAttributes(Of T)(ByVal field As FieldInfo) As T()
@@ -255,9 +255,9 @@ Namespace Util
 		End Function
 
 		''' <summary>
-		''' w’è‚³‚ê‚½ƒtƒB[ƒ‹ƒh‚Éw’è‚³‚ê‚½ƒJƒXƒ^ƒ€‘®«‚ğŠÜ‚Ş”z—ñ‚ğ•Ô‚µ‚Ü‚·B
+		''' æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã«æŒ‡å®šã•ã‚ŒãŸã‚«ã‚¹ã‚¿ãƒ å±æ€§ã‚’å«ã‚€é…åˆ—ã‚’è¿”ã—ã¾ã™ã€‚
 		''' </summary>
-		''' <param name="field">‘ÎÛ‚Æ‚È‚éƒtƒB[ƒ‹ƒh</param>
+		''' <param name="field">å¯¾è±¡ã¨ãªã‚‹ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰</param>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		Public Shared Function GetCustomAttributes(ByVal field As FieldInfo) As Attribute()
@@ -270,10 +270,10 @@ Namespace Util
 #Region " MethodBase "
 
 		''' <summary>
-		''' w’è‚³‚ê‚½ƒtƒB[ƒ‹ƒh‚É‘¶İ‚·‚éƒJƒXƒ^ƒ€‘®«‚ğŠÜ‚Ş”z—ñ‚ğ•Ô‚µ‚Ü‚·B
+		''' æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã«å­˜åœ¨ã™ã‚‹ã‚«ã‚¹ã‚¿ãƒ å±æ€§ã‚’å«ã‚€é…åˆ—ã‚’è¿”ã—ã¾ã™ã€‚
 		''' </summary>
-		''' <typeparam name="T">‘ÎÛ‚Æ‚È‚éƒJƒXƒ^ƒ€‘®«</typeparam>
-		''' <param name="method">‘ÎÛ‚Æ‚È‚éƒtƒB[ƒ‹ƒh</param>
+		''' <typeparam name="T">å¯¾è±¡ã¨ãªã‚‹ã‚«ã‚¹ã‚¿ãƒ å±æ€§</typeparam>
+		''' <param name="method">å¯¾è±¡ã¨ãªã‚‹ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰</param>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		Public Shared Function GetCustomAttributes(Of T)(ByVal method As MethodBase, Optional ByVal inherit As Boolean = False) As T()
@@ -285,10 +285,10 @@ Namespace Util
 		End Function
 
 		''' <summary>
-		''' w’è‚³‚ê‚½ƒtƒB[ƒ‹ƒh‚É‘¶İ‚·‚éƒJƒXƒ^ƒ€‘®«‚ğ•Ô‚µ‚Ü‚·B
+		''' æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã«å­˜åœ¨ã™ã‚‹ã‚«ã‚¹ã‚¿ãƒ å±æ€§ã‚’è¿”ã—ã¾ã™ã€‚
 		''' </summary>
-		''' <typeparam name="T">‘ÎÛ‚Æ‚È‚éƒJƒXƒ^ƒ€‘®«</typeparam>
-		''' <param name="method">‘ÎÛ‚Æ‚È‚éƒtƒB[ƒ‹ƒh</param>
+		''' <typeparam name="T">å¯¾è±¡ã¨ãªã‚‹ã‚«ã‚¹ã‚¿ãƒ å±æ€§</typeparam>
+		''' <param name="method">å¯¾è±¡ã¨ãªã‚‹ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰</param>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		Public Shared Function GetCustomAttribute(Of T)(ByVal method As MethodBase, Optional ByVal inherit As Boolean = False) As T
@@ -304,10 +304,10 @@ Namespace Util
 #Region " Event "
 
 		''' <summary>
-		''' w’è‚³‚ê‚½ƒtƒB[ƒ‹ƒh‚É‘¶İ‚·‚éƒJƒXƒ^ƒ€‘®«‚ğŠÜ‚Ş”z—ñ‚ğ•Ô‚µ‚Ü‚·B
+		''' æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã«å­˜åœ¨ã™ã‚‹ã‚«ã‚¹ã‚¿ãƒ å±æ€§ã‚’å«ã‚€é…åˆ—ã‚’è¿”ã—ã¾ã™ã€‚
 		''' </summary>
-		''' <typeparam name="T">‘ÎÛ‚Æ‚È‚éƒJƒXƒ^ƒ€‘®«</typeparam>
-		''' <param name="method">‘ÎÛ‚Æ‚È‚éƒtƒB[ƒ‹ƒh</param>
+		''' <typeparam name="T">å¯¾è±¡ã¨ãªã‚‹ã‚«ã‚¹ã‚¿ãƒ å±æ€§</typeparam>
+		''' <param name="method">å¯¾è±¡ã¨ãªã‚‹ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰</param>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		Public Shared Function GetCustomAttributes(Of T)(ByVal method As EventInfo, Optional ByVal inherit As Boolean = False) As T()
@@ -324,10 +324,10 @@ Namespace Util
 		End Function
 
 		''' <summary>
-		''' w’è‚³‚ê‚½ƒtƒB[ƒ‹ƒh‚É‘¶İ‚·‚éƒJƒXƒ^ƒ€‘®«‚ğ•Ô‚µ‚Ü‚·B
+		''' æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã«å­˜åœ¨ã™ã‚‹ã‚«ã‚¹ã‚¿ãƒ å±æ€§ã‚’è¿”ã—ã¾ã™ã€‚
 		''' </summary>
-		''' <typeparam name="T">‘ÎÛ‚Æ‚È‚éƒJƒXƒ^ƒ€‘®«</typeparam>
-		''' <param name="method">‘ÎÛ‚Æ‚È‚éƒtƒB[ƒ‹ƒh</param>
+		''' <typeparam name="T">å¯¾è±¡ã¨ãªã‚‹ã‚«ã‚¹ã‚¿ãƒ å±æ€§</typeparam>
+		''' <param name="method">å¯¾è±¡ã¨ãªã‚‹ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰</param>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		Public Shared Function GetCustomAttribute(Of T)(ByVal method As EventInfo, Optional ByVal inherit As Boolean = False) As T
@@ -342,22 +342,22 @@ Namespace Util
 #End Region
 
 #End Region
-#Region " ƒtƒB[ƒ‹ƒh‚ÖƒCƒ“ƒXƒ^ƒ“ƒX‚ğ’“ü "
+#Region " ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã¸ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’æ³¨å…¥ "
 
 		''' <summary>
-		''' ƒtƒB[ƒ‹ƒh‚ÖƒCƒ“ƒXƒ^ƒ“ƒX‚ğ’“ü
+		''' ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã¸ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’æ³¨å…¥
 		''' </summary>
-		''' <param name="target">‘ÎÛ‚Æ‚È‚éƒCƒ“ƒXƒ^ƒ“ƒX</param>
-		''' <param name="field">‘ÎÛ‚Æ‚È‚éƒCƒ“ƒXƒ^ƒ“ƒX‚ÌƒtƒB[ƒ‹ƒh</param>
-		''' <param name="args">ƒtƒB[ƒ‹ƒh‚Öİ’è‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX‚Ì”z—ñ</param>
+		''' <param name="target">å¯¾è±¡ã¨ãªã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</param>
+		''' <param name="field">å¯¾è±¡ã¨ãªã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰</param>
+		''' <param name="args">ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã¸è¨­å®šã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®é…åˆ—</param>
 		''' <remarks></remarks>
 		Public Shared Sub Inject(ByVal target As Object, ByVal field As FieldInfo, ByVal args() As Object)
 			Dim bFlags As BindingFlags
 
-			' ƒtƒB[ƒ‹ƒh‚É’l‚ğƒZƒbƒg‚·‚éˆ×‚ÌBindingFlags
+			' ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã«å€¤ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ç‚ºã®BindingFlags
 			bFlags = BindingFlags.Instance Or BindingFlags.Public Or BindingFlags.NonPublic Or BindingFlags.SetField
 
-			' ƒCƒ“ƒXƒ^ƒ“ƒX‚ğƒtƒB[ƒ‹ƒh‚Ö’“üI
+			' ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã¸æ³¨å…¥ï¼
 			target.GetType().InvokeMember(field.Name, bFlags, Nothing, target, args)
 		End Sub
 
@@ -365,11 +365,11 @@ Namespace Util
 #Region " Check "
 
 		''' <summary>
-		''' ƒCƒ“ƒ^ƒtƒF[ƒX‚ªÀ‘•‚³‚ê‚Ä‚¢‚é‚©ƒ`ƒFƒbƒN‚·‚é
+		''' ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ãŒå®Ÿè£…ã•ã‚Œã¦ã„ã‚‹ã‹ãƒã‚§ãƒƒã‚¯ã™ã‚‹
 		''' </summary>
-		''' <param name="targetType">‘ÎÛ‚Æ‚È‚éŒ^</param>
-		''' <param name="checkType">ƒ`ƒFƒbƒN‚·‚éŒ^</param>
-		''' <returns>True ‚Í‘¶İ‚·‚éAFalse ‚Í‘¶İ‚µ‚È‚¢</returns>
+		''' <param name="targetType">å¯¾è±¡ã¨ãªã‚‹å‹</param>
+		''' <param name="checkType">ãƒã‚§ãƒƒã‚¯ã™ã‚‹å‹</param>
+		''' <returns>True ã¯å­˜åœ¨ã™ã‚‹ã€False ã¯å­˜åœ¨ã—ãªã„</returns>
 		''' <remarks></remarks>
 		Public Shared Function IsInterfaceImpl(ByVal targetType As Type, ByVal checkType As Type) As Boolean
 			Dim ok As Boolean

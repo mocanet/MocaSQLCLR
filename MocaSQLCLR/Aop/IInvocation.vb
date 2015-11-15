@@ -1,4 +1,4 @@
-
+ï»¿
 Namespace Aop
 
 	''' <summary>
@@ -9,9 +9,9 @@ Namespace Aop
 		Inherits IJoinpoint
 
 		''' <summary>
-		''' ƒƒ\ƒbƒh‚Ìˆø” ƒvƒƒpƒeƒB
+		''' ãƒ¡ã‚½ãƒƒãƒ‰ã®å¼•æ•° ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 		''' </summary>
-		''' <value>ƒIƒuƒWƒFƒNƒg”z—ñ</value>
+		''' <value>ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆé…åˆ—</value>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		ReadOnly Property Args() As Object()

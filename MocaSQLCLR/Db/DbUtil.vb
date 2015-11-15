@@ -1,4 +1,4 @@
-
+ï»¿
 Imports System.Text
 Imports System.Reflection
 Imports System.Data
@@ -14,19 +14,19 @@ Namespace Db
 	End Enum
 
 	''' <summary>
-	''' ƒf[ƒ^ƒx[ƒXƒAƒNƒZƒXü‚è‚Åg—p‚·‚éƒ†[ƒeƒBƒŠƒeƒBƒƒ\ƒbƒhW
+	''' ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‚¢ã‚¯ã‚»ã‚¹å‘¨ã‚Šã§ä½¿ç”¨ã™ã‚‹ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ãƒ¡ã‚½ãƒƒãƒ‰é›†
 	''' </summary>
 	''' <remarks></remarks>
 	Public Class DbUtil
 
-		''' <summary>SQL ‚Ìƒ\[ƒg\•¶ƒeƒ“ƒvƒŒ[ƒg</summary>
+		''' <summary>SQL ã®ã‚½ãƒ¼ãƒˆæ§‹æ–‡ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ</summary>
 		Private Const C_ORDER_BY As String = " ORDER BY{0}"
 
-		''' <summary>SQL ‚Ìƒ\[ƒg\•¶ƒeƒ“ƒvƒŒ[ƒg</summary>
+		''' <summary>SQL ã®ã‚½ãƒ¼ãƒˆæ§‹æ–‡ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ</summary>
 		Private Const C_ORDER_BY_COL As String = " [{0}] {1}"
 
 		''' <summary>
-		''' DbCommandƒCƒ“ƒXƒ^ƒ“ƒX‚ğI—¹‚·‚é
+		''' DbCommandã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’çµ‚äº†ã™ã‚‹
 		''' </summary>
 		''' <param name="cmd"></param>
 		''' <remarks></remarks>
@@ -42,13 +42,13 @@ Namespace Db
 		'End Function
 
 		''' <summary>
-		''' Null•ÏŠ·
+		''' Nullå¤‰æ›
 		''' </summary>
-		''' <param name="Value">ŒŸØ’l</param>
-		''' <returns>•ÏŠ·’l</returns>
+		''' <param name="Value">æ¤œè¨¼å€¤</param>
+		''' <returns>å¤‰æ›å€¤</returns>
 		''' <remarks>
-		''' ‹ó‚Ìê‡‚ÍADBNull.Value ‚ğ•Ô‚µ‚Ü‚·B
-		''' •¶š—ñ‚ª‹ó‚Ìê‡‚ÍADBNull.Value ‚ğ•Ô‚µ‚Ü‚·B
+		''' ç©ºã®å ´åˆã¯ã€DBNull.Value ã‚’è¿”ã—ã¾ã™ã€‚
+		''' æ–‡å­—åˆ—ãŒç©ºã®å ´åˆã¯ã€DBNull.Value ã‚’è¿”ã—ã¾ã™ã€‚
 		''' </remarks>
 		Public Shared Function CNull(ByVal value As Object, Optional ByVal emptyDataEqDBNull As Boolean = False) As Object
 			If value Is Nothing Then
@@ -98,13 +98,13 @@ Namespace Db
 		End Function
 
 		''' <summary>
-		''' Null•ÏŠ·
+		''' Nullå¤‰æ›
 		''' </summary>
-		''' <param name="Value">ŒŸØ’l</param>
-		''' <returns>•ÏŠ·’l</returns>
+		''' <param name="Value">æ¤œè¨¼å€¤</param>
+		''' <returns>å¤‰æ›å€¤</returns>
 		''' <remarks>
-		''' ‹ó‚Ìê‡‚ÍADBNull.Value ‚ğ•Ô‚µ‚Ü‚·B
-		''' 0‚Ìê‡‚ÍADBNull.Value ‚ğ•Ô‚µ‚Ü‚·B
+		''' ç©ºã®å ´åˆã¯ã€DBNull.Value ã‚’è¿”ã—ã¾ã™ã€‚
+		''' 0ã®å ´åˆã¯ã€DBNull.Value ã‚’è¿”ã—ã¾ã™ã€‚
 		''' </remarks>
 		Public Shared Function CNull(ByVal Value As Integer) As Object
 			If Value = 0 Then
@@ -115,12 +115,12 @@ Namespace Db
 		End Function
 
 		''' <summary>
-		''' Null•ÏŠ·
+		''' Nullå¤‰æ›
 		''' </summary>
-		''' <param name="Value">ŒŸØ’l</param>
-		''' <returns>•ÏŠ·’l</returns>
+		''' <param name="Value">æ¤œè¨¼å€¤</param>
+		''' <returns>å¤‰æ›å€¤</returns>
 		''' <remarks>
-		''' ‰Šú’liDate.MinValuej‚Ì‚ÍANothing‚ğ•Ô‚·
+		''' åˆæœŸå€¤ï¼ˆDate.MinValueï¼‰ã®æ™‚ã¯ã€Nothingã‚’è¿”ã™
 		''' </remarks>
 		Public Shared Function CDateValue(ByVal Value As Date) As Object
 			If Value.Equals(Date.MinValue) Then
@@ -130,12 +130,12 @@ Namespace Db
 		End Function
 
 		''' <summary>
-		''' DB‚©‚çæ“¾‚µ‚½ƒf[ƒ^‚ªInteger’l‚Ìê‡‚Ì•ÏŠ·
+		''' DBã‹ã‚‰å–å¾—ã—ãŸãƒ‡ãƒ¼ã‚¿ãŒIntegerå€¤ã®å ´åˆã®å¤‰æ›
 		''' </summary>
-		''' <param name="Value">‘ÎÛ’l</param>
-		''' <returns>•ÏŠ·’l</returns>
+		''' <param name="Value">å¯¾è±¡å€¤</param>
+		''' <returns>å¤‰æ›å€¤</returns>
 		''' <remarks>
-		''' Null‚Ìê‡‚ÍA‚O‚É•ÏŠ·‚·‚é
+		''' Nullã®å ´åˆã¯ã€ï¼ã«å¤‰æ›ã™ã‚‹
 		''' </remarks>
 		Public Shared Function CIntValue(ByVal Value As Object) As Integer
 			If Value Is DBNull.Value Then
@@ -148,12 +148,12 @@ Namespace Db
 		End Function
 
 		''' <summary>
-		''' DB‚©‚çæ“¾‚µ‚½ƒf[ƒ^‚ªLong’l‚Ìê‡‚Ì•ÏŠ·
+		''' DBã‹ã‚‰å–å¾—ã—ãŸãƒ‡ãƒ¼ã‚¿ãŒLongå€¤ã®å ´åˆã®å¤‰æ›
 		''' </summary>
-		''' <param name="Value">‘ÎÛ’l</param>
-		''' <returns>•ÏŠ·’l</returns>
+		''' <param name="Value">å¯¾è±¡å€¤</param>
+		''' <returns>å¤‰æ›å€¤</returns>
 		''' <remarks>
-		''' Null‚Ìê‡‚ÍA‚O‚É•ÏŠ·‚·‚é
+		''' Nullã®å ´åˆã¯ã€ï¼ã«å¤‰æ›ã™ã‚‹
 		''' </remarks>
 		Public Shared Function CLngValue(ByVal Value As Object) As Long
 			If Value Is DBNull.Value Then
@@ -164,12 +164,12 @@ Namespace Db
 		End Function
 
 		''' <summary>
-		''' DB‚©‚çæ“¾‚µ‚½ƒf[ƒ^‚ªSingle’l‚Ìê‡‚Ì•ÏŠ·
+		''' DBã‹ã‚‰å–å¾—ã—ãŸãƒ‡ãƒ¼ã‚¿ãŒSingleå€¤ã®å ´åˆã®å¤‰æ›
 		''' </summary>
-		''' <param name="Value">‘ÎÛ’l</param>
-		''' <returns>•ÏŠ·’l</returns>
+		''' <param name="Value">å¯¾è±¡å€¤</param>
+		''' <returns>å¤‰æ›å€¤</returns>
 		''' <remarks>
-		''' Null‚Ìê‡‚ÍA‚O‚É•ÏŠ·‚·‚é
+		''' Nullã®å ´åˆã¯ã€ï¼ã«å¤‰æ›ã™ã‚‹
 		''' </remarks>
 		Public Shared Function CSngValue(ByVal Value As Object, Optional ByVal defaultValue As Single = 0) As Single
 			If Value Is DBNull.Value Then
@@ -180,12 +180,12 @@ Namespace Db
 		End Function
 
 		''' <summary>
-		''' DB‚©‚çæ“¾‚µ‚½ƒf[ƒ^‚ªString’l‚Ìê‡‚Ì•ÏŠ·
+		''' DBã‹ã‚‰å–å¾—ã—ãŸãƒ‡ãƒ¼ã‚¿ãŒStringå€¤ã®å ´åˆã®å¤‰æ›
 		''' </summary>
-		''' <param name="Value">‘ÎÛ’l</param>
-		''' <returns>•ÏŠ·’l</returns>
+		''' <param name="Value">å¯¾è±¡å€¤</param>
+		''' <returns>å¤‰æ›å€¤</returns>
 		''' <remarks>
-		''' Null‚Ìê‡‚ÍAString.Empty‚É•ÏŠ·‚·‚é
+		''' Nullã®å ´åˆã¯ã€String.Emptyã«å¤‰æ›ã™ã‚‹
 		''' </remarks>
 		Public Shared Function CStrValue(ByVal Value As Object, Optional ByVal defaultValue As String = "") As String
 			If Value Is DBNull.Value Then
@@ -196,39 +196,39 @@ Namespace Db
 		End Function
 
 		''' <summary>
-		''' DB‚©‚çæ“¾‚µ‚½ƒf[ƒ^‚ªString’l‚Ìê‡‚Ì•ÏŠ·iTrim‚ ‚èj
+		''' DBã‹ã‚‰å–å¾—ã—ãŸãƒ‡ãƒ¼ã‚¿ãŒStringå€¤ã®å ´åˆã®å¤‰æ›ï¼ˆTrimã‚ã‚Šï¼‰
 		''' </summary>
-		''' <param name="Value">‘ÎÛ’l</param>
-		''' <returns>•ÏŠ·’l</returns>
+		''' <param name="Value">å¯¾è±¡å€¤</param>
+		''' <returns>å¤‰æ›å€¤</returns>
 		''' <remarks>
-		''' Null‚Ìê‡‚ÍAString.Empty‚É•ÏŠ·‚·‚é
+		''' Nullã®å ´åˆã¯ã€String.Emptyã«å¤‰æ›ã™ã‚‹
 		''' </remarks>
 		Public Shared Function CStrTrimValue(ByVal Value As Object) As String
 			Return CStrValue(Value).Trim()
 		End Function
 
 		''' <summary>
-		''' DB‚©‚çæ“¾‚µ‚½ƒf[ƒ^‚ª‹àŠz‚Ìê‡‚Ì•ÏŠ·
+		''' DBã‹ã‚‰å–å¾—ã—ãŸãƒ‡ãƒ¼ã‚¿ãŒé‡‘é¡ã®å ´åˆã®å¤‰æ›
 		''' </summary>
-		''' <param name="Value">‘ÎÛ’l</param>
-		''' <returns>•ÏŠ·’l</returns>
+		''' <param name="Value">å¯¾è±¡å€¤</param>
+		''' <returns>å¤‰æ›å€¤</returns>
 		''' <remarks>
-		''' Null‚Ìê‡‚ÍAString.Empty‚É•ÏŠ·‚·‚éB
-		''' 3Œ…‚ÌƒJƒ“ƒ}‹æØ‚è•¶š—ñ‚Æ‚µ‚Ä•Ô‚µ‚Ü‚·Bi"###,###,###,###"j
+		''' Nullã®å ´åˆã¯ã€String.Emptyã«å¤‰æ›ã™ã‚‹ã€‚
+		''' 3æ¡ã®ã‚«ãƒ³ãƒåŒºåˆ‡ã‚Šæ–‡å­—åˆ—ã¨ã—ã¦è¿”ã—ã¾ã™ã€‚ï¼ˆ"###,###,###,###"ï¼‰
 		''' </remarks>
 		Public Shared Function CMoneyValue(ByVal Value As Object) As String
 			Return CMoneyValue(Value, "###,###,###,###")
 		End Function
 
 		''' <summary>
-		''' DB‚©‚çæ“¾‚µ‚½ƒf[ƒ^‚ª‹àŠz‚Ìê‡‚Ì•ÏŠ·
+		''' DBã‹ã‚‰å–å¾—ã—ãŸãƒ‡ãƒ¼ã‚¿ãŒé‡‘é¡ã®å ´åˆã®å¤‰æ›
 		''' </summary>
-		''' <param name="Value">‘ÎÛ’l</param>
+		''' <param name="Value">å¯¾è±¡å€¤</param>
 		''' <param name="formatString"></param>
-		''' <returns>•ÏŠ·’l</returns>
+		''' <returns>å¤‰æ›å€¤</returns>
 		''' <remarks>
-		''' Null‚Ìê‡‚ÍAString.Empty‚É•ÏŠ·‚·‚éB
-		''' w’è‚³‚ê‚½ƒtƒH[ƒ}ƒbƒg•¶š—ñ‚É•ÏŠ·‚µ‚Ä•Ô‚µ‚Ü‚·B
+		''' Nullã®å ´åˆã¯ã€String.Emptyã«å¤‰æ›ã™ã‚‹ã€‚
+		''' æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæ–‡å­—åˆ—ã«å¤‰æ›ã—ã¦è¿”ã—ã¾ã™ã€‚
 		''' </remarks>
 		Public Shared Function CMoneyValue(ByVal Value As Object, ByVal formatString As String) As String
 			Dim strValue As String
@@ -247,12 +247,12 @@ Namespace Db
 		End Function
 
 		''' <summary>
-		''' DB‚©‚çæ“¾‚µ‚½ƒf[ƒ^‚ªDate’l‚Ìê‡‚É“ú•t‚Ì‚İ‚Ì•¶š—ñ‚Ö•ÏŠ·
+		''' DBã‹ã‚‰å–å¾—ã—ãŸãƒ‡ãƒ¼ã‚¿ãŒDateå€¤ã®å ´åˆã«æ—¥ä»˜ã®ã¿ã®æ–‡å­—åˆ—ã¸å¤‰æ›
 		''' </summary>
-		''' <param name="Value">‘ÎÛ’l</param>
-		''' <returns>•ÏŠ·’l</returns>
+		''' <param name="Value">å¯¾è±¡å€¤</param>
+		''' <returns>å¤‰æ›å€¤</returns>
 		''' <remarks>
-		''' Null‚Ìê‡‚ÍAString.Empty‚É•ÏŠ·‚·‚é
+		''' Nullã®å ´åˆã¯ã€String.Emptyã«å¤‰æ›ã™ã‚‹
 		''' </remarks>
 		Public Shared Function CDateValueToNoTimeString(ByVal Value As Object) As String
 			If Value Is DBNull.Value Then
@@ -263,12 +263,12 @@ Namespace Db
 		End Function
 
 		''' <summary>
-		''' DB‚©‚çæ“¾‚µ‚½ƒf[ƒ^‚ªDate’l‚Ìê‡‚É“ú•t‚Ì‚İ‚Ì•¶š—ñ‚Ö•ÏŠ·
+		''' DBã‹ã‚‰å–å¾—ã—ãŸãƒ‡ãƒ¼ã‚¿ãŒDateå€¤ã®å ´åˆã«æ—¥ä»˜ã®ã¿ã®æ–‡å­—åˆ—ã¸å¤‰æ›
 		''' </summary>
-		''' <param name="Value">‘ÎÛ’l</param>
-		''' <returns>•ÏŠ·’l</returns>
+		''' <param name="Value">å¯¾è±¡å€¤</param>
+		''' <returns>å¤‰æ›å€¤</returns>
 		''' <remarks>
-		''' Null‚Ìê‡‚ÍAString.Empty‚É•ÏŠ·‚·‚é
+		''' Nullã®å ´åˆã¯ã€String.Emptyã«å¤‰æ›ã™ã‚‹
 		''' </remarks>
 		Public Shared Function CDateValueToYYYYMM(ByVal Value As Object) As String
 			If Value Is DBNull.Value Then
@@ -279,12 +279,12 @@ Namespace Db
 		End Function
 
 		''' <summary>
-		''' DB‚©‚çæ“¾‚µ‚½ƒf[ƒ^‚ªInteger’l‚Ìê‡‚É“ú•t‚Ì‚İ‚Ì•¶š—ñ‚Ö•ÏŠ·
+		''' DBã‹ã‚‰å–å¾—ã—ãŸãƒ‡ãƒ¼ã‚¿ãŒIntegerå€¤ã®å ´åˆã«æ—¥ä»˜ã®ã¿ã®æ–‡å­—åˆ—ã¸å¤‰æ›
 		''' </summary>
-		''' <param name="Value">‘ÎÛ’l</param>
-		''' <returns>•ÏŠ·’l</returns>
+		''' <param name="Value">å¯¾è±¡å€¤</param>
+		''' <returns>å¤‰æ›å€¤</returns>
 		''' <remarks>
-		''' Null‚Ìê‡‚ÍAString.Empty‚É•ÏŠ·‚·‚é
+		''' Nullã®å ´åˆã¯ã€String.Emptyã«å¤‰æ›ã™ã‚‹
 		''' </remarks>
 		Public Shared Function CIntValueToYYYYMM(ByVal Value As Object) As String
 			If Value Is DBNull.Value Then
@@ -301,11 +301,11 @@ Namespace Db
 		End Function
 
 		''' <summary>
-		''' DB‚©‚çæ“¾‚µ‚½ƒf[ƒ^‚ğw’è‚³‚ê‚½ƒtƒH[ƒ}ƒbƒg‚É•ÏŠ·‚·‚é
+		''' DBã‹ã‚‰å–å¾—ã—ãŸãƒ‡ãƒ¼ã‚¿ã‚’æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã«å¤‰æ›ã™ã‚‹
 		''' </summary>
-		''' <param name="Value">‘ÎÛ’l</param>
-		''' <param name="formatString">ƒtƒH[ƒ}ƒbƒg•¶š—ñ</param>
-		''' <returns>•ÏŠ·’l</returns>
+		''' <param name="Value">å¯¾è±¡å€¤</param>
+		''' <param name="formatString">ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆæ–‡å­—åˆ—</param>
+		''' <returns>å¤‰æ›å€¤</returns>
 		''' <remarks>
 		''' </remarks>
 		Public Shared Function CFormat(ByVal Value As Object, ByVal formatString As String) As String
@@ -318,12 +318,12 @@ Namespace Db
 		End Function
 
 		''' <summary>
-		''' ƒL[‚Æ’l‚ğ•Û‚µ‚½ƒRƒŒƒNƒVƒ‡ƒ“‚ğì¬‚·‚é
+		''' ã‚­ãƒ¼ã¨å€¤ã‚’ä¿æŒã—ãŸã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã‚’ä½œæˆã™ã‚‹
 		''' </summary>
-		''' <param name="rows">ì¬Œ³‚Æ‚È‚éƒf[ƒ^</param>
-		''' <param name="keyColumnName">ƒL[‚Æ‚·‚éƒf[ƒ^‚Ì—ñ–¼</param>
-		''' <param name="valueColumnName">ƒL[‚É‘Î‚µ‚Ä’l‚Æ‚·‚éƒf[ƒ^‚Ì—ñ–¼</param>
-		''' <returns>ƒRƒŒƒNƒVƒ‡ƒ“</returns>
+		''' <param name="rows">ä½œæˆå…ƒã¨ãªã‚‹ãƒ‡ãƒ¼ã‚¿</param>
+		''' <param name="keyColumnName">ã‚­ãƒ¼ã¨ã™ã‚‹ãƒ‡ãƒ¼ã‚¿ã®åˆ—å</param>
+		''' <param name="valueColumnName">ã‚­ãƒ¼ã«å¯¾ã—ã¦å€¤ã¨ã™ã‚‹ãƒ‡ãƒ¼ã‚¿ã®åˆ—å</param>
+		''' <returns>ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³</returns>
 		''' <remarks>
 		''' </remarks>
 		Public Shared Function CDictionary(ByVal rows As DataRowCollection, ByVal keyColumnName As String, ByVal valueColumnName As String) As IDictionary
@@ -338,9 +338,9 @@ Namespace Db
 		End Function
 
 		''' <summary>
-		''' SQL•¶‚ÌğŒ®LIKE‚ğ•¡”ì¬‚µ‚Ü‚·B
+		''' SQLæ–‡ã®æ¡ä»¶å¼LIKEã‚’è¤‡æ•°ä½œæˆã—ã¾ã™ã€‚
 		''' </summary>
-		''' <param name="columnName">—ñ–¼</param>
+		''' <param name="columnName">åˆ—å</param>
 		''' <param name="arr"></param>
 		''' <param name="op"></param>
 		''' <returns></returns>
@@ -356,14 +356,14 @@ Namespace Db
 			Return "(" & Join(buf.ToArray(), " " & op & " ") & ")"
 		End Function
 
-		''' <summary>ƒf[ƒ^ƒx[ƒX‚©‚çæ“¾‚µ‚½ƒf[ƒ^‚ÌŠi”[æ‚Æ‚È‚é Entity ‚ğì¬‚·‚é</summary>
+		''' <summary>ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‹ã‚‰å–å¾—ã—ãŸãƒ‡ãƒ¼ã‚¿ã®æ ¼ç´å…ˆã¨ãªã‚‹ Entity ã‚’ä½œæˆã™ã‚‹</summary>
 		Private _entityBuilder As New EntityBuilder
 
 		''' <summary>
-		''' w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ÌƒvƒƒpƒeƒB–¼‹y‚ÑA‘®«‚©‚ç—ñ–¼‚ğæ“¾‚·‚é
+		''' æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ååŠã³ã€å±æ€§ã‹ã‚‰åˆ—åã‚’å–å¾—ã™ã‚‹
 		''' </summary>
-		''' <param name="typ">—ñ–¼‚ğæ“¾‚µ‚½‚¢ƒ‚ƒfƒ‹‚Ìƒ^ƒCƒv</param>
-		''' <returns>—ñ–¼”z—ñ</returns>
+		''' <param name="typ">åˆ—åã‚’å–å¾—ã—ãŸã„ãƒ¢ãƒ‡ãƒ«ã®ã‚¿ã‚¤ãƒ—</param>
+		''' <returns>åˆ—åé…åˆ—</returns>
 		''' <remarks></remarks>
 		Public Shared Function GetColumnNames(ByVal typ As Type) As Hashtable
 			Dim hash As Hashtable
@@ -371,10 +371,10 @@ Namespace Db
 
 			hash = New Hashtable
 
-			' ƒvƒƒpƒeƒB’è‹`‚ğæ“¾
+			' ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£å®šç¾©ã‚’å–å¾—
 			pinfo = ClassUtil.GetProperties(typ)
 			For Each prop As PropertyInfo In pinfo
-				' –¢g—p‘®«”»’è
+				' æœªä½¿ç”¨å±æ€§åˆ¤å®š
 				Dim ignore As ColumnIgnoreAttribute
 				ignore = ClassUtil.GetCustomAttribute(Of ColumnIgnoreAttribute)(prop)
 				If ignore IsNot Nothing Then
@@ -383,7 +383,7 @@ Namespace Db
 					End If
 				End If
 
-				' —ñ–¼‘®«æ“¾
+				' åˆ—åå±æ€§å–å¾—
 				Dim attr As ColumnAttribute
 				attr = ClassUtil.GetCustomAttribute(Of ColumnAttribute)(prop)
 				If attr IsNot Nothing Then
@@ -396,7 +396,7 @@ Namespace Db
 		End Function
 
 		Public Shared Function GetColumnName(ByVal prop As PropertyInfo) As String
-			' –¢g—p‘®«”»’è
+			' æœªä½¿ç”¨å±æ€§åˆ¤å®š
 			Dim ignore As ColumnIgnoreAttribute
 			ignore = ClassUtil.GetCustomAttribute(Of ColumnIgnoreAttribute)(prop)
 			If ignore IsNot Nothing Then
@@ -405,7 +405,7 @@ Namespace Db
 				End If
 			End If
 
-			' —ñ–¼‘®«æ“¾
+			' åˆ—åå±æ€§å–å¾—
 			Dim attr As ColumnAttribute
 			attr = ClassUtil.GetCustomAttribute(Of ColumnAttribute)(prop)
 			If attr IsNot Nothing Then
@@ -416,21 +416,21 @@ Namespace Db
 		End Function
 
 		''' <summary>
-		''' w’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ÌƒvƒƒpƒeƒB–¼‹y‚ÑA‘®«‚©‚ç—ñ–¼‚ğæ“¾‚·‚é
+		''' æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ååŠã³ã€å±æ€§ã‹ã‚‰åˆ—åã‚’å–å¾—ã™ã‚‹
 		''' </summary>
-		''' <param name="target">—ñ–¼‚ğæ“¾‚µ‚½‚¢ƒ‚ƒfƒ‹</param>
-		''' <returns>—ñ–¼”z—ñ</returns>
+		''' <param name="target">åˆ—åã‚’å–å¾—ã—ãŸã„ãƒ¢ãƒ‡ãƒ«</param>
+		''' <returns>åˆ—åé…åˆ—</returns>
 		''' <remarks></remarks>
 		Public Shared Function GetColumnNames(ByVal target As Object) As Hashtable
 			Return GetColumnNames(target.GetType)
 		End Function
 
 		''' <summary>
-		''' DataTable‚ÌƒJƒ‰ƒ€\¬‚ğ\’z‚·‚é
+		''' DataTableã®ã‚«ãƒ©ãƒ æ§‹æˆã‚’æ§‹ç¯‰ã™ã‚‹
 		''' </summary>
-		''' <typeparam name="T">ƒGƒ“ƒeƒBƒeƒB‚Æ‚È‚éƒNƒ‰ƒX</typeparam>
-		''' <typeparam name="Order">€–Ú‚Ì‡˜‚Æ‚È‚é—ñ‹“Œ^</typeparam>
-		''' <param name="captions">—ñ‚ÌƒLƒƒƒvƒVƒ‡ƒ“‚Æ‚È‚é•¶š—ñ”z—ñ</param>
+		''' <typeparam name="T">ã‚¨ãƒ³ãƒ†ã‚£ãƒ†ã‚£ã¨ãªã‚‹ã‚¯ãƒ©ã‚¹</typeparam>
+		''' <typeparam name="Order">é …ç›®ã®é †åºã¨ãªã‚‹åˆ—æŒ™å‹</typeparam>
+		''' <param name="captions">åˆ—ã®ã‚­ãƒ£ãƒ—ã‚·ãƒ§ãƒ³ã¨ãªã‚‹æ–‡å­—åˆ—é…åˆ—</param>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		Public Function CreateTable(Of T, Order)(Optional ByVal captions() As String = Nothing) As DataTable
@@ -438,10 +438,10 @@ Namespace Db
 		End Function
 
 		''' <summary>
-		''' ˆø”‚Ì DataTable ‚©‚çw’è‚³‚ê‚½ƒ^ƒCƒv‚Ìƒf[ƒ^”z—ñ‚Ö•ÏŠ·‚µ‚Ä•Ô‚·B
+		''' å¼•æ•°ã® DataTable ã‹ã‚‰æŒ‡å®šã•ã‚ŒãŸã‚¿ã‚¤ãƒ—ã®ãƒ‡ãƒ¼ã‚¿é…åˆ—ã¸å¤‰æ›ã—ã¦è¿”ã™ã€‚
 		''' </summary>
-		''' <typeparam name="T">•ÏŠ·æ‚Ìƒ^ƒCƒv</typeparam>
-		''' <param name="tbl">•ÏŠ·Œ³ƒe[ƒuƒ‹ƒf[ƒ^</param>
+		''' <typeparam name="T">å¤‰æ›å…ˆã®ã‚¿ã‚¤ãƒ—</typeparam>
+		''' <param name="tbl">å¤‰æ›å…ƒãƒ†ãƒ¼ãƒ–ãƒ«ãƒ‡ãƒ¼ã‚¿</param>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		Public Function Create(Of T)(ByVal tbl As DataTable) As T()
@@ -449,10 +449,10 @@ Namespace Db
 		End Function
 
 		''' <summary>
-		''' ˆø”‚Ì DataRow ‚©‚çw’è‚³‚ê‚½ƒ^ƒCƒv‚Ìƒf[ƒ^”z—ñ‚Ö•ÏŠ·‚µ‚Ä•Ô‚·B
+		''' å¼•æ•°ã® DataRow ã‹ã‚‰æŒ‡å®šã•ã‚ŒãŸã‚¿ã‚¤ãƒ—ã®ãƒ‡ãƒ¼ã‚¿é…åˆ—ã¸å¤‰æ›ã—ã¦è¿”ã™ã€‚
 		''' </summary>
-		''' <typeparam name="T">•ÏŠ·æ‚Ìƒ^ƒCƒv</typeparam>
-		''' <param name="row">•ÏŠ·Œ³sƒf[ƒ^</param>
+		''' <typeparam name="T">å¤‰æ›å…ˆã®ã‚¿ã‚¤ãƒ—</typeparam>
+		''' <param name="row">å¤‰æ›å…ƒè¡Œãƒ‡ãƒ¼ã‚¿</param>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		Public Function Create(Of T)(ByVal row As DataRow) As T
@@ -460,11 +460,11 @@ Namespace Db
 		End Function
 
 		''' <summary>
-		''' ˆø”‚Ì DataRow ‚©‚çw’è‚³‚ê‚½ƒ^ƒCƒv‚Ìƒf[ƒ^”z—ñ‚Ö•ÏŠ·‚µ‚Ä•Ô‚·B
+		''' å¼•æ•°ã® DataRow ã‹ã‚‰æŒ‡å®šã•ã‚ŒãŸã‚¿ã‚¤ãƒ—ã®ãƒ‡ãƒ¼ã‚¿é…åˆ—ã¸å¤‰æ›ã—ã¦è¿”ã™ã€‚
 		''' </summary>
-		''' <typeparam name="T">•ÏŠ·æ‚Ìƒ^ƒCƒv</typeparam>
-		''' <param name="row">•ÏŠ·Œ³sƒf[ƒ^</param>
-		''' <param name="version">•ÏŠ·‚·‚éƒf[ƒ^‚Ìƒo[ƒWƒ‡ƒ“</param>
+		''' <typeparam name="T">å¤‰æ›å…ˆã®ã‚¿ã‚¤ãƒ—</typeparam>
+		''' <param name="row">å¤‰æ›å…ƒè¡Œãƒ‡ãƒ¼ã‚¿</param>
+		''' <param name="version">å¤‰æ›ã™ã‚‹ãƒ‡ãƒ¼ã‚¿ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³</param>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		Public Function Create(Of T)(ByVal row As DataRow, ByVal version As DataRowVersion) As T
@@ -472,28 +472,28 @@ Namespace Db
 		End Function
 
 		''' <summary>
-		''' ˆø”‚ÌƒIƒuƒWƒFƒNƒg“à‚ÉTable‘®«‚ÌƒtƒB[ƒ‹ƒh‚ª‘¶İ‚·‚éê‡‚Í—ñî•ñ‚ğİ’è‚·‚é
+		''' å¼•æ•°ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆå†…ã«Tableå±æ€§ã®ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ãŒå­˜åœ¨ã™ã‚‹å ´åˆã¯åˆ—æƒ…å ±ã‚’è¨­å®šã™ã‚‹
 		''' </summary>
-		''' <param name="obj">‘ÎÛ‚ÌƒCƒ“ƒXƒ^ƒ“ƒX</param>
+		''' <param name="obj">å¯¾è±¡ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</param>
 		''' <remarks></remarks>
 		Public Sub SetColumnInfo(ByVal obj As Object)
 			_entityBuilder.SetColumnInfo(obj)
 		End Sub
 
 		''' <summary>
-		''' ˆø”‚ÌƒGƒ“ƒeƒBƒeƒB‚©‚ç DataRow ‚Ö•ÏŠ·
+		''' å¼•æ•°ã®ã‚¨ãƒ³ãƒ†ã‚£ãƒ†ã‚£ã‹ã‚‰ DataRow ã¸å¤‰æ›
 		''' </summary>
-		''' <param name="entity">•ÏŠ·Œ³</param>
-		''' <param name="row">•ÏŠ·æ</param>
+		''' <param name="entity">å¤‰æ›å…ƒ</param>
+		''' <param name="row">å¤‰æ›å…ˆ</param>
 		''' <remarks></remarks>
 		Public Sub Convert(ByVal entity As Object, ByVal row As DataRow)
 			_entityBuilder.Convert(entity, row)
 		End Sub
 
 		''' <summary>
-		''' SQL ‚Ìƒ\[ƒg•”•ª‚Åg—p‚·‚éƒJƒ‰ƒ€‚ğì¬
+		''' SQL ã®ã‚½ãƒ¼ãƒˆéƒ¨åˆ†ã§ä½¿ç”¨ã™ã‚‹ã‚«ãƒ©ãƒ ã‚’ä½œæˆ
 		''' </summary>
-		''' <returns>SQL ‚Ìƒ\[ƒg•¶š—ñ</returns>
+		''' <returns>SQL ã®ã‚½ãƒ¼ãƒˆæ–‡å­—åˆ—</returns>
 		''' <remarks></remarks>
 		Public Shared Function GetOrderBy(ByVal columns() As String) As String
 			Dim value As String
@@ -516,11 +516,11 @@ Namespace Db
 		End Function
 
 		''' <summary>
-		''' SQL ‚Ìƒ\[ƒg•”•ª‚Åg—p‚·‚éƒJƒ‰ƒ€‚ğì¬
+		''' SQL ã®ã‚½ãƒ¼ãƒˆéƒ¨åˆ†ã§ä½¿ç”¨ã™ã‚‹ã‚«ãƒ©ãƒ ã‚’ä½œæˆ
 		''' </summary>
-		''' <param name="sortExpression">ƒ\[ƒg€–Ú–¼</param>
-		''' <param name="sortDirection">ƒ\[ƒg‡</param>
-		''' <returns>SQL ‚Ìƒ\[ƒg‚Ég—p‚·‚éƒJƒ‰ƒ€•¶š—ñ</returns>
+		''' <param name="sortExpression">ã‚½ãƒ¼ãƒˆé …ç›®å</param>
+		''' <param name="sortDirection">ã‚½ãƒ¼ãƒˆé †</param>
+		''' <returns>SQL ã®ã‚½ãƒ¼ãƒˆã«ä½¿ç”¨ã™ã‚‹ã‚«ãƒ©ãƒ æ–‡å­—åˆ—</returns>
 		''' <remarks></remarks>
 		Public Shared Function GetOrderByColumn(ByVal sortExpression As String, ByVal sortDirection As SortDirectionValue) As String
 			If sortExpression.Length = 0 Then
@@ -530,9 +530,9 @@ Namespace Db
 		End Function
 
 		''' <summary>
-		''' DBƒpƒ‰ƒ[ƒ^‚ğƒJƒ“ƒ}‚Å˜AŒ‹‚µ‚Ä•¶š—ñ‚É•ÏŠ·‚·‚é
+		''' DBãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’ã‚«ãƒ³ãƒã§é€£çµã—ã¦æ–‡å­—åˆ—ã«å¤‰æ›ã™ã‚‹
 		''' </summary>
-		''' <param name="params">DBƒpƒ‰ƒ[ƒ^</param>
+		''' <param name="params">DBãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿</param>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		Public Shared Function ToStringParameter(ByVal params As IDataParameterCollection) As String
@@ -551,7 +551,7 @@ Namespace Db
 		End Function
 
 		''' <summary>
-		''' Null•ÏŠ·(ƒVƒ“ƒOƒ‹ƒNƒH[ƒe[ƒVƒ‡ƒ“•t‚«)
+		''' Nullå¤‰æ›(ã‚·ãƒ³ã‚°ãƒ«ã‚¯ã‚©ãƒ¼ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ä»˜ã)
 		''' </summary>
 		''' <param name="val"></param>
 		''' <returns></returns>
@@ -568,12 +568,12 @@ Namespace Db
 			Return "'" & val.ToString & "'"
 		End Function
 
-#Region " –¢g—p‚Å‚Í‚ ‚é‚ªAƒTƒ“ƒvƒ‹‚Æ‚µ‚Ä‚Æ‚Á‚Ä‚¨‚«‚½‚¢‚Ì‚ÅƒRƒƒ“ƒg‚É‚µ‚Äc‚µ‚Ä‚Ü‚· "
+#Region " æœªä½¿ç”¨ã§ã¯ã‚ã‚‹ãŒã€ã‚µãƒ³ãƒ—ãƒ«ã¨ã—ã¦ã¨ã£ã¦ãŠããŸã„ã®ã§ã‚³ãƒ¡ãƒ³ãƒˆã«ã—ã¦æ®‹ã—ã¦ã¾ã™ "
 
 		'''' <summary>
-		'''' ˆø”‚Ì DataRow ‚©‚çw’è‚³‚ê‚½ƒ^ƒCƒv‚Ìƒf[ƒ^”z—ñ‚Ö•ÏŠ·‚µ‚Ä•Ô‚·B
+		'''' å¼•æ•°ã® DataRow ã‹ã‚‰æŒ‡å®šã•ã‚ŒãŸã‚¿ã‚¤ãƒ—ã®ãƒ‡ãƒ¼ã‚¿é…åˆ—ã¸å¤‰æ›ã—ã¦è¿”ã™ã€‚
 		'''' </summary>
-		'''' <typeparam name="T">•ÏŠ·æ‚Ìƒ^ƒCƒv</typeparam>
+		'''' <typeparam name="T">å¤‰æ›å…ˆã®ã‚¿ã‚¤ãƒ—</typeparam>
 		'''' <returns></returns>
 		'''' <remarks></remarks>
 		'Public Shared Function Create(Of T)() As T

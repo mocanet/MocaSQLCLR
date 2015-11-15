@@ -1,8 +1,8 @@
-
+﻿
 Namespace Db
 
 	''' <summary>
-	''' ���񃂃f���̃R���N�V����
+	''' 列情報モデルのコレクション
 	''' </summary>
 	''' <remarks></remarks>
 	Public Class DbInfoColumnCollection

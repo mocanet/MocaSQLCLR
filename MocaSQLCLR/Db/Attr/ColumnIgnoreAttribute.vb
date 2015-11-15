@@ -1,26 +1,26 @@
-
+﻿
 Namespace Db.Attr
 
 	''' <summary>
-	''' ���g�p����
+	''' 未使用属性
 	''' </summary>
 	''' <remarks>
-	''' ��Ƃ��Ďg�p���Ȃ��Ƃ��Ɏw�肷��B<br/>
-	''' �w�肳��Ă��Ȃ��Ƃ��́A�u�g�p����v�ƂȂ�B
+	''' 列として使用しないときに指定する。<br/>
+	''' 指定されていないときは、「使用する」となる。
 	''' </remarks>
 	<AttributeUsage(AttributeTargets.Property)> _
 	Public Class ColumnIgnoreAttribute
 		Inherits Attribute
 
-		''' <summary>�g�p�L��</summary>
+		''' <summary>使用有無</summary>
 		Private _ignore As Boolean
 
-#Region " �R���X�g���N�^ "
+#Region " コンストラクタ "
 
 		''' <summary>
-		''' �R���X�g���N�^
+		''' コンストラクタ
 		''' </summary>
-		''' <param name="ignore">�g�p����Ƃ��� True�A�g�p���Ȃ��Ƃ��� False</param>
+		''' <param name="ignore">使用するときは True、使用しないときは False</param>
 		''' <remarks></remarks>
 		Public Sub New(ByVal ignore As Boolean)
 			_ignore = ignore
@@ -28,10 +28,10 @@ Namespace Db.Attr
 
 #End Region
 
-#Region " �v���p�e�B "
+#Region " プロパティ "
 
 		''' <summary>
-		''' �g�p�L���v���p�e�B
+		''' 使用有無プロパティ
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>

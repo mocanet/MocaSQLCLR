@@ -1,4 +1,4 @@
-
+ï»¿
 Imports System.Runtime.Remoting.Proxies
 Imports System.Runtime.Remoting.Messaging
 Imports System.Reflection
@@ -7,29 +7,29 @@ Imports Moca.Exceptions
 Namespace Aop
 
 	''' <summary>
-	''' “§‰ß“IƒvƒƒNƒV
+	''' é€éçš„ãƒ—ãƒ­ã‚¯ã‚·
 	''' </summary>
 	''' <remarks></remarks>
 	Public Class AopProxy
 		Inherits RealProxy
 
-		''' <summary>“§‰ß“IƒvƒƒNƒV‚ğì¬‚·‚éŒ^</summary>
+		''' <summary>é€éçš„ãƒ—ãƒ­ã‚¯ã‚·ã‚’ä½œæˆã™ã‚‹å‹</summary>
 		Private _type As Type
 
-		''' <summary>“K—p‚·‚é Aspect ”z—ñ</summary>
+		''' <summary>é©ç”¨ã™ã‚‹ Aspect é…åˆ—</summary>
 		Private _aspects As IList(Of IAspect)
 
-		''' <summary>“§‰ß“IƒvƒƒNƒV‚ğì¬‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX</summary>
+		''' <summary>é€éçš„ãƒ—ãƒ­ã‚¯ã‚·ã‚’ä½œæˆã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</summary>
 		Private _target As Object
 
-#Region " ƒRƒ“ƒXƒgƒ‰ƒNƒ^ "
+#Region " ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ "
 
-		''' <summary>
-		''' ƒRƒ“ƒXƒgƒ‰ƒNƒ^
-		''' </summary>
-		''' <param name="target">“§‰ß“IƒvƒƒNƒV‚ğì¬‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX</param>
-		''' <remarks></remarks>
-		Public Sub New(ByVal target As Object)
+        ''' <summary>
+        ''' ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
+        ''' </summary>
+        ''' <param name="target">é€éçš„ãƒ—ãƒ­ã‚¯ã‚·ã‚’ä½œæˆã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</param>
+        ''' <remarks></remarks>
+        Public Sub New(ByVal target As Object)
 			MyBase.New(target.GetType)
 			_aspects = New List(Of IAspect)
 			_type = target.GetType
@@ -37,9 +37,9 @@ Namespace Aop
 		End Sub
 
 		''' <summary>
-		''' ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		''' ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		''' </summary>
-		''' <param name="type">“§‰ß“IƒvƒƒNƒV‚ğì¬‚·‚éŒ^</param>
+		''' <param name="type">é€éçš„ãƒ—ãƒ­ã‚¯ã‚·ã‚’ä½œæˆã™ã‚‹å‹</param>
 		''' <remarks></remarks>
 		Public Sub New(ByVal type As Type)
 			MyBase.New(type)
@@ -48,21 +48,21 @@ Namespace Aop
 		End Sub
 
 		''' <summary>
-		''' ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		''' ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		''' </summary>
-		''' <param name="type">“§‰ß“IƒvƒƒNƒV‚ğì¬‚·‚éŒ^</param>
-		''' <param name="aspects">“K—p‚·‚é Aspect ”z—ñ</param>
+		''' <param name="type">é€éçš„ãƒ—ãƒ­ã‚¯ã‚·ã‚’ä½œæˆã™ã‚‹å‹</param>
+		''' <param name="aspects">é©ç”¨ã™ã‚‹ Aspect é…åˆ—</param>
 		''' <remarks></remarks>
 		Public Sub New(ByVal type As Type, ByVal aspects() As IAspect)
 			Me.New(type, aspects, Nothing)
 		End Sub
 
 		''' <summary>
-		''' ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		''' ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		''' </summary>
-		''' <param name="type">“§‰ß“IƒvƒƒNƒV‚ğì¬‚·‚éŒ^</param>
-		''' <param name="aspects">“K—p‚·‚é Aspect ”z—ñ</param>
-		''' <param name="target">“§‰ß“IƒvƒƒNƒV‚ğì¬‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX</param>
+		''' <param name="type">é€éçš„ãƒ—ãƒ­ã‚¯ã‚·ã‚’ä½œæˆã™ã‚‹å‹</param>
+		''' <param name="aspects">é©ç”¨ã™ã‚‹ Aspect é…åˆ—</param>
+		''' <param name="target">é€éçš„ãƒ—ãƒ­ã‚¯ã‚·ã‚’ä½œæˆã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</param>
 		''' <remarks></remarks>
 		Public Sub New(ByVal type As Type, ByVal aspects() As IAspect, ByVal target As Object)
 			Me.New(type)
@@ -75,10 +75,10 @@ Namespace Aop
 #Region " RealProxy Overrides "
 
 		''' <summary>
-		''' IMessage ‚Åw’è‚³‚ê‚½ƒƒ\ƒbƒh‚ğAŒ»İ‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ª•\‚·ƒŠƒ‚[ƒg ƒIƒuƒWƒFƒNƒg‚ÅŒÄ‚Ño‚µ‚Ü‚·B
+		''' IMessage ã§æŒ‡å®šã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ã‚’ã€ç¾åœ¨ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒè¡¨ã™ãƒªãƒ¢ãƒ¼ãƒˆ ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã§å‘¼ã³å‡ºã—ã¾ã™ã€‚
 		''' </summary>
-		''' <param name="msg">ƒƒ\ƒbƒh‚ÌŒÄ‚Ño‚µ‚ÉŠÖ‚·‚éî•ñ</param>
-		''' <returns>ŒÄ‚Ño‚³‚ê‚½ƒƒ\ƒbƒh‚ª•Ô‚·ƒƒbƒZ[ƒW‚ÅAout ƒpƒ‰ƒ[ƒ^‚Ü‚½‚Í ref ƒpƒ‰ƒ[ƒ^‚Ì‚Ç‚¿‚ç‚©‚Æ–ß‚è’l‚ğŠi”[‚µ‚Ä‚¢‚éƒƒbƒZ[ƒWB</returns>
+		''' <param name="msg">ãƒ¡ã‚½ãƒƒãƒ‰ã®å‘¼ã³å‡ºã—ã«é–¢ã™ã‚‹æƒ…å ±</param>
+		''' <returns>å‘¼ã³å‡ºã•ã‚ŒãŸãƒ¡ã‚½ãƒƒãƒ‰ãŒè¿”ã™ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã§ã€out ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã¾ãŸã¯ ref ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ã©ã¡ã‚‰ã‹ã¨æˆ»ã‚Šå€¤ã‚’æ ¼ç´ã—ã¦ã„ã‚‹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã€‚</returns>
 		''' <remarks></remarks>
 		Public Overrides Function Invoke(ByVal msg As IMessage) As IMessage
 			Dim mm As IMethodMessage
@@ -86,26 +86,26 @@ Namespace Aop
 			Dim args() As Object
 			Dim ret As Object
 
-			' ‰Šú‰»
+			' åˆæœŸåŒ–
 			ret = Nothing
 			mm = DirectCast(msg, IMethodMessage)
 			method = DirectCast(mm.MethodBase, MethodInfo)
 			args = mm.Args
 
-			' ƒCƒ“ƒ^ƒtƒF[ƒX‚ÌˆÈŠO‚ÅÀ‘Ô‚ª–³‚¢‚ÍƒCƒ“ƒXƒ^ƒ“ƒX‰»‚·‚é
+			' ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã®ä»¥å¤–ã§å®Ÿæ…‹ãŒç„¡ã„æ™‚ã¯ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã™ã‚‹
 			If Not _type.IsInterface Then
 				If _target Is Nothing Then
 					_target = Activator.CreateInstance(_type)
 				End If
 			End If
-			' “§‰ß“IƒvƒƒNƒV‚ğì¬‚·‚éƒCƒ“ƒXƒ^ƒ“ƒX‚ª‘¶İ‚µ‚È‚¢‚Í Object Œ^‚Å‰¼ƒCƒ“ƒXƒ^ƒ“ƒX‚ğì¬
+			' é€éçš„ãƒ—ãƒ­ã‚¯ã‚·ã‚’ä½œæˆã™ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒå­˜åœ¨ã—ãªã„æ™‚ã¯ Object å‹ã§ä»®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ä½œæˆ
 			If _target Is Nothing Then
 				_target = New Object()
 			End If
 
-			' ƒƒ\ƒbƒhÀsI
+			' ãƒ¡ã‚½ãƒƒãƒ‰å®Ÿè¡Œï¼
 			If _aspects.Count = 0 Then
-				' U‚é•‘‚¢‚ğ“K—p‚µ‚È‚¢‚Æ‚«
+				' æŒ¯ã‚‹èˆã„ã‚’é©ç”¨ã—ãªã„ã¨ã
 				Try
 					ret = method.Invoke(_target, args)
 				Catch ex As TargetInvocationException
@@ -113,7 +113,7 @@ Namespace Aop
 					Throw ex.InnerException
 				End Try
 			Else
-				' U‚é•‘‚¢‚ğ“K—p‚·‚é‚Æ‚«
+				' æŒ¯ã‚‹èˆã„ã‚’é©ç”¨ã™ã‚‹ã¨ã
 				Dim topInvocation As IMethodInvocation
 				Dim invocation As IMethodInvocation
 
@@ -129,7 +129,7 @@ Namespace Aop
 				ret = topInvocation.Proceed()
 			End If
 
-			' –ß‚è’lì¬
+			' æˆ»ã‚Šå€¤ä½œæˆ
 			Dim mrm As IMethodReturnMessage
 			mrm = New ReturnMessage(ret, args, args.Length, mm.LogicalCallContext, DirectCast(msg, IMethodCallMessage))
 			Return mrm
@@ -138,9 +138,9 @@ Namespace Aop
 #End Region
 
 		''' <summary>
-		''' “K—p‚·‚é Aspect ‚ğ’Ç‰Á‚·‚é
+		''' é©ç”¨ã™ã‚‹ Aspect ã‚’è¿½åŠ ã™ã‚‹
 		''' </summary>
-		''' <param name="aspect">Aspect ƒCƒ“ƒXƒ^ƒ“ƒX</param>
+		''' <param name="aspect">Aspect ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</param>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		Public Function AddAspect(ByVal aspect As IAspect) As IAspect
@@ -149,7 +149,7 @@ Namespace Aop
 		End Function
 
 		''' <summary>
-		''' “K—p‚·‚é Aspect ‚ğ’Ç‰Á‚·‚é
+		''' é©ç”¨ã™ã‚‹ Aspect ã‚’è¿½åŠ ã™ã‚‹
 		''' </summary>
 		''' <param name="advice">Advice(Interceptor)</param>
 		''' <param name="pointcut">Pointcut</param>
@@ -165,19 +165,19 @@ Namespace Aop
 		End Function
 
 		''' <summary>
-		''' “§‰ß“IƒvƒƒNƒV‚ğ•Ô‚·
+		''' é€éçš„ãƒ—ãƒ­ã‚¯ã‚·ã‚’è¿”ã™
 		''' </summary>
-		''' <returns>“§‰ß“IƒvƒƒNƒV‚ÌƒCƒ“ƒXƒ^ƒ“ƒX</returns>
+		''' <returns>é€éçš„ãƒ—ãƒ­ã‚¯ã‚·ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</returns>
 		''' <remarks></remarks>
 		Public Function Create() As Object
 			Return GetTransparentProxy()
 		End Function
 
 		''' <summary>
-		''' “§‰ß“IƒvƒƒNƒV‚ğ•Ô‚·
+		''' é€éçš„ãƒ—ãƒ­ã‚¯ã‚·ã‚’è¿”ã™
 		''' </summary>
-		''' <typeparam name="T">“§‰ß“IƒvƒƒNƒV‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ÌŒ^</typeparam>
-		''' <returns>“§‰ß“IƒvƒƒNƒV‚ÌƒCƒ“ƒXƒ^ƒ“ƒX</returns>
+		''' <typeparam name="T">é€éçš„ãƒ—ãƒ­ã‚¯ã‚·ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®å‹</typeparam>
+		''' <returns>é€éçš„ãƒ—ãƒ­ã‚¯ã‚·ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</returns>
 		''' <remarks></remarks>
 		Public Function Create(Of T)() As T
 			Return DirectCast(GetTransparentProxy(), T)

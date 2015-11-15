@@ -1,8 +1,8 @@
-
+﻿
 Namespace Aop
 
     ''' <summary>
-    ''' Interceptor����C���^�[�Z�v�g����Ă��郁�\�b�h�̏��ɃA�N�Z�X���邽�߂̃C���^�[�t�F�C�X
+    ''' Interceptorからインターセプトされているメソッドの情報にアクセスするためのインターフェイス
     ''' </summary>
     ''' <remarks></remarks>
 	Public Interface IMethodInvocation

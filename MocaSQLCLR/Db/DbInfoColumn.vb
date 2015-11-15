@@ -1,14 +1,14 @@
-
+ï»¿
 Namespace Db
 
 	''' <summary>
-	''' —ñî•ñ‚Ìƒ‚ƒfƒ‹
+	''' åˆ—æƒ…å ±ã®ãƒ¢ãƒ‡ãƒ«
 	''' </summary>
 	''' <remarks></remarks>
 	Public Class DbInfoColumn
 		Inherits DbInfo
 
-		''' <summary>Å‘åŒ…”</summary>
+		''' <summary>æœ€å¤§æ¡æ•°</summary>
 		Private _maxLength As Integer
 
 		Private _precision As Integer
@@ -19,15 +19,15 @@ Namespace Db
 
 		Private _columnType As Object
 
-#Region " ƒRƒ“ƒXƒgƒ‰ƒNƒ^ "
+#Region " ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ "
 
 		''' <summary>
-		''' ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		''' ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		''' </summary>
-		''' <param name="catalog">ƒJƒ^ƒƒO–¼</param>
-		''' <param name="schema">ƒXƒL[ƒ}–¼</param>
-		''' <param name="name">–¼Ì</param>
-		''' <param name="typ">Œ^</param>
+		''' <param name="catalog">ã‚«ã‚¿ãƒ­ã‚°å</param>
+		''' <param name="schema">ã‚¹ã‚­ãƒ¼ãƒå</param>
+		''' <param name="name">åç§°</param>
+		''' <param name="typ">å‹</param>
 		''' <remarks></remarks>
 		Public Sub New(ByVal catalog As String, ByVal schema As String, ByVal name As String, ByVal typ As String)
 			MyBase.New(catalog, schema, name, typ)
@@ -35,9 +35,9 @@ Namespace Db
 
 #End Region
 
-#Region " ƒvƒƒpƒeƒB "
+#Region " ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ "
 
-		''' <summary>Å‘åŒ…”</summary>
+		''' <summary>æœ€å¤§æ¡æ•°</summary>
 		Public Property MaxLength() As Integer
 			Get
 				Return _maxLength
@@ -47,7 +47,7 @@ Namespace Db
 			End Set
 		End Property
 
-		''' <summary>ƒ†ƒjƒR[ƒh•¶š—ñ‚©‚Ç‚¤‚©</summary>
+		''' <summary>ãƒ¦ãƒ‹ã‚³ãƒ¼ãƒ‰æ–‡å­—åˆ—ã‹ã©ã†ã‹</summary>
 		Public Property UniCode() As Boolean
 			Get
 				Return _uniCode
@@ -57,14 +57,14 @@ Namespace Db
 			End Set
 		End Property
 
-		''' <summary>Å‘åŒ…”i”¼Šp 1 ƒoƒCƒgA‘SŠp 2 ƒoƒCƒg‚Æ‚µ‚Äj</summary>
+		''' <summary>æœ€å¤§æ¡æ•°ï¼ˆåŠè§’ 1 ãƒã‚¤ãƒˆã€å…¨è§’ 2 ãƒã‚¤ãƒˆã¨ã—ã¦ï¼‰</summary>
 		Public ReadOnly Property MaxLengthB() As Integer
 			Get
 				Return CInt(IIf(_uniCode, _maxLength, _maxLength * 2))
 			End Get
 		End Property
 
-		''' <summary>¬”“_‚Ì‰E‘¤‚¨‚æ‚Ñ¶‘¤‚É‚ ‚é•Û‘¶‚Å‚«‚éÅ‘å•¶š</summary>
+		''' <summary>å°æ•°ç‚¹ã®å³å´ãŠã‚ˆã³å·¦å´ã«ã‚ã‚‹ä¿å­˜ã§ãã‚‹æœ€å¤§æ–‡å­—</summary>
 		Public Property Precision() As System.Int32
 			Get
 				Return Me._precision
@@ -74,7 +74,7 @@ Namespace Db
 			End Set
 		End Property
 
-		''' <summary>¬”“_‚Ì‰E‘¤‚É‚ ‚é•Û‘¶‚Å‚«‚éÅ‘å•¶š</summary>
+		''' <summary>å°æ•°ç‚¹ã®å³å´ã«ã‚ã‚‹ä¿å­˜ã§ãã‚‹æœ€å¤§æ–‡å­—</summary>
 		Public Property Scale() As System.Int32
 			Get
 				Return Me._scale
@@ -84,7 +84,7 @@ Namespace Db
 			End Set
 		End Property
 
-		''' <summary>—ñ‚ÌŒ^ƒIƒuƒWƒFƒNƒg</summary>
+		''' <summary>åˆ—ã®å‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ</summary>
 		Public Property ColumnType() As System.Object
 			Get
 				Return Me._columnType

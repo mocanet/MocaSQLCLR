@@ -1,4 +1,4 @@
-
+ï»¿
 Imports System.Reflection
 Imports Moca.Util
 Imports Moca.Attr
@@ -8,34 +8,34 @@ Imports Moca.Db.Attr
 Namespace Di
 
 	''' <summary>
-	''' ˆË‘¶«‚Ì’“ü
+	''' ä¾å­˜æ€§ã®æ³¨å…¥
 	''' </summary>
 	''' <remarks>
-	''' ƒCƒ“ƒ^ƒtƒF[ƒX‚Ì‘®«‚Éw’è‚³‚ê‚½À‘ÔƒNƒ‰ƒX‚ğƒCƒ“ƒXƒ^ƒ“ƒX‰»‚µƒtƒB[ƒ‹ƒh‚Ö’“ü‚·‚éB<br/>
-	''' À‘•ƒNƒ‰ƒX‚Ìw’è‚ÍA<see cref="ImplementationAttribute"/> ‘®«‚ğg—p‚µ‚Äw’è‚µ‚Ü‚·B<br/>
-	''' ˆø”‚Åw’è‚³‚ê‚½ƒCƒ“ƒXƒ^ƒ“ƒX‚ÌƒtƒB[ƒ‹ƒh‚É‘Î‚µ‚ÄA‚±‚Ì‘®«‚ğw’è‚³‚ê‚½ƒCƒ“ƒ^ƒtƒF[ƒX‚ª‘¶İ‚µ‚½‚Æ‚«‚ÍA
-	''' ©“®‚ÅƒCƒ“ƒXƒ^ƒ“ƒX‰»‚µ‚ÄƒtƒB[ƒ‹ƒh‚É’“ü‚µ‚Ü‚·B<br/>
-	''' ‚æ‚Á‚ÄA‚±‚ê‚ç‚ÌƒtƒB[ƒ‹ƒh‚ÍƒCƒ“ƒXƒ^ƒ“ƒX‰»i<c>New</c>j‚·‚é•K—v‚Í‚ ‚è‚Ü‚¹‚ñB<br/>
-	''' ¦ƒCƒ“ƒXƒ^ƒ“ƒX‰»‚·‚é‚È‚ç <see cref="ImplementationAttribute"/> ‘®«‚Íw’è‚µ‚È‚¢‚Å‚­‚¾‚³‚¢B<br/>
+	''' ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã®å±æ€§ã«æŒ‡å®šã•ã‚ŒãŸå®Ÿæ…‹ã‚¯ãƒ©ã‚¹ã‚’ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã—ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã¸æ³¨å…¥ã™ã‚‹ã€‚<br/>
+	''' å®Ÿè£…ã‚¯ãƒ©ã‚¹ã®æŒ‡å®šã¯ã€<see cref="ImplementationAttribute"/> å±æ€§ã‚’ä½¿ç”¨ã—ã¦æŒ‡å®šã—ã¾ã™ã€‚<br/>
+	''' å¼•æ•°ã§æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã«å¯¾ã—ã¦ã€ã“ã®å±æ€§ã‚’æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ãŒå­˜åœ¨ã—ãŸã¨ãã¯ã€
+	''' è‡ªå‹•ã§ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã—ã¦ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã«æ³¨å…¥ã—ã¾ã™ã€‚<br/>
+	''' ã‚ˆã£ã¦ã€ã“ã‚Œã‚‰ã®ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã¯ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ï¼ˆ<c>New</c>ï¼‰ã™ã‚‹å¿…è¦ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚<br/>
+	''' â€»ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã™ã‚‹ãªã‚‰ <see cref="ImplementationAttribute"/> å±æ€§ã¯æŒ‡å®šã—ãªã„ã§ãã ã•ã„ã€‚<br/>
 	''' </remarks>
 	Public Class MocaInjector
 		Implements IDisposable
 
-		''' <summary>‘®«‰ğÍ</summary>
+		''' <summary>å±æ€§è§£æ</summary>
 		Private _analyzer As AttributeAnalyzer
 
 		Private _targets As ArrayList
 
-#Region " ƒRƒ“ƒXƒgƒ‰ƒNƒ^ "
+#Region " ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ "
 
 		''' <summary>
-		''' ƒfƒtƒHƒ‹ƒgƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		''' ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		''' </summary>
 		''' <remarks></remarks>
 		Public Sub New()
 			_analyzer = New AttributeAnalyzer
 
-			' ƒfƒtƒHƒ‹ƒg‚Ì‘®«‰ğÍİ’è
+			' ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®å±æ€§è§£æè¨­å®š
 			_analyzer.Add(AttributeAnalyzerTargets.Field, New ImplementationAttributeAnalyzer)
 			_analyzer.Add(AttributeAnalyzerTargets.Field, New DaoAttributeAnalyzer)
 			_analyzer.Add(AttributeAnalyzerTargets.Field, New TableAttributeAnalyzer)
@@ -53,10 +53,10 @@ Namespace Di
 		End Sub
 
 #End Region
-#Region " ƒvƒƒpƒeƒB "
+#Region " ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ "
 
 		''' <summary>
-		''' ‘®«‰ğÍƒvƒƒpƒeƒB
+		''' å±æ€§è§£æãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -70,16 +70,16 @@ Namespace Di
 #End Region
 #Region " Dispose "
 
-		Private disposedValue As Boolean = False		' d•¡‚·‚éŒÄ‚Ño‚µ‚ğŒŸo‚·‚é‚É‚Í
+		Private disposedValue As Boolean = False		' é‡è¤‡ã™ã‚‹å‘¼ã³å‡ºã—ã‚’æ¤œå‡ºã™ã‚‹ã«ã¯
 
 		' IDisposable
 		Protected Overridable Sub Dispose(ByVal disposing As Boolean)
 			If Not Me.disposedValue Then
 				If disposing Then
-					' TODO: –¾¦“I‚ÉŒÄ‚Ño‚³‚ê‚½‚Æ‚«‚Éƒ}ƒl[ƒW ƒŠƒ\[ƒX‚ğ‰ğ•ú‚µ‚Ü‚·
+					' TODO: æ˜ç¤ºçš„ã«å‘¼ã³å‡ºã•ã‚ŒãŸã¨ãã«ãƒãƒãƒ¼ã‚¸ ãƒªã‚½ãƒ¼ã‚¹ã‚’è§£æ”¾ã—ã¾ã™
 				End If
 
-				' TODO: ‹¤—L‚ÌƒAƒ“ƒ}ƒl[ƒW ƒŠƒ\[ƒX‚ğ‰ğ•ú‚µ‚Ü‚·
+				' TODO: å…±æœ‰ã®ã‚¢ãƒ³ãƒãƒãƒ¼ã‚¸ ãƒªã‚½ãƒ¼ã‚¹ã‚’è§£æ”¾ã—ã¾ã™
 				For Each target As Object In _targets
 					Dim targetDispose As IDisposable
 					DaoDispose(target)
@@ -93,9 +93,9 @@ Namespace Di
 		End Sub
 
 #Region " IDisposable Support "
-		' ‚±‚ÌƒR[ƒh‚ÍA”jŠü‰Â”\‚Èƒpƒ^[ƒ“‚ğ³‚µ‚­À‘•‚Å‚«‚é‚æ‚¤‚É Visual Basic ‚É‚æ‚Á‚Ä’Ç‰Á‚³‚ê‚Ü‚µ‚½B
+		' ã“ã®ã‚³ãƒ¼ãƒ‰ã¯ã€ç ´æ£„å¯èƒ½ãªãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’æ­£ã—ãå®Ÿè£…ã§ãã‚‹ã‚ˆã†ã« Visual Basic ã«ã‚ˆã£ã¦è¿½åŠ ã•ã‚Œã¾ã—ãŸã€‚
 		Public Sub Dispose() Implements IDisposable.Dispose
-			' ‚±‚ÌƒR[ƒh‚ğ•ÏX‚µ‚È‚¢‚Å‚­‚¾‚³‚¢BƒNƒŠ[ƒ“ƒAƒbƒv ƒR[ƒh‚ğã‚Ì Dispose(ByVal disposing As Boolean) ‚É‹Lq‚µ‚Ü‚·B
+			' ã“ã®ã‚³ãƒ¼ãƒ‰ã‚’å¤‰æ›´ã—ãªã„ã§ãã ã•ã„ã€‚ã‚¯ãƒªãƒ¼ãƒ³ã‚¢ãƒƒãƒ— ã‚³ãƒ¼ãƒ‰ã‚’ä¸Šã® Dispose(ByVal disposing As Boolean) ã«è¨˜è¿°ã—ã¾ã™ã€‚
 			Dispose(True)
 			GC.SuppressFinalize(Me)
 		End Sub
@@ -104,7 +104,7 @@ Namespace Di
 #End Region
 
 		''' <summary>
-		''' ˆË‘¶«‚Ì’“ü‚µ‚ÄƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚é
+		''' ä¾å­˜æ€§ã®æ³¨å…¥ã—ã¦ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹
 		''' </summary>
 		''' <param name="target"></param>
 		''' <returns></returns>
@@ -118,11 +118,11 @@ Namespace Di
 		End Function
 
 		''' <summary>
-		''' ˆË‘¶«‚Ì’“ü
+		''' ä¾å­˜æ€§ã®æ³¨å…¥
 		''' </summary>
 		''' <param name="target"></param>
 		''' <remarks>
-		''' w’è‚³‚ê‚½ƒCƒ“ƒXƒ^ƒ“ƒX‚ÌƒtƒB[ƒ‹ƒh‚Å Interface ‚Ì‚İ‚É‘Î‰‚µ‚Ä‚¢‚Ü‚·B
+		''' æŒ‡å®šã•ã‚ŒãŸã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã§ Interface ã®ã¿ã«å¯¾å¿œã—ã¦ã„ã¾ã™ã€‚
 		''' </remarks>
 		Public Overridable Sub Inject(ByVal target As Object)
 			_analyzer.Analyze(target)
@@ -131,7 +131,7 @@ Namespace Di
 		End Sub
 
 		''' <summary>
-		''' DAO ƒCƒ“ƒXƒ^ƒ“ƒX‚ÌŠJ•ú
+		''' DAO ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®é–‹æ”¾
 		''' </summary>
 		''' <param name="target"></param>
 		''' <remarks>
@@ -143,22 +143,22 @@ Namespace Di
 				Exit Sub
 			End If
 
-			' ƒtƒB[ƒ‹ƒh‚ğƒ`ƒFƒbƒN‚·‚é
+			' ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹
 			fields = ClassUtil.GetFields(target)
 			For Each field As FieldInfo In fields
-				' Inject ‚µ‚½ƒIƒuƒWƒFƒNƒg‚È‚çÄ‹Aˆ—‚·‚é
+				' Inject ã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãªã‚‰å†å¸°å‡¦ç†ã™ã‚‹
 				If MocaContainerFactory.Container.GetComponent(field.GetType) IsNot Nothing Then
 					DaoDispose(field.GetValue(target))
 				End If
 
-				' Dao ‘®«‚ª‚ ‚éH
+				' Dao å±æ€§ãŒã‚ã‚‹ï¼Ÿ
 				Dim dbmsAttr As DbmsAttribute
 				dbmsAttr = ClassUtil.GetCustomAttribute(Of DbmsAttribute)(field.FieldType)
 				If dbmsAttr Is Nothing Then
 					Continue For
 				End If
 
-				' Dispose Às
+				' Dispose å®Ÿè¡Œ
 				Dim dao As IDao
 				dao = DirectCast(field.GetValue(target), IDao)
 				If dao Is Nothing Then
@@ -170,12 +170,12 @@ Namespace Di
 		End Sub
 
 		''' <summary>
-		''' ƒtƒB[ƒ‹ƒh‚ÖƒCƒ“ƒXƒ^ƒ“ƒX‚Ì’“ü
+		''' ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã¸ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®æ³¨å…¥
 		''' </summary>
-		''' <param name="target">‘ÎÛ‚Æ‚È‚éƒIƒuƒWƒFƒNƒg</param>
-		''' <param name="field">‘ÎÛ‚Æ‚È‚éƒtƒB[ƒ‹ƒh</param>
-		''' <param name="component">‘ÎÛ‚Æ‚È‚éƒRƒ“ƒ|[ƒlƒ“ƒg</param>
-		''' <returns>¶¬‚µ‚½ƒCƒ“ƒXƒ^ƒ“ƒX</returns>
+		''' <param name="target">å¯¾è±¡ã¨ãªã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ</param>
+		''' <param name="field">å¯¾è±¡ã¨ãªã‚‹ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰</param>
+		''' <param name="component">å¯¾è±¡ã¨ãªã‚‹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ</param>
+		''' <returns>ç”Ÿæˆã—ãŸã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</returns>
 		''' <remarks></remarks>
 		Protected Function fieldInject(ByVal target As Object, ByVal field As FieldInfo, ByVal component As MocaComponent) As Object
 			Dim instance As Object

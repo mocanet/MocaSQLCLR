@@ -1,4 +1,4 @@
-
+ï»¿
 Imports System.Reflection
 Imports System.Transactions
 Imports Moca.Aop
@@ -7,37 +7,37 @@ Imports Moca.Attr
 Namespace Db.Attr
 
 	''' <summary>
-	''' ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‘®«
+	''' ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³å±æ€§
 	''' </summary>
 	''' <remarks>
-	''' ƒƒ\ƒbƒh“à‚Ìˆ—‚ğƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ÅŠ‡‚é‚Æ‚«‚Éw’è‚·‚éB
+	''' ãƒ¡ã‚½ãƒƒãƒ‰å†…ã®å‡¦ç†ã‚’ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã§æ‹¬ã‚‹ã¨ãã«æŒ‡å®šã™ã‚‹ã€‚
 	''' </remarks>
 	<AttributeUsage(AttributeTargets.Method, Inherited:=True)> _
 	Public Class TransactionAttribute
 		Inherits Attribute
 
-		''' <summary>’Ç‰ÁƒIƒvƒVƒ‡ƒ“</summary>
+		''' <summary>è¿½åŠ ã‚ªãƒ—ã‚·ãƒ§ãƒ³</summary>
 		Private _scopeOption As Object
 
-		''' <summary>•ª—£ƒŒƒxƒ‹</summary>
+		''' <summary>åˆ†é›¢ãƒ¬ãƒ™ãƒ«</summary>
 		Private _isolationLevel As Object
 
-		''' <summary>ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒ^ƒCƒv</summary>
-		Private _transactionType As Config.TransactionType
+        ''' <summary>ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚¿ã‚¤ãƒ—</summary>
+        Private _transactionType As Config.TransactionType
 
-#Region " ƒRƒ“ƒXƒgƒ‰ƒNƒ^ "
+#Region " ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ "
 
-		''' <summary>
-		''' ƒfƒtƒHƒ‹ƒgƒRƒ“ƒXƒgƒ‰ƒNƒ^
-		''' </summary>
-		''' <remarks></remarks>
-		Public Sub New()
+        ''' <summary>
+        ''' ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
+        ''' </summary>
+        ''' <remarks></remarks>
+        Public Sub New()
 			_scopeOption = Nothing
 			_isolationLevel = Nothing
 		End Sub
 
 		''' <summary>
-		''' ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		''' ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		''' </summary>
 		''' <remarks></remarks>
 		Public Sub New(ByVal scopeOption As TransactionScopeOption)
@@ -46,7 +46,7 @@ Namespace Db.Attr
 		End Sub
 
 		''' <summary>
-		''' ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		''' ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		''' </summary>
 		''' <remarks></remarks>
 		Public Sub New(ByVal scopeOption As TransactionScopeOption, ByVal isolationLevel As Transactions.IsolationLevel)
@@ -58,10 +58,10 @@ Namespace Db.Attr
 #End Region
 
 		''' <summary>
-		''' ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“—pƒAƒXƒyƒNƒg‚ğì¬‚·‚é
+		''' ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ç”¨ã‚¢ã‚¹ãƒšã‚¯ãƒˆã‚’ä½œæˆã™ã‚‹
 		''' </summary>
-		''' <param name="method">ƒƒ\ƒbƒh</param>
-		''' <returns>ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“—pƒAƒXƒyƒNƒg</returns>
+		''' <param name="method">ãƒ¡ã‚½ãƒƒãƒ‰</param>
+		''' <returns>ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ç”¨ã‚¢ã‚¹ãƒšã‚¯ãƒˆ</returns>
 		''' <remarks></remarks>
 		Public Shadows Function CreateAspect(ByVal method As MethodBase) As IAspect
 			Dim pointcut As IPointcut
@@ -75,7 +75,7 @@ Namespace Db.Attr
 
 				Case Else
 					val = New Aspect(New Tx.ScopeTxInterceptor(_scopeOption, _isolationLevel), pointcut)
-					'TODO: ƒXƒŒƒbƒhˆ—‚É‚Ä‚à‚µƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚Ì‹““®‚ª‚¨‚©‚µ‚¢‚Æ‚«‚Í‚±‚¿‚ç‚É‚µ‚Ä‚İ‚éB
+					'TODO: ã‚¹ãƒ¬ãƒƒãƒ‰å‡¦ç†ã«ã¦ã‚‚ã—ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®æŒ™å‹•ãŒãŠã‹ã—ã„ã¨ãã¯ã“ã¡ã‚‰ã«ã—ã¦ã¿ã‚‹ã€‚
 					'val = New Aspect(GetType(Tx.TransactionInterceptor), pointcut)
 
 			End Select

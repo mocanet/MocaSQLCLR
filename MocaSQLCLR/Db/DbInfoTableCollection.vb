@@ -1,8 +1,8 @@
-
+﻿
 Namespace Db
 
 	''' <summary>
-	''' �e�[�u����񃂃f���̃R���N�V����
+	''' テーブル情報モデルのコレクション
 	''' </summary>
 	''' <remarks></remarks>
 	Public Class DbInfoTableCollection

@@ -1,4 +1,4 @@
-
+ï»¿
 Imports System.Configuration
 Imports System.ComponentModel
 Imports System.Data.Common
@@ -8,39 +8,39 @@ Imports Moca.Security
 Namespace Db
 
 	''' <summary>
-	''' \¬ƒtƒ@ƒCƒ‹‚ÌÚ‘±•¶Žš—ñƒZƒNƒVƒ‡ƒ“–”‚ÍDBÚ‘±•¶Žš—ñ‚ðŠÇ—‚µ‚Ü‚·B
+	''' æ§‹æˆãƒ•ã‚¡ã‚¤ãƒ«ã®æŽ¥ç¶šæ–‡å­—åˆ—ã‚»ã‚¯ã‚·ãƒ§ãƒ³åˆã¯DBæŽ¥ç¶šæ–‡å­—åˆ—ã‚’ç®¡ç†ã—ã¾ã™ã€‚
 	''' </summary>
 	''' <remarks>
-	''' “Á’è‚ÌƒRƒ“ƒsƒ…[ƒ^AƒAƒvƒŠƒP[ƒVƒ‡ƒ“A‚Ü‚½‚ÍƒŠƒ\[ƒX‚É“K—p‚Å‚«‚é\¬ƒtƒ@ƒCƒ‹‚ÖDBÚ‘±•¶Žš—ñ‚ð•Û‘¶‚µ‚½‚èA“Çž‚ñ‚¾‚è‚µ‚Ü‚·B
+	''' ç‰¹å®šã®ã‚³ãƒ³ãƒ”ãƒ¥ãƒ¼ã‚¿ã€ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã€ã¾ãŸã¯ãƒªã‚½ãƒ¼ã‚¹ã«é©ç”¨ã§ãã‚‹æ§‹æˆãƒ•ã‚¡ã‚¤ãƒ«ã¸DBæŽ¥ç¶šæ–‡å­—åˆ—ã‚’ä¿å­˜ã—ãŸã‚Šã€èª­è¾¼ã‚“ã ã‚Šã—ã¾ã™ã€‚
 	''' </remarks>
 	Public Class DbSetting
 
-		''' <summary>“Á’è‚ÌƒRƒ“ƒsƒ…[ƒ^AƒAƒvƒŠƒP[ƒVƒ‡ƒ“A‚Ü‚½‚ÍƒŠƒ\[ƒX‚É“K—p‚Å‚«‚é\¬ƒtƒ@ƒCƒ‹</summary>
+		''' <summary>ç‰¹å®šã®ã‚³ãƒ³ãƒ”ãƒ¥ãƒ¼ã‚¿ã€ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã€ã¾ãŸã¯ãƒªã‚½ãƒ¼ã‚¹ã«é©ç”¨ã§ãã‚‹æ§‹æˆãƒ•ã‚¡ã‚¤ãƒ«</summary>
 		Private _config As System.Configuration.Configuration
 
-		''' <summary>Ú‘±•¶Žš—ñ‚Ì–¼Ì</summary>
+		''' <summary>æŽ¥ç¶šæ–‡å­—åˆ—ã®åç§°</summary>
 		Private _name As String
-		''' <summary>ƒvƒƒpƒCƒ_ƒNƒ‰ƒX–¼</summary>
+		''' <summary>ãƒ—ãƒ­ãƒ‘ã‚¤ãƒ€ã‚¯ãƒ©ã‚¹å</summary>
 		Private _providerName As String
-		''' <summary>ƒT[ƒo[–¼</summary>
+		''' <summary>ã‚µãƒ¼ãƒãƒ¼å</summary>
 		Private _server As String
-		''' <summary>ƒf[ƒ^ƒx[ƒX–¼</summary>
+		''' <summary>ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹å</summary>
 		Private _database As String
-		''' <summary>Ú‘±ƒ†[ƒU[–¼</summary>
+		''' <summary>æŽ¥ç¶šãƒ¦ãƒ¼ã‚¶ãƒ¼å</summary>
 		Private _user As String
-		''' <summary>Ú‘±ƒ†[ƒU[‚ÌƒpƒXƒ[ƒh</summary>
+		''' <summary>æŽ¥ç¶šãƒ¦ãƒ¼ã‚¶ãƒ¼ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰</summary>
 		Private _password As String
 
-		''' <summary>OleDbƒvƒƒpƒCƒ_ƒNƒ‰ƒX–¼</summary>
+		''' <summary>OleDbãƒ—ãƒ­ãƒ‘ã‚¤ãƒ€ã‚¯ãƒ©ã‚¹å</summary>
 		Private _oleDbProviderName As String
 
-		''' <summary>Ú‘±•¶Žš—ñ‚Ì–¼ÌiƒJƒŒƒ“ƒg•Û‘¶—pj</summary>
+		''' <summary>æŽ¥ç¶šæ–‡å­—åˆ—ã®åç§°ï¼ˆã‚«ãƒ¬ãƒ³ãƒˆä¿å­˜ç”¨ï¼‰</summary>
 		Private _currentName As String
 
-#Region " ƒRƒ“ƒXƒgƒ‰ƒNƒ^ "
+#Region " ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ "
 
 		''' <summary>
-		''' ƒfƒtƒHƒ‹ƒgƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		''' ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		''' </summary>
 		''' <remarks></remarks>
 		Public Sub New()
@@ -55,9 +55,9 @@ Namespace Db
 		End Sub
 
 		''' <summary>
-		''' ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		''' ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		''' </summary>
-		''' <param name="setting">\¬ƒtƒ@ƒCƒ‹‚ÌÚ‘±•¶Žš—ñƒZƒNƒVƒ‡ƒ““à‚Ì–¼‘O•t‚«‚Å’Pˆê‚ÌÚ‘±•¶Žš—ñ‚ð•\‚·ƒNƒ‰ƒX</param>
+		''' <param name="setting">æ§‹æˆãƒ•ã‚¡ã‚¤ãƒ«ã®æŽ¥ç¶šæ–‡å­—åˆ—ã‚»ã‚¯ã‚·ãƒ§ãƒ³å†…ã®åå‰ä»˜ãã§å˜ä¸€ã®æŽ¥ç¶šæ–‡å­—åˆ—ã‚’è¡¨ã™ã‚¯ãƒ©ã‚¹</param>
 		''' <remarks></remarks>
 		Public Sub New(ByVal setting As ConnectionStringSettings)
 			Me.New()
@@ -66,10 +66,10 @@ Namespace Db
 
 #End Region
 
-#Region " ƒvƒƒpƒeƒB "
+#Region " ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ "
 
 		''' <summary>
-		''' \¬ƒtƒ@ƒCƒ‹ƒvƒƒpƒeƒB
+		''' æ§‹æˆãƒ•ã‚¡ã‚¤ãƒ«ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -85,7 +85,7 @@ Namespace Db
 		End Property
 
 		''' <summary>
-		''' Ú‘±•¶Žš—ñ‚Ì–¼ÌƒvƒƒpƒeƒB
+		''' æŽ¥ç¶šæ–‡å­—åˆ—ã®åç§°ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -101,7 +101,7 @@ Namespace Db
 		End Property
 
 		''' <summary>
-		''' ƒvƒƒpƒCƒ_ƒNƒ‰ƒX–¼ƒvƒƒpƒeƒB
+		''' ãƒ—ãƒ­ãƒ‘ã‚¤ãƒ€ã‚¯ãƒ©ã‚¹åãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -119,7 +119,7 @@ Namespace Db
 		End Property
 
 		''' <summary>
-		''' ƒT[ƒo[–¼ƒvƒƒpƒeƒB
+		''' ã‚µãƒ¼ãƒãƒ¼åãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -136,7 +136,7 @@ Namespace Db
 		End Property
 
 		''' <summary>
-		''' ƒf[ƒ^ƒx[ƒX–¼ƒvƒƒpƒeƒB
+		''' ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹åãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -153,7 +153,7 @@ Namespace Db
 		End Property
 
 		''' <summary>
-		''' Ú‘±ƒ†[ƒU[–¼ƒvƒƒpƒeƒB
+		''' æŽ¥ç¶šãƒ¦ãƒ¼ã‚¶ãƒ¼åãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -170,7 +170,7 @@ Namespace Db
 		End Property
 
 		''' <summary>
-		''' Ú‘±ƒ†[ƒU[‚ÌƒpƒXƒ[ƒhƒvƒƒpƒeƒB
+		''' æŽ¥ç¶šãƒ¦ãƒ¼ã‚¶ãƒ¼ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -188,7 +188,7 @@ Namespace Db
 		End Property
 
 		''' <summary>
-		''' OleDbÚ‘±Žž‚ÌƒvƒƒoƒCƒ_[
+		''' OleDbæŽ¥ç¶šæ™‚ã®ãƒ—ãƒ­ãƒã‚¤ãƒ€ãƒ¼
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -207,7 +207,7 @@ Namespace Db
 #End Region
 
 		''' <summary>
-		''' \¬ƒtƒ@ƒCƒ‹‚ÌÚ‘±•¶Žš—ñƒZƒNƒVƒ‡ƒ“‚ð•Ô‚µ‚Ü‚·B
+		''' æ§‹æˆãƒ•ã‚¡ã‚¤ãƒ«ã®æŽ¥ç¶šæ–‡å­—åˆ—ã‚»ã‚¯ã‚·ãƒ§ãƒ³ã‚’è¿”ã—ã¾ã™ã€‚
 		''' </summary>
 		''' <param name="name">ConnectionStringSettings</param>
 		''' <returns></returns>
@@ -218,7 +218,7 @@ Namespace Db
 		End Function
 
 		''' <summary>
-		''' \¬ƒtƒ@ƒCƒ‹‚ÖÚ‘±•¶Žš—ñƒZƒNƒVƒ‡ƒ“‚ð’Ç‰Á‚µ‚Ü‚·B
+		''' æ§‹æˆãƒ•ã‚¡ã‚¤ãƒ«ã¸æŽ¥ç¶šæ–‡å­—åˆ—ã‚»ã‚¯ã‚·ãƒ§ãƒ³ã‚’è¿½åŠ ã—ã¾ã™ã€‚
 		''' </summary>
 		''' <remarks></remarks>
 		Public Sub AddSection()
@@ -226,7 +226,7 @@ Namespace Db
 		End Sub
 
 		''' <summary>
-		''' \¬ƒtƒ@ƒCƒ‹‚ÌÚ‘±•¶Žš—ñƒZƒNƒVƒ‡ƒ“‚ð•ÏX‚µ‚Ü‚·B
+		''' æ§‹æˆãƒ•ã‚¡ã‚¤ãƒ«ã®æŽ¥ç¶šæ–‡å­—åˆ—ã‚»ã‚¯ã‚·ãƒ§ãƒ³ã‚’å¤‰æ›´ã—ã¾ã™ã€‚
 		''' </summary>
 		''' <remarks></remarks>
 		Public Sub ModSection()
@@ -235,25 +235,25 @@ Namespace Db
 		End Sub
 
 		''' <summary>
-		''' \¬ƒtƒ@ƒCƒ‹‚ÌÚ‘±•¶Žš—ñƒZƒNƒVƒ‡ƒ“‚ðíœ‚µ‚Ü‚·B
+		''' æ§‹æˆãƒ•ã‚¡ã‚¤ãƒ«ã®æŽ¥ç¶šæ–‡å­—åˆ—ã‚»ã‚¯ã‚·ãƒ§ãƒ³ã‚’å‰Šé™¤ã—ã¾ã™ã€‚
 		''' </summary>
-		''' <param name="name">ƒZƒNƒVƒ‡ƒ“–¼Ì</param>
+		''' <param name="name">ã‚»ã‚¯ã‚·ãƒ§ãƒ³åç§°</param>
 		''' <remarks></remarks>
 		Public Sub DelSection(ByVal name As String)
 			GetSection().ConnectionStrings.Remove(name)
 		End Sub
 
 		''' <summary>
-		''' Ú‘±•¶Žš—ñƒZƒNƒVƒ‡ƒ“‚ð
+		''' æŽ¥ç¶šæ–‡å­—åˆ—ã‚»ã‚¯ã‚·ãƒ§ãƒ³ã‚’
 		''' </summary>
-		''' <param name="name">ƒZƒNƒVƒ‡ƒ“–¼Ì</param>
+		''' <param name="name">ã‚»ã‚¯ã‚·ãƒ§ãƒ³åç§°</param>
 		''' <remarks></remarks>
 		Public Sub Read(ByVal name As String)
 			moveValues(GetSection(name))
 		End Sub
 
 		''' <summary>
-		''' \¬ƒtƒ@ƒCƒ‹‚ð•Û‘¶‚µ‚Ü‚·B
+		''' æ§‹æˆãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä¿å­˜ã—ã¾ã™ã€‚
 		''' </summary>
 		''' <remarks></remarks>
 		Public Sub Save()
@@ -261,7 +261,7 @@ Namespace Db
 		End Sub
 
 		' ''' <summary>
-		' ''' \¬ƒtƒ@ƒCƒ‹‚ðˆÃ†‰»‚µ‚Ä•Û‘¶‚µ‚Ü‚·B
+		' ''' æ§‹æˆãƒ•ã‚¡ã‚¤ãƒ«ã‚’æš—å·åŒ–ã—ã¦ä¿å­˜ã—ã¾ã™ã€‚
 		' ''' </summary>
 		' ''' <remarks></remarks>
 		'Public Sub SaveDPAPI()
@@ -272,13 +272,13 @@ Namespace Db
 		'		Exit Sub
 		'	End If
 
-		'	' ˆÃ†‰»
+		'	' æš—å·åŒ–
 		'	dpapi = New DPAPIConfiguration(Config)
 		'	dpapi.ProtectConnectionStrings()
 		'End Sub
 
 		''' <summary>
-		''' Ý’è“à—e‚ð‘Þ”ð‚µ‚Ü‚·B
+		''' è¨­å®šå†…å®¹ã‚’é€€é¿ã—ã¾ã™ã€‚
 		''' </summary>
 		''' <param name="setting"></param>
 		''' <remarks></remarks>
@@ -311,7 +311,7 @@ Namespace Db
 		End Sub
 
 		''' <summary>
-		''' Ú‘±•¶Žš—ñƒZƒNƒVƒ‡ƒ“‚ð•Ô‚µ‚Ü‚·B
+		''' æŽ¥ç¶šæ–‡å­—åˆ—ã‚»ã‚¯ã‚·ãƒ§ãƒ³ã‚’è¿”ã—ã¾ã™ã€‚
 		''' </summary>
 		''' <returns></returns>
 		''' <remarks></remarks>
@@ -320,7 +320,7 @@ Namespace Db
 		End Function
 
 		''' <summary>
-		''' “à•”‚Å•ÛŽ‚µ‚Ä‚¢‚éƒf[ƒ^‚ðConnectionStringSettings‚Ö•ÏŠ·‚·‚éB
+		''' å†…éƒ¨ã§ä¿æŒã—ã¦ã„ã‚‹ãƒ‡ãƒ¼ã‚¿ã‚’ConnectionStringSettingsã¸å¤‰æ›ã™ã‚‹ã€‚
 		''' </summary>
 		''' <returns></returns>
 		''' <remarks></remarks>

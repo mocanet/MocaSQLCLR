@@ -1,4 +1,4 @@
-
+ï»¿
 Imports System.Reflection
 Imports Moca.Aop
 Imports Moca.Attr
@@ -9,26 +9,26 @@ Imports Moca.Util
 Namespace Db.Attr
 
 	''' <summary>
-	''' DAO‘®«
+	''' DAOå±æ€§
 	''' </summary>
 	''' <remarks>
-	''' <see cref="IDao"/> ‚ğÀ‘•‚µ‚½ƒNƒ‰ƒX‚ğw’è‚·‚é‘®«
+	''' <see cref="IDao"/> ã‚’å®Ÿè£…ã—ãŸã‚¯ãƒ©ã‚¹ã‚’æŒ‡å®šã™ã‚‹å±æ€§
 	''' </remarks>
 	<AttributeUsage(AttributeTargets.Interface)> _
 	Public Class DaoAttribute
 		Inherits DbmsAttribute
 
-		''' <summary>w’è‚³‚ê‚½À‘Ì‰»‚·‚éƒNƒ‰ƒXƒ^ƒCƒv</summary>
+		''' <summary>æŒ‡å®šã•ã‚ŒãŸå®Ÿä½“åŒ–ã™ã‚‹ã‚¯ãƒ©ã‚¹ã‚¿ã‚¤ãƒ—</summary>
 		Private _type As Type
 
-#Region " ƒRƒ“ƒXƒgƒ‰ƒNƒ^ "
+#Region " ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ "
 
 		''' <summary>
-		''' ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		''' ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		''' </summary>
-		''' <param name="typ">ƒNƒ‰ƒXƒ^ƒCƒv</param>
+		''' <param name="typ">ã‚¯ãƒ©ã‚¹ã‚¿ã‚¤ãƒ—</param>
 		''' <remarks>
-		''' "context connection=true" ‚ğg‚¤ê‡
+		''' "context connection=true" ã‚’ä½¿ã†å ´åˆ
 		''' </remarks>
 		Public Sub New(ByVal typ As Type)
 			MyBase.New("context connection=true")
@@ -36,10 +36,10 @@ Namespace Db.Attr
 		End Sub
 
 		''' <summary>
-		''' ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		''' ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		''' </summary>
 		''' <param name="connectionString">ConnectionString</param>
-		''' <param name="typ">ƒNƒ‰ƒXƒ^ƒCƒv</param>
+		''' <param name="typ">ã‚¯ãƒ©ã‚¹ã‚¿ã‚¤ãƒ—</param>
 		''' <remarks></remarks>
 		Public Sub New(ByVal connectionString As String, ByVal typ As Type)
 			MyBase.New(connectionString)
@@ -47,10 +47,10 @@ Namespace Db.Attr
 		End Sub
 
 #End Region
-#Region " ƒvƒƒpƒeƒB "
+#Region " ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ "
 
 		''' <summary>
-		''' ƒNƒ‰ƒXƒ^ƒCƒvƒvƒƒpƒeƒB
+		''' ã‚¯ãƒ©ã‚¹ã‚¿ã‚¤ãƒ—ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -64,18 +64,18 @@ Namespace Db.Attr
 #End Region
 
 		''' <summary>
-		''' ƒRƒ“ƒ|[ƒlƒ“ƒgì¬
+		''' ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆä½œæˆ
 		''' </summary>
-		''' <param name="field">ƒtƒB[ƒ‹ƒh</param>
-		''' <returns>DBMSƒRƒ“ƒ|[ƒlƒ“ƒg</returns>
+		''' <param name="field">ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰</param>
+		''' <returns>DBMSã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ</returns>
 		''' <remarks></remarks>
 		Public Function CreateComponent(ByVal field As FieldInfo) As MocaComponent
-			' Œ^ƒ`ƒFƒbƒN
+			' å‹ãƒã‚§ãƒƒã‚¯
 			If Not ClassUtil.IsInterfaceImpl(ImplType, GetType(IDao)) Then
-				Throw New ArgumentException(ImplType.FullName & " ‚ÍA" & GetType(IDao).FullName & " ‚ğÀ‘•‚µ‚½ƒNƒ‰ƒX‚Å‚Í‚ ‚è‚Ü‚¹‚ñB")
+				Throw New ArgumentException(ImplType.FullName & " ã¯ã€" & GetType(IDao).FullName & " ã‚’å®Ÿè£…ã—ãŸã‚¯ãƒ©ã‚¹ã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚")
 			End If
 
-			' DBMS “Á’è
+			' DBMS ç‰¹å®š
 			Dim targetDbms As Dbms
 			targetDbms = DbmsManager.GetDbms(ConnectionString)
 
@@ -84,7 +84,7 @@ Namespace Db.Attr
 
 			aspects = New ArrayList()
 
-			' ‚³‚ç‚ÉƒtƒB[ƒ‹ƒh‚ğ‰ğÍ
+			' ã•ã‚‰ã«ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã‚’è§£æ
 			fields = ClassUtil.GetFields(_type)
 			For Each fi As FieldInfo In fields
 
@@ -94,7 +94,7 @@ Namespace Db.Attr
 					End If
 				End If
 
-				' Getter/Setter ƒƒ\ƒbƒh‚ÌƒAƒXƒyƒNƒgì¬iƒtƒB[ƒ‹ƒh‚ÖƒAƒNƒZƒX‚·‚é‚½‚ß‚É•K—vIj
+				' Getter/Setter ãƒ¡ã‚½ãƒƒãƒ‰ã®ã‚¢ã‚¹ãƒšã‚¯ãƒˆä½œæˆï¼ˆãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã¸ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ãŸã‚ã«å¿…è¦ï¼ï¼‰
 				Dim pointcut As IPointcut
 				pointcut = New Pointcut(New String() {"Void FieldGetter(System.String, System.String, System.Object ByRef)"})
 				aspects.Add(New Aspect(New FieldGetterInterceptor(), pointcut))

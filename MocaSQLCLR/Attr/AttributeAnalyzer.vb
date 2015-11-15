@@ -1,4 +1,4 @@
-
+ï»¿
 Imports System.Reflection
 Imports Moca.Aop
 Imports Moca.Di
@@ -8,65 +8,65 @@ Imports Moca.Interceptor
 Namespace Attr
 
 	''' <summary>
-	''' ƒtƒB[ƒ‹ƒhƒCƒ“ƒWƒFƒNƒgƒfƒŠƒQ[ƒg
+	''' ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã‚¤ãƒ³ã‚¸ã‚§ã‚¯ãƒˆãƒ‡ãƒªã‚²ãƒ¼ãƒˆ
 	''' </summary>
-	''' <param name="target">ƒCƒ“ƒWƒFƒNƒg‘ÎÛ‚Æ‚È‚éƒCƒ“ƒXƒ^ƒ“ƒX</param>
-	''' <param name="field">‘ÎÛ‚Æ‚È‚éƒtƒB[ƒ‹ƒh’è‹`</param>
-	''' <param name="component">ƒCƒ“ƒWƒFƒNƒg‚·‚éƒRƒ“ƒ|[ƒlƒ“ƒg</param>
+	''' <param name="target">ã‚¤ãƒ³ã‚¸ã‚§ã‚¯ãƒˆå¯¾è±¡ã¨ãªã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</param>
+	''' <param name="field">å¯¾è±¡ã¨ãªã‚‹ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰å®šç¾©</param>
+	''' <param name="component">ã‚¤ãƒ³ã‚¸ã‚§ã‚¯ãƒˆã™ã‚‹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ</param>
 	''' <returns></returns>
 	''' <remarks></remarks>
 	Public Delegate Function MocaFieldInject(ByVal target As Object, ByVal field As FieldInfo, ByVal component As MocaComponent) As Object
 
 	''' <summary>
-	''' À‘•ÀŒ±’†
+	''' å®Ÿè£…å®Ÿé¨“ä¸­
 	''' </summary>
 	''' <param name="parent"></param>
 	''' <param name="obj"></param>
 	''' <remarks></remarks>
 	Friend Delegate Sub MocaEventDelegateInject(ByVal parent As Object, ByVal obj As Object)
 
-#Region " —ñ‹“Œ^ "
+#Region " åˆ—æŒ™å‹ "
 
 	''' <summary>
-	''' ‘®«‰ğÍ‚·‚éƒ^[ƒQƒbƒg—ñ‹“Œ^
+	''' å±æ€§è§£æã™ã‚‹ã‚¿ãƒ¼ã‚²ãƒƒãƒˆåˆ—æŒ™å‹
 	''' </summary>
 	''' <remarks></remarks>
 	Public Enum AttributeAnalyzerTargets
-		''' <summary>ƒNƒ‰ƒX</summary>
+		''' <summary>ã‚¯ãƒ©ã‚¹</summary>
 		[Class] = AttributeTargets.Class
-		''' <summary>ƒtƒB[ƒ‹ƒh</summary>
+		''' <summary>ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰</summary>
 		Field = AttributeTargets.Field
-		''' <summary>ƒCƒ“ƒ^ƒtƒF[ƒX</summary>
+		''' <summary>ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹</summary>
 		[Interface] = AttributeTargets.Interface
-		''' <summary>ƒƒ\ƒbƒh</summary>
+		''' <summary>ãƒ¡ã‚½ãƒƒãƒ‰</summary>
 		Method = AttributeTargets.Method
-		''' <summary>ƒvƒƒpƒeƒB</summary>
+		''' <summary>ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£</summary>
 		[Property] = AttributeTargets.Property
 	End Enum
 
 #End Region
 
 	''' <summary>
-	''' ‘®«‰ğÍ
+	''' å±æ€§è§£æ
 	''' </summary>
 	''' <remarks></remarks>
 	Public Class AttributeAnalyzer
 
-		''' <summary>Šeí‰ğÍ‚½‚¿</summary>
+		''' <summary>å„ç¨®è§£æãŸã¡</summary>
 		Private _analyzers As Dictionary(Of AttributeAnalyzerTargets, IList(Of IAttributeAnalyzer))
-		''' <summary>‰ğÍ‚ğœŠO‚·‚éNamespace</summary>
+		''' <summary>è§£æã‚’é™¤å¤–ã™ã‚‹Namespace</summary>
 		Private _ignoreNamespace As IList(Of String)
 
-		''' <summary>ƒtƒB[ƒ‹ƒhƒCƒ“ƒWƒFƒNƒgƒfƒŠƒQ[ƒg</summary>
+		''' <summary>ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã‚¤ãƒ³ã‚¸ã‚§ã‚¯ãƒˆãƒ‡ãƒªã‚²ãƒ¼ãƒˆ</summary>
 		Private _injectMethod As MocaFieldInject
 
-		''' <summary>À‘•’†</summary>
+		''' <summary>å®Ÿè£…ä¸­</summary>
 		Private _injectEventDelegate As MocaEventDelegateInject
 
-#Region " ƒRƒ“ƒXƒgƒ‰ƒNƒ^ "
+#Region " ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ "
 
 		''' <summary>
-		''' ƒfƒtƒHƒ‹ƒgƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		''' ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		''' </summary>
 		''' <remarks></remarks>
 		Public Sub New()
@@ -77,12 +77,12 @@ Namespace Attr
 
 #End Region
 
-#Region " ‰ğÍ "
+#Region " è§£æ "
 
-#Region " ¶¬ "
+#Region " ç”Ÿæˆ "
 
 		''' <summary>
-		''' ƒNƒ‰ƒX‚ğ‰ğÍ‚µ‚ÄƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚é
+		''' ã‚¯ãƒ©ã‚¹ã‚’è§£æã—ã¦ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹
 		''' </summary>
 		''' <param name="typ"></param>
 		''' <returns></returns>
@@ -101,13 +101,13 @@ Namespace Attr
 				component = New Moca.Di.MocaComponent(typ, typ)
 			End If
 
-			' ¶¬‚µ‚½ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ Di ‚Ö
+			' ç”Ÿæˆã—ãŸã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ Di ã¸
 			MocaContainerFactory.Container().SetComponent(component)
 
 			aspects = New ArrayList()
-			aspects.AddRange(analyzeInterfaces(typ))				' ƒCƒ“ƒ^ƒtƒF[ƒX‰ğÍ
+			aspects.AddRange(analyzeInterfaces(typ))				' ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹è§£æ
 
-			' Getter/Setter ƒƒ\ƒbƒh‚ÌƒAƒXƒyƒNƒgì¬iƒtƒB[ƒ‹ƒh‚ÖƒAƒNƒZƒX‚·‚é‚½‚ß‚É•K—vIj
+			' Getter/Setter ãƒ¡ã‚½ãƒƒãƒ‰ã®ã‚¢ã‚¹ãƒšã‚¯ãƒˆä½œæˆï¼ˆãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã¸ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ãŸã‚ã«å¿…è¦ï¼ï¼‰
 			aspects.AddRange(_createFieldGetterSetterAspect())
 
 			component.Aspects = DirectCast(aspects.ToArray(GetType(IAspect)), IAspect())
@@ -121,10 +121,10 @@ Namespace Attr
 		End Function
 
 		''' <summary>
-		''' ƒtƒB[ƒ‹ƒh‰ğÍ
+		''' ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰è§£æ
 		''' </summary>
-		''' <param name="target">‘ÎÛ‚Æ‚È‚éƒIƒuƒWƒFƒNƒg</param>
-		''' <returns>ì¬‚µ‚½ƒRƒ“ƒ|[ƒlƒ“ƒg</returns>
+		''' <param name="target">å¯¾è±¡ã¨ãªã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ</param>
+		''' <returns>ä½œæˆã—ãŸã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ</returns>
 		''' <remarks></remarks>
 		Protected Function analyzeClass(ByVal target As Type) As MocaComponent
 			Dim component As MocaComponent
@@ -146,11 +146,11 @@ Namespace Attr
 #End Region
 
 		''' <summary>
-		''' ‰ğÍ
+		''' è§£æ
 		''' </summary>
-		''' <param name="target">‘ÎÛ‚Æ‚È‚éƒIƒuƒWƒFƒNƒg</param>
+		''' <param name="target">å¯¾è±¡ã¨ãªã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ</param>
 		''' <remarks>
-		''' ‰ğÍ‚ğŠJn‚·‚é‘O‚É‰ğÍ‚µ‚½‘®«‚ÌƒAƒiƒ‰ƒCƒU[‚ğ’Ç‰Á‚µ‚Ä‚­‚¾‚³‚¢B
+		''' è§£æã‚’é–‹å§‹ã™ã‚‹å‰ã«è§£æã—ãŸå±æ€§ã®ã‚¢ãƒŠãƒ©ã‚¤ã‚¶ãƒ¼ã‚’è¿½åŠ ã—ã¦ãã ã•ã„ã€‚
 		''' </remarks>
 		Public Sub Analyze(ByVal target As Object)
 			For Each field As FieldInfo In ClassUtil.GetFields(target)
@@ -160,18 +160,18 @@ Namespace Attr
 					Continue For
 				End If
 
-				' Šù‚É‘¶İ‚·‚é‚©ƒ`ƒFƒbƒNiƒtƒB[ƒ‹ƒh‚ÌŒ^‚Åj
+				' æ—¢ã«å­˜åœ¨ã™ã‚‹ã‹ãƒã‚§ãƒƒã‚¯ï¼ˆãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®å‹ã§ï¼‰
 				component = MocaContainerFactory.Container().GetComponent(field.FieldType)
 				If component IsNot Nothing Then
 					Analyze(Me.FieldInject(target, field, component))
 					Continue For
 				End If
 
-				' ƒtƒB[ƒ‹ƒh‚Ì‰ğÍ
+				' ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®è§£æ
 				Analyze(target, field)
 			Next
 
-			' ƒCƒxƒ“ƒg‚ÌƒfƒŠƒQ[ƒg‚ğ‰ğÍ‚·‚é‚©‚Ç‚¤‚©
+			' ã‚¤ãƒ™ãƒ³ãƒˆã®ãƒ‡ãƒªã‚²ãƒ¼ãƒˆã‚’è§£æã™ã‚‹ã‹ã©ã†ã‹
 			If Me.EventDelegateInject Is Nothing Then
 				Return
 			End If
@@ -184,13 +184,13 @@ Namespace Attr
 			Next
 		End Sub
 
-#Region " ƒtƒB[ƒ‹ƒh‰ğÍ "
+#Region " ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰è§£æ "
 
 		''' <summary>
-		''' ƒtƒB[ƒ‹ƒh‰ğÍ
+		''' ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰è§£æ
 		''' </summary>
-		''' <param name="target">‘ÎÛ‚Æ‚È‚éƒIƒuƒWƒFƒNƒg</param>
-		''' <param name="field">‘ÎÛ‚Æ‚È‚éƒtƒB[ƒ‹ƒh</param>
+		''' <param name="target">å¯¾è±¡ã¨ãªã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ</param>
+		''' <param name="field">å¯¾è±¡ã¨ãªã‚‹ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰</param>
 		''' <remarks></remarks>
 		Protected Overridable Sub analyze(ByVal target As Object, ByVal field As FieldInfo)
 			Dim component As MocaComponent
@@ -198,13 +198,13 @@ Namespace Attr
 
 			aspects = New ArrayList()
 
-			' ƒtƒB[ƒ‹ƒh‰ğÍi‰¼ƒRƒ“ƒ|[ƒlƒ“ƒg¶¬j
+			' ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰è§£æï¼ˆä»®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆç”Ÿæˆï¼‰
 			component = analyzeField(target, field)
 			If component Is Nothing Then
 				Exit Sub
 			End If
 
-			' Šù‚É‘¶İ‚·‚é‚©ƒ`ƒFƒbƒNiÀ‘Ô‚Åj
+			' æ—¢ã«å­˜åœ¨ã™ã‚‹ã‹ãƒã‚§ãƒƒã‚¯ï¼ˆå®Ÿæ…‹ã§ï¼‰
 			If component.ImplType Is Nothing Then
 				If MocaContainerFactory.Container().GetComponent(component.Key) IsNot Nothing Then
 					component = MocaContainerFactory.Container().GetComponent(component.Key)
@@ -219,31 +219,31 @@ Namespace Attr
 				End If
 			End If
 
-			' ¶¬‚µ‚½ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ Di ‚Ö
+			' ç”Ÿæˆã—ãŸã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ Di ã¸
 			MocaContainerFactory.Container().SetComponent(component)
 
-			' ƒƒ“ƒo‰ğÍ
+			' ãƒ¡ãƒ³ãƒè§£æ
 			aspects.AddRange(analyzeInterfaces(field.FieldType))
 
-			' ƒtƒB[ƒ‹ƒh‚ÌŒ^‚ÆÀ‘Ô‚ÌŒ^‚ªˆÙ‚È‚é‚©H
-			' ˆÙ‚È‚é‚Æ‚«‚ÍAÀ‘Ô‚Å‚àƒƒ“ƒo‰ğÍ
+			' ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®å‹ã¨å®Ÿæ…‹ã®å‹ãŒç•°ãªã‚‹ã‹ï¼Ÿ
+			' ç•°ãªã‚‹ã¨ãã¯ã€å®Ÿæ…‹ã§ã‚‚ãƒ¡ãƒ³ãƒè§£æ
 			If Not field.FieldType.Equals(component.ImplType) Then
-				aspects.AddRange(analyzeProperty(component.ImplType))	' ƒvƒƒpƒeƒB‰ğÍ
-				aspects.AddRange(analyzeMethod(component.ImplType))		' ƒƒ\ƒbƒh‰ğÍ
-				'aspects.AddRange(analyzeEvent(component.ImplType))      ' ƒCƒxƒ“ƒg‰ğÍ
+				aspects.AddRange(analyzeProperty(component.ImplType))	' ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£è§£æ
+				aspects.AddRange(analyzeMethod(component.ImplType))		' ãƒ¡ã‚½ãƒƒãƒ‰è§£æ
+				'aspects.AddRange(analyzeEvent(component.ImplType))      ' ã‚¤ãƒ™ãƒ³ãƒˆè§£æ
 
-				' Getter/Setter ƒƒ\ƒbƒh‚ÌƒAƒXƒyƒNƒgì¬iƒtƒB[ƒ‹ƒh‚ÖƒAƒNƒZƒX‚·‚é‚½‚ß‚É•K—vIj
+				' Getter/Setter ãƒ¡ã‚½ãƒƒãƒ‰ã®ã‚¢ã‚¹ãƒšã‚¯ãƒˆä½œæˆï¼ˆãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã¸ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ãŸã‚ã«å¿…è¦ï¼ï¼‰
 				aspects.AddRange(_createFieldGetterSetterAspect())
 			End If
 
-			' ƒRƒ“ƒ|[ƒlƒ“ƒg‚ÖƒAƒXƒyƒNƒgİ’è
+			' ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã¸ã‚¢ã‚¹ãƒšã‚¯ãƒˆè¨­å®š
 			If component.Aspects IsNot Nothing Then
 				aspects.InsertRange(0, component.Aspects)
 			End If
 			component.Aspects = DirectCast(aspects.ToArray(GetType(IAspect)), IAspect())
 
-			' ƒtƒB[ƒ‹ƒh‚ÖƒCƒ“ƒXƒ^ƒ“ƒX‚ğ’“ü‚µA
-			' ƒCƒ“ƒXƒ^ƒ“ƒX‰»‚µ‚½ƒIƒuƒWƒFƒNƒg‚Å‰ğÍ‚ğÄ‹A
+			' ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã¸ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’æ³¨å…¥ã—ã€
+			' ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã§è§£æã‚’å†å¸°
 			Analyze(Me.FieldInject(target, field, component))
 		End Sub
 
@@ -253,13 +253,13 @@ Namespace Attr
 
 			aspects = New ArrayList()
 
-			' ƒtƒB[ƒ‹ƒh‰ğÍi‰¼ƒRƒ“ƒ|[ƒlƒ“ƒg¶¬j
+			' ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰è§£æï¼ˆä»®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆç”Ÿæˆï¼‰
 			component = analyzeField(target, field)
 			If component Is Nothing Then
 				Exit Sub
 			End If
 
-			' Šù‚É‘¶İ‚·‚é‚©ƒ`ƒFƒbƒNiÀ‘Ô‚Åj
+			' æ—¢ã«å­˜åœ¨ã™ã‚‹ã‹ãƒã‚§ãƒƒã‚¯ï¼ˆå®Ÿæ…‹ã§ï¼‰
 			If component.ImplType Is Nothing Then
 				If MocaContainerFactory.Container().GetComponent(component.Key) IsNot Nothing Then
 					component = MocaContainerFactory.Container().GetComponent(component.Key)
@@ -274,31 +274,31 @@ Namespace Attr
 				End If
 			End If
 
-			' ¶¬‚µ‚½ƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ Di ‚Ö
+			' ç”Ÿæˆã—ãŸã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’ Di ã¸
 			MocaContainerFactory.Container().SetComponent(component)
 
-			' ƒƒ“ƒo‰ğÍ
+			' ãƒ¡ãƒ³ãƒè§£æ
 			aspects.AddRange(analyzeInterfaces(field.FieldType))
 
-			' ƒtƒB[ƒ‹ƒh‚ÌŒ^‚ÆÀ‘Ô‚ÌŒ^‚ªˆÙ‚È‚é‚©H
-			' ˆÙ‚È‚é‚Æ‚«‚ÍAÀ‘Ô‚Å‚àƒƒ“ƒo‰ğÍ
+			' ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®å‹ã¨å®Ÿæ…‹ã®å‹ãŒç•°ãªã‚‹ã‹ï¼Ÿ
+			' ç•°ãªã‚‹ã¨ãã¯ã€å®Ÿæ…‹ã§ã‚‚ãƒ¡ãƒ³ãƒè§£æ
 			If Not field.FieldType.Equals(component.ImplType) Then
-				aspects.AddRange(analyzeProperty(component.ImplType))	' ƒvƒƒpƒeƒB‰ğÍ
-				aspects.AddRange(analyzeMethod(component.ImplType))		' ƒƒ\ƒbƒh‰ğÍ
-				'aspects.AddRange(analyzeEvent(component.ImplType))      ' ƒCƒxƒ“ƒg‰ğÍ
+				aspects.AddRange(analyzeProperty(component.ImplType))	' ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£è§£æ
+				aspects.AddRange(analyzeMethod(component.ImplType))		' ãƒ¡ã‚½ãƒƒãƒ‰è§£æ
+				'aspects.AddRange(analyzeEvent(component.ImplType))      ' ã‚¤ãƒ™ãƒ³ãƒˆè§£æ
 
-				' Getter/Setter ƒƒ\ƒbƒh‚ÌƒAƒXƒyƒNƒgì¬iƒtƒB[ƒ‹ƒh‚ÖƒAƒNƒZƒX‚·‚é‚½‚ß‚É•K—vIj
+				' Getter/Setter ãƒ¡ã‚½ãƒƒãƒ‰ã®ã‚¢ã‚¹ãƒšã‚¯ãƒˆä½œæˆï¼ˆãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã¸ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ãŸã‚ã«å¿…è¦ï¼ï¼‰
 				aspects.AddRange(_createFieldGetterSetterAspect())
 			End If
 
-			' ƒRƒ“ƒ|[ƒlƒ“ƒg‚ÖƒAƒXƒyƒNƒgİ’è
+			' ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã¸ã‚¢ã‚¹ãƒšã‚¯ãƒˆè¨­å®š
 			If component.Aspects IsNot Nothing Then
 				aspects.InsertRange(0, component.Aspects)
 			End If
 			component.Aspects = DirectCast(aspects.ToArray(GetType(IAspect)), IAspect())
 
-			' ƒtƒB[ƒ‹ƒh‚ÖƒCƒ“ƒXƒ^ƒ“ƒX‚ğ’“ü‚µA
-			' ƒCƒ“ƒXƒ^ƒ“ƒX‰»‚µ‚½ƒIƒuƒWƒFƒNƒg‚Å‰ğÍ‚ğÄ‹A
+			' ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã¸ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’æ³¨å…¥ã—ã€
+			' ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã§è§£æã‚’å†å¸°
 			Analyze(Me.FieldInject(target, field, component))
 		End Sub
 
@@ -317,9 +317,9 @@ Namespace Attr
 		End Function
 
 		''' <summary>
-		''' ƒCƒ“ƒ^ƒtƒF[ƒX‚ÌŒp³Œ³‚ğ’H‚é
+		''' ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã®ç¶™æ‰¿å…ƒã‚’è¾¿ã‚‹
 		''' </summary>
-		''' <param name="targetTyp">‘ÎÛ‚ÌType</param>
+		''' <param name="targetTyp">å¯¾è±¡ã®Type</param>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		Protected Overridable Function analyzeInterfaces(ByVal targetTyp As Type) As IAspect()
@@ -327,9 +327,9 @@ Namespace Attr
 
 			aspects = New ArrayList()
 
-			aspects.AddRange(analyzeProperty(targetTyp))	' ƒvƒƒpƒeƒB‰ğÍ
-			aspects.AddRange(analyzeMethod(targetTyp))		' ƒƒ\ƒbƒh‰ğÍ
-			'aspects.AddRange(analyzeEvent(targetTyp))	   ' ƒCƒxƒ“ƒg‰ğÍ
+			aspects.AddRange(analyzeProperty(targetTyp))	' ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£è§£æ
+			aspects.AddRange(analyzeMethod(targetTyp))		' ãƒ¡ã‚½ãƒƒãƒ‰è§£æ
+			'aspects.AddRange(analyzeEvent(targetTyp))	   ' ã‚¤ãƒ™ãƒ³ãƒˆè§£æ
 
 			If targetTyp.GetInterfaces().Length = 0 Then
 				Return DirectCast(aspects.ToArray(GetType(IAspect)), IAspect())
@@ -342,11 +342,11 @@ Namespace Attr
 		End Function
 
 		''' <summary>
-		''' ƒtƒB[ƒ‹ƒh‰ğÍ
+		''' ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰è§£æ
 		''' </summary>
-		''' <param name="target">‘ÎÛ‚Æ‚È‚éƒIƒuƒWƒFƒNƒg</param>
-		''' <param name="field">ƒtƒB[ƒ‹ƒh</param>
-		''' <returns>ì¬‚µ‚½ƒRƒ“ƒ|[ƒlƒ“ƒg</returns>
+		''' <param name="target">å¯¾è±¡ã¨ãªã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ</param>
+		''' <param name="field">ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰</param>
+		''' <returns>ä½œæˆã—ãŸã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ</returns>
 		''' <remarks></remarks>
 		Protected Overridable Function analyzeField(ByVal target As Object, ByVal field As FieldInfo) As MocaComponent
 			Dim component As MocaComponent
@@ -375,12 +375,12 @@ Namespace Attr
 		End Function
 
 #End Region
-#Region " ƒvƒƒpƒeƒB‰ğÍ "
+#Region " ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£è§£æ "
 
 		''' <summary>
-		''' ƒvƒƒpƒeƒB‰ğÍ
+		''' ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£è§£æ
 		''' </summary>
-		''' <param name="targetType">‘ÎÛ‚Æ‚È‚éŒ^</param>
+		''' <param name="targetType">å¯¾è±¡ã¨ãªã‚‹å‹</param>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		Protected Overridable Function analyzeProperty(ByVal targetType As Type) As IAspect()
@@ -399,18 +399,18 @@ Namespace Attr
 					Continue For
 				End If
 				aspects.AddRange(rc)
-				aspects.AddRange(analyzeMethod(prop.PropertyType))		' ƒƒ\ƒbƒh‰ğÍ
+				aspects.AddRange(analyzeMethod(prop.PropertyType))		' ãƒ¡ã‚½ãƒƒãƒ‰è§£æ
 			Next
 
 			Return DirectCast(aspects.ToArray(GetType(IAspect)), IAspect())
 		End Function
 
 		''' <summary>
-		''' ƒvƒƒpƒeƒB‰ğÍ
+		''' ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£è§£æ
 		''' </summary>
-		''' <param name="typ">‘ÎÛ‚Æ‚È‚éŒ^</param>
-		''' <param name="prop">ƒvƒƒpƒeƒB</param>
-		''' <returns>ƒAƒXƒyƒNƒg”z—ñ</returns>
+		''' <param name="typ">å¯¾è±¡ã¨ãªã‚‹å‹</param>
+		''' <param name="prop">ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£</param>
+		''' <returns>ã‚¢ã‚¹ãƒšã‚¯ãƒˆé…åˆ—</returns>
 		''' <remarks></remarks>
 		Protected Overridable Function analyzeProperty(ByVal typ As Type, ByVal prop As PropertyInfo) As IAspect()
 			Dim results As ArrayList
@@ -436,12 +436,12 @@ Namespace Attr
 		End Function
 
 #End Region
-#Region " ƒƒ\ƒbƒh‰ğÍ "
+#Region " ãƒ¡ã‚½ãƒƒãƒ‰è§£æ "
 
 		''' <summary>
-		''' ƒƒ\ƒbƒh‰ğÍ
+		''' ãƒ¡ã‚½ãƒƒãƒ‰è§£æ
 		''' </summary>
-		''' <param name="targetType">‘ÎÛ‚Æ‚È‚éŒ^</param>
+		''' <param name="targetType">å¯¾è±¡ã¨ãªã‚‹å‹</param>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		Protected Overridable Function analyzeMethod(ByVal targetType As Type) As IAspect()
@@ -466,11 +466,11 @@ Namespace Attr
 		End Function
 
 		''' <summary>
-		''' ƒƒ\ƒbƒh‰ğÍ
+		''' ãƒ¡ã‚½ãƒƒãƒ‰è§£æ
 		''' </summary>
-		''' <param name="typ">‘ÎÛ‚Æ‚È‚éŒ^</param>
-		''' <param name="method">ƒƒ\ƒbƒh</param>
-		''' <returns>ƒAƒXƒyƒNƒg”z—ñ</returns>
+		''' <param name="typ">å¯¾è±¡ã¨ãªã‚‹å‹</param>
+		''' <param name="method">ãƒ¡ã‚½ãƒƒãƒ‰</param>
+		''' <returns>ã‚¢ã‚¹ãƒšã‚¯ãƒˆé…åˆ—</returns>
 		''' <remarks></remarks>
 		Protected Overridable Function analyzeMethod(ByVal typ As Type, ByVal method As MethodInfo) As IAspect()
 			Dim results As ArrayList
@@ -496,10 +496,10 @@ Namespace Attr
 		End Function
 
 #End Region
-#Region " ƒCƒxƒ“ƒg‰ğÍ "
+#Region " ã‚¤ãƒ™ãƒ³ãƒˆè§£æ "
 
 		''' <summary>
-		''' ƒCƒxƒ“ƒgƒfƒŠƒQ[ƒg‰ğÍ
+		''' ã‚¤ãƒ™ãƒ³ãƒˆãƒ‡ãƒªã‚²ãƒ¼ãƒˆè§£æ
 		''' </summary>
 		''' <param name="parent"></param>
 		''' <param name="prop"></param>
@@ -516,9 +516,9 @@ Namespace Attr
 		End Sub
 
 		''' <summary>
-		''' ƒCƒxƒ“ƒg‰ğÍ
+		''' ã‚¤ãƒ™ãƒ³ãƒˆè§£æ
 		''' </summary>
-		''' <param name="targetType">‘ÎÛ‚Æ‚È‚éŒ^</param>
+		''' <param name="targetType">å¯¾è±¡ã¨ãªã‚‹å‹</param>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		Protected Overridable Function analyzeEvent(ByVal targetType As Type) As IAspect()
@@ -543,11 +543,11 @@ Namespace Attr
 		End Function
 
 		''' <summary>
-		''' ƒCƒxƒ“ƒg‰ğÍ
+		''' ã‚¤ãƒ™ãƒ³ãƒˆè§£æ
 		''' </summary>
-		''' <param name="typ">‘ÎÛ‚Æ‚È‚éŒ^</param>
-		''' <param name="method">ƒCƒxƒ“ƒg</param>
-		''' <returns>ƒAƒXƒyƒNƒg”z—ñ</returns>
+		''' <param name="typ">å¯¾è±¡ã¨ãªã‚‹å‹</param>
+		''' <param name="method">ã‚¤ãƒ™ãƒ³ãƒˆ</param>
+		''' <returns>ã‚¢ã‚¹ãƒšã‚¯ãƒˆé…åˆ—</returns>
 		''' <remarks></remarks>
 		Protected Overridable Function analyzeEvent(ByVal typ As Type, ByVal method As EventInfo) As IAspect()
 			Dim results As ArrayList
@@ -575,12 +575,12 @@ Namespace Attr
 #End Region
 
 		' ''' <summary>
-		' ''' ƒtƒB[ƒ‹ƒh‚ÖƒCƒ“ƒXƒ^ƒ“ƒX‚Ì’“ü
+		' ''' ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã¸ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®æ³¨å…¥
 		' ''' </summary>
-		' ''' <param name="target">‘ÎÛ‚Æ‚È‚éƒIƒuƒWƒFƒNƒg</param>
-		' ''' <param name="field">‘ÎÛ‚Æ‚È‚éƒtƒB[ƒ‹ƒh</param>
-		' ''' <param name="component">‘ÎÛ‚Æ‚È‚éƒRƒ“ƒ|[ƒlƒ“ƒg</param>
-		' ''' <returns>¶¬‚µ‚½ƒCƒ“ƒXƒ^ƒ“ƒX</returns>
+		' ''' <param name="target">å¯¾è±¡ã¨ãªã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ</param>
+		' ''' <param name="field">å¯¾è±¡ã¨ãªã‚‹ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰</param>
+		' ''' <param name="component">å¯¾è±¡ã¨ãªã‚‹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ</param>
+		' ''' <returns>ç”Ÿæˆã—ãŸã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</returns>
 		' ''' <remarks></remarks>
 		'Protected Overridable Function inject(ByVal target As Object, ByVal field As FieldInfo, ByVal component As MocaComponent) As Object
 		'	Dim instance As Object
@@ -590,7 +590,7 @@ Namespace Attr
 		'End Function
 
 		''' <summary>
-		''' ƒRƒ“ƒ|[ƒlƒ“ƒg‚©‚çÀ‘Ô‰»
+		''' ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‹ã‚‰å®Ÿæ…‹åŒ–
 		''' </summary>
 		''' <param name="component"></param>
 		''' <returns></returns>
@@ -600,7 +600,7 @@ Namespace Attr
 		End Function
 
 		''' <summary>
-		''' ƒRƒ“ƒ|[ƒlƒ“ƒg‚©‚çÀ‘Ô‰»
+		''' ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‹ã‚‰å®Ÿæ…‹åŒ–
 		''' </summary>
 		''' <param name="component"></param>
 		''' <returns></returns>
@@ -610,7 +610,7 @@ Namespace Attr
 		End Function
 
 		''' <summary>
-		''' ‰ğÍœŠOƒ`ƒFƒbƒN
+		''' è§£æé™¤å¤–ãƒã‚§ãƒƒã‚¯
 		''' </summary>
 		''' <param name="val"></param>
 		''' <returns></returns>
@@ -628,7 +628,7 @@ Namespace Attr
 #End Region
 
 		''' <summary>
-		''' ƒtƒB[ƒ‹ƒhƒCƒ“ƒWƒFƒNƒVƒ‡ƒ“ƒfƒŠƒQ[ƒgƒvƒƒpƒeƒB
+		''' ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã‚¤ãƒ³ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³ãƒ‡ãƒªã‚²ãƒ¼ãƒˆãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -646,7 +646,7 @@ Namespace Attr
 		End Property
 
 		''' <summary>
-		''' À‘•ÀŒ±’†
+		''' å®Ÿè£…å®Ÿé¨“ä¸­
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -661,10 +661,10 @@ Namespace Attr
 		End Property
 
 		''' <summary>
-		''' ‚P‘®«‰ğÍ‚ğ’Ç‰Á‚·‚é
+		''' ï¼‘å±æ€§è§£æã‚’è¿½åŠ ã™ã‚‹
 		''' </summary>
-		''' <param name="attributeTarget">‰ğÍƒ^[ƒQƒbƒg</param>
-		''' <param name="analyzer">‘®«‰ğÍ‹@</param>
+		''' <param name="attributeTarget">è§£æã‚¿ãƒ¼ã‚²ãƒƒãƒˆ</param>
+		''' <param name="analyzer">å±æ€§è§£ææ©Ÿ</param>
 		''' <remarks></remarks>
 		Public Sub Add(ByVal attributeTarget As AttributeAnalyzerTargets, ByVal analyzer As IAttributeAnalyzer)
 			If Not _analyzers.ContainsKey(attributeTarget) Then
@@ -677,7 +677,7 @@ Namespace Attr
 		End Sub
 
 		''' <summary>
-		''' ‰ğÍ‚ğœŠO‚·‚éNamespace‚ğ’Ç‰Á‚·‚é
+		''' è§£æã‚’é™¤å¤–ã™ã‚‹Namespaceã‚’è¿½åŠ ã™ã‚‹
 		''' </summary>
 		''' <param name="val"></param>
 		''' <remarks></remarks>
@@ -690,12 +690,12 @@ Namespace Attr
 		End Sub
 
 		''' <summary>
-		''' ƒtƒB[ƒ‹ƒh‚ÖƒCƒ“ƒXƒ^ƒ“ƒX‚Ì’“ü
+		''' ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã¸ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®æ³¨å…¥
 		''' </summary>
-		''' <param name="target">‘ÎÛ‚Æ‚È‚éƒIƒuƒWƒFƒNƒg</param>
-		''' <param name="field">‘ÎÛ‚Æ‚È‚éƒtƒB[ƒ‹ƒh</param>
-		''' <param name="component">‘ÎÛ‚Æ‚È‚éƒRƒ“ƒ|[ƒlƒ“ƒg</param>
-		''' <returns>¶¬‚µ‚½ƒCƒ“ƒXƒ^ƒ“ƒX</returns>
+		''' <param name="target">å¯¾è±¡ã¨ãªã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ</param>
+		''' <param name="field">å¯¾è±¡ã¨ãªã‚‹ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰</param>
+		''' <param name="component">å¯¾è±¡ã¨ãªã‚‹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ</param>
+		''' <returns>ç”Ÿæˆã—ãŸã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</returns>
 		''' <remarks></remarks>
 		Protected Function inject(ByVal target As Object, ByVal field As FieldInfo, ByVal component As MocaComponent) As Object
 			Dim instance As Object

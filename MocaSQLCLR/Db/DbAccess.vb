@@ -1,4 +1,4 @@
-Imports System.Configuration
+ï»¿Imports System.Configuration
 Imports System.Data.Common
 Imports System.Reflection
 Imports Moca.Db.CommandWrapper
@@ -7,7 +7,7 @@ Imports Moca.Util
 Namespace Db
 
 	''' <summary>
-	''' DB‚ÖƒAƒNƒZƒX‚·‚éˆ×‚ÌŠî–{“I‚È‹@”\‚ğ’ñ‹Ÿ‚·‚é
+	''' DBã¸ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ç‚ºã®åŸºæœ¬çš„ãªæ©Ÿèƒ½ã‚’æä¾›ã™ã‚‹
 	''' </summary>
 	''' <remarks>
 	''' 
@@ -16,9 +16,9 @@ Namespace Db
 		Inherits AbstractDao
 		Implements IDbAccess
 
-		''' <summary>ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒIƒuƒWƒFƒNƒg</summary>
+		''' <summary>ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ</summary>
 		Private _tx As IDbTransaction
-		''' <summary>ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒXƒR[ƒvƒIƒuƒWƒFƒNƒg</summary>
+		''' <summary>ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚¹ã‚³ãƒ¼ãƒ—ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ</summary>
 		Private _txs As Transactions.TransactionScope
 
 #Region " IDisposable Support "
@@ -39,18 +39,18 @@ Namespace Db
 #Region " Constructor/DeConstructor "
 
 		''' <summary>
-		''' ƒfƒtƒHƒ‹ƒgƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		''' ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		''' </summary>
 		''' <remarks>
-		''' ŠO•”‚©‚ç‚Í—˜—p•s‰Â
+		''' å¤–éƒ¨ã‹ã‚‰ã¯åˆ©ç”¨ä¸å¯
 		''' </remarks>
 		Protected Sub New()
 		End Sub
 
 		''' <summary>
-		''' ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		''' ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		''' </summary>
-		''' <param name="myDbms">Ú‘±æ‚ÌDBMS</param>
+		''' <param name="myDbms">æ¥ç¶šå…ˆã®DBMS</param>
 		''' <remarks></remarks>
 		Public Sub New(ByVal myDbms As Dbms)
 			MyBase.New(myDbms)
@@ -60,7 +60,7 @@ Namespace Db
 #Region " Property "
 
 		''' <summary>
-		''' ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒXƒR[ƒvƒIƒuƒWƒFƒNƒg
+		''' ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚¹ã‚³ãƒ¼ãƒ—ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 		''' </summary>
 		''' <value></value>
 		''' <remarks></remarks>
@@ -71,7 +71,7 @@ Namespace Db
 		End Property
 
 		''' <summary>
-		''' ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒIƒuƒWƒFƒNƒg
+		''' ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 		''' </summary>
 		''' <value></value>
 		''' <remarks>
@@ -86,14 +86,14 @@ Namespace Db
 #Region " Transaction "
 
 		''' <summary>
-		''' ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒXƒR[ƒv‚ğì¬‚·‚é
+		''' ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚¹ã‚³ãƒ¼ãƒ—ã‚’ä½œæˆã™ã‚‹
 		''' </summary>
-		''' <returns>ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒXƒR[ƒv</returns>
+		''' <returns>ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚¹ã‚³ãƒ¼ãƒ—</returns>
 		''' <remarks></remarks>
 		Public Overridable Function NewTransactionScope() As Transactions.TransactionScope Implements IDbAccess.NewTransactionScope
 			Try
 				If _tx IsNot Nothing Then
-					Throw New DbAccessException(Me, "Šù‚É TransactionStart ƒƒ\ƒbƒh‚É‚Äƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ªŠJn‚³‚ê‚Ä‚¢‚Ü‚·B")
+					Throw New DbAccessException(Me, "æ—¢ã« TransactionStart ãƒ¡ã‚½ãƒƒãƒ‰ã«ã¦ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãŒé–‹å§‹ã•ã‚Œã¦ã„ã¾ã™ã€‚")
 				End If
 				If _txs IsNot Nothing Then
 					Return _txs
@@ -107,12 +107,12 @@ Namespace Db
 		End Function
 
 		''' <summary>
-		''' ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒXƒR[ƒv‚ğŠ®—¹‚·‚é
+		''' ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚¹ã‚³ãƒ¼ãƒ—ã‚’å®Œäº†ã™ã‚‹
 		''' </summary>
 		''' <remarks></remarks>
 		Public Overridable Sub TransactionComplete() Implements IDbAccess.TransactionComplete
 			If _tx IsNot Nothing Then
-				Throw New DbAccessException(Me, "Šù‚É TransactionStart ƒƒ\ƒbƒh‚É‚Äƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ªŠJn‚³‚ê‚Ä‚¢‚Ü‚·B")
+				Throw New DbAccessException(Me, "æ—¢ã« TransactionStart ãƒ¡ã‚½ãƒƒãƒ‰ã«ã¦ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãŒé–‹å§‹ã•ã‚Œã¦ã„ã¾ã™ã€‚")
 			End If
 			If _txs Is Nothing Then
 				Exit Sub
@@ -131,18 +131,18 @@ Namespace Db
 		End Sub
 
 		''' <summary>
-		''' ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ğŠJn‚·‚é
+		''' ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚’é–‹å§‹ã™ã‚‹
 		''' </summary>
 		''' <remarks>
-		''' ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ğg—p‚·‚éê‡‚Í–‘O‚ÉDB‚Ö‚ÌÚ‘±‚ª•K—v‚Èˆ×A©“®‚ÅDB‚Æ‚ÌÚ‘±‚ğs‚¢‚Ü‚·B
+		''' ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã¯äº‹å‰ã«DBã¸ã®æ¥ç¶šãŒå¿…è¦ãªç‚ºã€è‡ªå‹•ã§DBã¨ã®æ¥ç¶šã‚’è¡Œã„ã¾ã™ã€‚
 		''' </remarks>
 		''' <exception cref="DbAccessException">
-		''' DBƒAƒNƒZƒX‚ÅƒGƒ‰[‚ª”­¶‚µ‚½
+		''' DBã‚¢ã‚¯ã‚»ã‚¹ã§ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸ
 		''' </exception>
 		Public Overridable Sub TransactionStart() Implements IDbAccess.TransactionStart
 			Try
 				If _txs IsNot Nothing Then
-					Throw New DbAccessException(Me, "Šù‚É TransactionScope ƒƒ\ƒbƒh‚É‚Äƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ªŠJn‚³‚ê‚Ä‚¢‚Ü‚·B")
+					Throw New DbAccessException(Me, "æ—¢ã« TransactionScope ãƒ¡ã‚½ãƒƒãƒ‰ã«ã¦ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ãŒé–‹å§‹ã•ã‚Œã¦ã„ã¾ã™ã€‚")
 				End If
 				If _tx IsNot Nothing Then
 					Exit Sub
@@ -155,11 +155,11 @@ Namespace Db
 		End Sub
 
 		''' <summary>
-		''' ‘¼‚ÌDBAccessƒNƒ‰ƒX‚Æƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ğ“¯‚¶‚É‚·‚é
+		''' ä»–ã®DBAccessã‚¯ãƒ©ã‚¹ã¨ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚’åŒã˜ã«ã™ã‚‹
 		''' </summary>
-		''' <param name="dba">“¯Šú‚·‚éDbAccessƒCƒ“ƒXƒ^ƒ“ƒX</param>
+		''' <param name="dba">åŒæœŸã™ã‚‹DbAccessã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</param>
 		''' <remarks>
-		''' ƒRƒlƒNƒVƒ‡ƒ“ƒIƒuƒWƒFƒNƒg‚Æƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“ƒIƒuƒWƒFƒNƒg‚ğw’è‚³‚ê‚½DbAccess‚ÌƒIƒuƒWƒFƒNƒg‚Åã‘‚«‚µ‚Ü‚·B
+		''' ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æŒ‡å®šã•ã‚ŒãŸDbAccessã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã§ä¸Šæ›¸ãã—ã¾ã™ã€‚
 		''' </remarks>
 		Public Overridable Sub TransactionBinding(ByVal dba As IDbAccess) Implements IDbAccess.TransactionBinding
 			Me.ConnectionJoin = dba.Connection
@@ -167,13 +167,13 @@ Namespace Db
 		End Sub
 
 		''' <summary>
-		''' ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ğI—¹‚·‚éiƒRƒ~ƒbƒgj
+		''' ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚’çµ‚äº†ã™ã‚‹ï¼ˆã‚³ãƒŸãƒƒãƒˆï¼‰
 		''' </summary>
 		''' <remarks>
-		''' DB‚Æ‚ÌÚ‘±‚ğØ’f‚µ‚Ü‚·B
+		''' DBã¨ã®æ¥ç¶šã‚’åˆ‡æ–­ã—ã¾ã™ã€‚
 		''' </remarks>
 		''' <exception cref="DbAccessException">
-		''' DBƒAƒNƒZƒX‚ÅƒGƒ‰[‚ª”­¶‚µ‚½
+		''' DBã‚¢ã‚¯ã‚»ã‚¹ã§ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸ
 		''' </exception>
 		Public Overridable Sub TransactionEnd() Implements IDbAccess.TransactionEnd
 			If _tx Is Nothing Then
@@ -194,13 +194,13 @@ Namespace Db
 		End Sub
 
 		''' <summary>
-		''' ƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ğƒ[ƒ‹ƒoƒbƒN‚·‚é
+		''' ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã‚’ãƒ­ãƒ¼ãƒ«ãƒãƒƒã‚¯ã™ã‚‹
 		''' </summary>
 		''' <remarks>
-		''' DB‚Æ‚ÌÚ‘±‚ğØ’f‚µ‚Ü‚·B
+		''' DBã¨ã®æ¥ç¶šã‚’åˆ‡æ–­ã—ã¾ã™ã€‚
 		''' </remarks>
 		''' <exception cref="DbAccessException">
-		''' DBƒAƒNƒZƒX‚ÅƒGƒ‰[‚ª”­¶‚µ‚½
+		''' DBã‚¢ã‚¯ã‚»ã‚¹ã§ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸ
 		''' </exception>
 		Public Overridable Sub TransactionRollback() Implements IDbAccess.TransactionRollback
 			If _tx Is Nothing Then
@@ -224,14 +224,14 @@ Namespace Db
 #Region " Create "
 
 		''' <summary>
-		''' w’è‚³‚ê‚½ƒ^ƒCƒv‚ÌDbCommandƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚·‚é
+		''' æŒ‡å®šã•ã‚ŒãŸã‚¿ã‚¤ãƒ—ã®DbCommandã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹
 		''' </summary>
-		''' <param name="sqlCommandType">ƒRƒ}ƒ“ƒhí•Ê</param>
-		''' <param name="commandText">Às‚·‚éSQL•¶–”‚ÍAƒXƒgƒAƒh–¼</param>
-		''' <param name="useConn">g—p‚·‚éƒRƒlƒNƒVƒ‡ƒ“</param>
-		''' <returns>w’è‚³‚ê‚½ƒ^ƒCƒv‚ÌƒCƒ“ƒXƒ^ƒ“ƒX</returns>
+		''' <param name="sqlCommandType">ã‚³ãƒãƒ³ãƒ‰ç¨®åˆ¥</param>
+		''' <param name="commandText">å®Ÿè¡Œã™ã‚‹SQLæ–‡åˆã¯ã€ã‚¹ãƒˆã‚¢ãƒ‰å</param>
+		''' <param name="useConn">ä½¿ç”¨ã™ã‚‹ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³</param>
+		''' <returns>æŒ‡å®šã•ã‚ŒãŸã‚¿ã‚¤ãƒ—ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</returns>
 		''' <remarks>
-		''' ƒRƒ}ƒ“ƒhí•Ê‚ÉŠY“–‚·‚éISqlCommand‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ğ¶¬‚µ‚Ü‚·B<br/>
+		''' ã‚³ãƒãƒ³ãƒ‰ç¨®åˆ¥ã«è©²å½“ã™ã‚‹ISqlCommandã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç”Ÿæˆã—ã¾ã™ã€‚<br/>
 		''' <list>
 		''' <item><term>SelectText</term><description>ISelectCommand</description></item>
 		''' <item><term>Select4Update</term><description>ISelect4UpdateCommand</description></item>
@@ -243,7 +243,7 @@ Namespace Db
 		''' </list>
 		''' </remarks>
 		''' <exception cref="DbAccessException">
-		''' DBƒAƒNƒZƒX‚ÅƒGƒ‰[‚ª”­¶‚µ‚½
+		''' DBã‚¢ã‚¯ã‚»ã‚¹ã§ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸ
 		''' </exception>
 		Protected Friend Overrides Function createCommandWrapper(ByVal sqlCommandType As SQLCommandTypes, ByVal commandText As String, ByVal useConn As System.Data.IDbConnection) As IDbCommandSql
 			Dim cmdWrapper As IDbCommandSql
@@ -258,88 +258,88 @@ Namespace Db
 #Region " Execute "
 
 		''' <summary>
-		''' INSERT•¶‚ÌÀs
+		''' INSERTæ–‡ã®å®Ÿè¡Œ
 		''' </summary>
-		''' <param name="commandWrapper">INSERT•¶‚ğÀs‚·‚éˆ×‚ÌDBCommand‚Ìƒ‰ƒbƒp[ƒCƒ“ƒXƒ^ƒ“ƒX</param>
-		''' <returns>XVŒ”</returns>
+		''' <param name="commandWrapper">INSERTæ–‡ã‚’å®Ÿè¡Œã™ã‚‹ç‚ºã®DBCommandã®ãƒ©ãƒƒãƒ‘ãƒ¼ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</param>
+		''' <returns>æ›´æ–°ä»¶æ•°</returns>
 		''' <remarks>
-		''' “–ƒƒ\ƒbƒh‚ğg—p‚·‚éê‡‚ÍAƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ÌŠJn<see cref="DBAccess.TransactionStart"></see>AI—¹<see cref="DBAccess.TransactionEnd"></see>‚ğs‚Á‚Ä‚­‚¾‚³‚¢B
+		''' å½“ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã¯ã€ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®é–‹å§‹<see cref="DBAccess.TransactionStart"></see>ã€çµ‚äº†<see cref="DBAccess.TransactionEnd"></see>ã‚’è¡Œã£ã¦ãã ã•ã„ã€‚
 		''' </remarks>
 		''' <exception cref="DbAccessException">
-		''' DBƒAƒNƒZƒX‚ÅƒGƒ‰[‚ª”­¶‚µ‚½
+		''' DBã‚¢ã‚¯ã‚»ã‚¹ã§ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸ
 		''' </exception>
 		Public Overloads Function ExecuteNonQuery(ByVal commandWrapper As IDbCommandInsert) As Integer Implements IDbAccess.ExecuteNonQuery
 			Return ExecuteNonQuery(commandWrapper)
 		End Function
 
 		''' <summary>
-		''' UPDATE•¶‚ÌÀs
+		''' UPDATEæ–‡ã®å®Ÿè¡Œ
 		''' </summary>
-		''' <param name="commandWrapper">UPDATE•¶‚ğÀs‚·‚éˆ×‚ÌDBCommand‚Ìƒ‰ƒbƒp[ƒCƒ“ƒXƒ^ƒ“ƒX</param>
-		''' <returns>XVŒ”</returns>
+		''' <param name="commandWrapper">UPDATEæ–‡ã‚’å®Ÿè¡Œã™ã‚‹ç‚ºã®DBCommandã®ãƒ©ãƒƒãƒ‘ãƒ¼ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</param>
+		''' <returns>æ›´æ–°ä»¶æ•°</returns>
 		''' <remarks>
-		''' “–ƒƒ\ƒbƒh‚ğg—p‚·‚éê‡‚ÍAƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ÌŠJn<see cref="DBAccess.TransactionStart"></see>AI—¹<see cref="DBAccess.TransactionEnd"></see>‚ğs‚Á‚Ä‚­‚¾‚³‚¢B
+		''' å½“ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã¯ã€ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®é–‹å§‹<see cref="DBAccess.TransactionStart"></see>ã€çµ‚äº†<see cref="DBAccess.TransactionEnd"></see>ã‚’è¡Œã£ã¦ãã ã•ã„ã€‚
 		''' </remarks>
 		''' <exception cref="DbAccessException">
-		''' DBƒAƒNƒZƒX‚ÅƒGƒ‰[‚ª”­¶‚µ‚½
+		''' DBã‚¢ã‚¯ã‚»ã‚¹ã§ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸ
 		''' </exception>
 		Public Overloads Function ExecuteNonQuery(ByVal commandWrapper As IDbCommandUpdate) As Integer Implements IDbAccess.ExecuteNonQuery
 			Return ExecuteNonQuery(commandWrapper)
 		End Function
 
 		''' <summary>
-		''' DELETE•¶‚ÌÀs
+		''' DELETEæ–‡ã®å®Ÿè¡Œ
 		''' </summary>
-		''' <param name="commandWrapper">DELETE•¶‚ğÀs‚·‚éˆ×‚ÌDBCommand‚Ìƒ‰ƒbƒp[ƒCƒ“ƒXƒ^ƒ“ƒX</param>
-		''' <returns>XVŒ”</returns>
+		''' <param name="commandWrapper">DELETEæ–‡ã‚’å®Ÿè¡Œã™ã‚‹ç‚ºã®DBCommandã®ãƒ©ãƒƒãƒ‘ãƒ¼ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</param>
+		''' <returns>æ›´æ–°ä»¶æ•°</returns>
 		''' <remarks>
-		''' “–ƒƒ\ƒbƒh‚ğg—p‚·‚éê‡‚ÍAƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ÌŠJn<see cref="DBAccess.TransactionStart"></see>AI—¹<see cref="DBAccess.TransactionEnd"></see>‚ğs‚Á‚Ä‚­‚¾‚³‚¢B
+		''' å½“ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã¯ã€ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®é–‹å§‹<see cref="DBAccess.TransactionStart"></see>ã€çµ‚äº†<see cref="DBAccess.TransactionEnd"></see>ã‚’è¡Œã£ã¦ãã ã•ã„ã€‚
 		''' </remarks>
 		''' <exception cref="DbAccessException">
-		''' DBƒAƒNƒZƒX‚ÅƒGƒ‰[‚ª”­¶‚µ‚½
+		''' DBã‚¢ã‚¯ã‚»ã‚¹ã§ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸ
 		''' </exception>
 		Public Overloads Function ExecuteNonQuery(ByVal commandWrapper As IDbCommandDelete) As Integer Implements IDbAccess.ExecuteNonQuery
 			Return ExecuteNonQuery(commandWrapper)
 		End Function
 
 		''' <summary>
-		''' ƒXƒgƒAƒh‚ÌÀs
+		''' ã‚¹ãƒˆã‚¢ãƒ‰ã®å®Ÿè¡Œ
 		''' </summary>
-		''' <param name="commandWrapper">ƒXƒgƒAƒh‚ğÀs‚·‚éˆ×‚ÌDBCommand‚Ìƒ‰ƒbƒp[ƒCƒ“ƒXƒ^ƒ“ƒX</param>
-		''' <returns>XVŒ”</returns>
+		''' <param name="commandWrapper">ã‚¹ãƒˆã‚¢ãƒ‰ã‚’å®Ÿè¡Œã™ã‚‹ç‚ºã®DBCommandã®ãƒ©ãƒƒãƒ‘ãƒ¼ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</param>
+		''' <returns>æ›´æ–°ä»¶æ•°</returns>
 		''' <remarks>
-		''' “–ƒƒ\ƒbƒh‚ğg—p‚·‚éê‡‚ÍAƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ÌŠJn<see cref="DBAccess.TransactionStart"></see>AI—¹<see cref="DBAccess.TransactionEnd"></see>‚ğs‚Á‚Ä‚­‚¾‚³‚¢B
+		''' å½“ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã¯ã€ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®é–‹å§‹<see cref="DBAccess.TransactionStart"></see>ã€çµ‚äº†<see cref="DBAccess.TransactionEnd"></see>ã‚’è¡Œã£ã¦ãã ã•ã„ã€‚
 		''' </remarks>
 		''' <exception cref="DbAccessException">
-		''' DBƒAƒNƒZƒX‚ÅƒGƒ‰[‚ª”­¶‚µ‚½
+		''' DBã‚¢ã‚¯ã‚»ã‚¹ã§ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸ
 		''' </exception>
 		Public Overloads Function ExecuteNonQuery(ByVal commandWrapper As IDbCommandStoredProcedure) As Integer Implements IDbAccess.ExecuteNonQuery
 			Return ExecuteNonQuery(commandWrapper)
 		End Function
 
 		''' <summary>
-		''' DDL‚ÌÀs
+		''' DDLã®å®Ÿè¡Œ
 		''' </summary>
-		''' <param name="commandWrapper">DDL‚ğÀs‚·‚éˆ×‚ÌDBCommand‚Ìƒ‰ƒbƒp[ƒCƒ“ƒXƒ^ƒ“ƒX</param>
-		''' <returns>XVŒ”</returns>
+		''' <param name="commandWrapper">DDLã‚’å®Ÿè¡Œã™ã‚‹ç‚ºã®DBCommandã®ãƒ©ãƒƒãƒ‘ãƒ¼ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</param>
+		''' <returns>æ›´æ–°ä»¶æ•°</returns>
 		''' <remarks>
-		''' “–ƒƒ\ƒbƒh‚ğg—p‚·‚éê‡‚ÍAƒgƒ‰ƒ“ƒUƒNƒVƒ‡ƒ“‚ÌŠJn<see cref="DBAccess.TransactionStart"></see>AI—¹<see cref="DBAccess.TransactionEnd"></see>‚ğs‚Á‚Ä‚­‚¾‚³‚¢B
+		''' å½“ãƒ¡ã‚½ãƒƒãƒ‰ã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã¯ã€ãƒˆãƒ©ãƒ³ã‚¶ã‚¯ã‚·ãƒ§ãƒ³ã®é–‹å§‹<see cref="DBAccess.TransactionStart"></see>ã€çµ‚äº†<see cref="DBAccess.TransactionEnd"></see>ã‚’è¡Œã£ã¦ãã ã•ã„ã€‚
 		''' </remarks>
 		''' <exception cref="DbAccessException">
-		''' DBƒAƒNƒZƒX‚ÅƒGƒ‰[‚ª”­¶‚µ‚½
+		''' DBã‚¢ã‚¯ã‚»ã‚¹ã§ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸ
 		''' </exception>
 		Public Overloads Function ExecuteNonQuery(ByVal commandWrapper As IDbCommandDDL) As Integer Implements IDbAccess.ExecuteNonQuery
 			Return ExecuteNonQuery(commandWrapper)
 		End Function
 
 		''' <summary>
-		''' ƒf[ƒ^‚ğXV
+		''' ãƒ‡ãƒ¼ã‚¿ã‚’æ›´æ–°
 		''' </summary>
-		''' <param name="commandWrapper">XV‚ğÀs‚·‚éˆ×‚ÌDBCommand‚Ìƒ‰ƒbƒp[ƒCƒ“ƒXƒ^ƒ“ƒX</param>
+		''' <param name="commandWrapper">æ›´æ–°ã‚’å®Ÿè¡Œã™ã‚‹ç‚ºã®DBCommandã®ãƒ©ãƒƒãƒ‘ãƒ¼ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</param>
 		''' <returns></returns>
 		''' <remarks></remarks>
 		''' <exception cref="DbAccessException">
-		''' DBƒAƒNƒZƒX‚ÅƒGƒ‰[‚ª”­¶‚µ‚½
+		''' DBã‚¢ã‚¯ã‚»ã‚¹ã§ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸ
 		''' </exception>
 		Public Overloads Function ExecuteNonQuery(ByVal commandWrapper As IDbCommandSelect4Update) As Integer Implements IDbAccess.ExecuteNonQuery
 			Return UpdateAdapter(commandWrapper.ResultDataSet, commandWrapper.Adapter)

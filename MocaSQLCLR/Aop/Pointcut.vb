@@ -1,25 +1,25 @@
-
+﻿
 Namespace Aop
 
 	''' <summary>
-	''' Joinpoint�̂����AAdvice��K�p������Joinpoint�𐳋K�\���Ȃǂ�p�����������g�p���či�荞�ނ��߂̃t�B���^�ł��B
-	''' �Ⴆ�΁AAdvice��K�p�������̂́uadd�v�ł͂��܂郁�\�b�h�����s���ꂽ���������Ƃ���ƁA
-	''' �������uadd*�v�Ƃ��či�荞�܂ꂽaddXxx���\�b�h�����s���ꂽ��������Advice�����s�����悤�ɂ��ł��܂��B
-	''' �����ł͎w�肳�ꂽ���\�b�h�����񂪈�v����Ƃ�����Advice�����s�����悤�ɂ��܂��B
+	''' Joinpointのうち、Adviceを適用したいJoinpointを正規表現などを用いた条件を使用して絞り込むためのフィルタです。
+	''' 例えば、Adviceを適用したいのは「add」ではじまるメソッドが実行された時だけだとすると、
+	''' 条件を「add*」として絞り込まれたaddXxxメソッドが実行された時だけにAdviceが実行されるようにもできます。
+	''' ここでは指定されたメソッド文字列が一致するときだけAdviceが実行されるようにします。
 	''' </summary>
 	''' <remarks></remarks>
 	Public Class Pointcut
 		Implements IPointcut
 
-		''' <summary>���\�b�h���̕����񃊃X�g</summary>
+		''' <summary>メソッド名の文字列リスト</summary>
 		Private _patterns As IList(Of String)
 
-#Region " �R���X�g���N�^ "
+#Region " コンストラクタ "
 
 		''' <summary>
-		''' �R���X�g���N�^
+		''' コンストラクタ
 		''' </summary>
-		''' <param name="names">���\�b�h���̕�����z��</param>
+		''' <param name="names">メソッド名の文字列配列</param>
 		''' <remarks></remarks>
 		Public Sub New(ByVal names() As String)
 			_patterns = New List(Of String)(names)
@@ -27,10 +27,10 @@ Namespace Aop
 
 #End Region
 
-#Region " �v���p�e�B "
+#Region " プロパティ "
 
 		''' <summary>
-		''' ���\�b�h���̕����񃊃X�g
+		''' メソッド名の文字列リスト
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -44,10 +44,10 @@ Namespace Aop
 #End Region
 
 		''' <summary>
-		''' �����œn���ꂽ���\�b�h����Advice��}�����邩�m�F���܂��B
+		''' 引数で渡されたメソッド名にAdviceを挿入するか確認します。
 		''' </summary>
-		''' <param name="pattern">���\�b�h��</param>
-		''' <returns>True�Ȃ�Advice��}������AFalse�Ȃ�Advice�͑}������Ȃ�</returns>
+		''' <param name="pattern">メソッド名</param>
+		''' <returns>TrueならAdviceを挿入する、FalseならAdviceは挿入されない</returns>
 		''' <remarks></remarks>
 		Public Function IsExecution(ByVal pattern As String) As Boolean Implements IPointcut.IsExecution
 			Return _patterns.Contains(pattern)

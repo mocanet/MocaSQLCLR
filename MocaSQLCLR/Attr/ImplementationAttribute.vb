@@ -1,4 +1,4 @@
-
+﻿
 Imports System.Reflection
 Imports Moca.Di
 Imports Moca.Util
@@ -6,35 +6,35 @@ Imports Moca.Util
 Namespace Attr
 
 	''' <summary>
-	''' ���Ԃ��w�肷�鑮��
+	''' 実態を指定する属性
 	''' </summary>
 	''' <remarks>
-	''' Interface���́AField�݂̂Ɏw��ł��܂��B<br/>
-	''' ���̑������w�肳�ꂽ�C���^�t�F�[�X�́A�����I�Ɉ����̃N���X�^�C�v���C���X�^���X�����ăt�B�[���h�֒������邱�Ƃ��o���܂��B<br/>
+	''' Interface又は、Fieldのみに指定できます。<br/>
+	''' この属性を指定されたインタフェースは、自動的に引数のクラスタイプをインスタンス化してフィールドへ注入することが出来ます。<br/>
 	''' </remarks>
 	<AttributeUsage(AttributeTargets.Interface Or AttributeTargets.Field)> _
 	Public Class ImplementationAttribute
 		Inherits Attribute
 
-		''' <summary>�w�肳�ꂽ���̉�����N���X�^�C�v</summary>
+		''' <summary>指定された実体化するクラスタイプ</summary>
 		Private _type As Type
 
-#Region " �R���X�g���N�^ "
+#Region " コンストラクタ "
 
 		''' <summary>
-		''' �R���X�g���N�^
+		''' コンストラクタ
 		''' </summary>
-		''' <param name="typ">�N���X�^�C�v</param>
+		''' <param name="typ">クラスタイプ</param>
 		''' <remarks></remarks>
 		Public Sub New(ByVal typ As Type)
 			_type = typ
 		End Sub
 
 #End Region
-#Region " �v���p�e�B "
+#Region " プロパティ "
 
 		''' <summary>
-		''' �N���X�^�C�v�v���p�e�B
+		''' クラスタイププロパティ
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -48,10 +48,10 @@ Namespace Attr
 #End Region
 
 		''' <summary>
-		''' �R���|�[�l���g�쐬
+		''' コンポーネント作成
 		''' </summary>
-		''' <param name="field">�t�B�[���h</param>
-		''' <returns>�R���|�[�l���g</returns>
+		''' <param name="field">フィールド</param>
+		''' <returns>コンポーネント</returns>
 		''' <remarks></remarks>
 		Public Function CreateComponent(ByVal field As FieldInfo) As MocaComponent
 			Dim component As MocaComponent

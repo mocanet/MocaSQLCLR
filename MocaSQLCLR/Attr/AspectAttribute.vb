@@ -1,4 +1,4 @@
-
+ï»¿
 Imports System.Reflection
 Imports Moca.Aop
 Imports Moca.Util
@@ -6,35 +6,35 @@ Imports Moca.Util
 Namespace Attr
 
 	''' <summary>
-	''' ƒAƒXƒyƒNƒg‘®«
+	''' ã‚¢ã‚¹ãƒšã‚¯ãƒˆå±æ€§
 	''' </summary>
 	''' <remarks>
-	''' ƒAƒXƒyƒNƒg‚µ‚½‚¢‚Æ‚«‚Éw’è‚·‚éB
-	''' ƒƒ\ƒbƒh‚Ì‚İw’è‰Â”\‚Å‚·B
+	''' ã‚¢ã‚¹ãƒšã‚¯ãƒˆã—ãŸã„ã¨ãã«æŒ‡å®šã™ã‚‹ã€‚
+	''' ãƒ¡ã‚½ãƒƒãƒ‰ã®ã¿æŒ‡å®šå¯èƒ½ã§ã™ã€‚
 	''' </remarks>
 	<AttributeUsage(AttributeTargets.Method, allowmultiple:=True)> _
 	Public Class AspectAttribute
 		Inherits Attribute
 
-		''' <summary>w’è‚³‚ê‚½À‘Ì‰»‚·‚éƒNƒ‰ƒXƒ^ƒCƒv</summary>
+		''' <summary>æŒ‡å®šã•ã‚ŒãŸå®Ÿä½“åŒ–ã™ã‚‹ã‚¯ãƒ©ã‚¹ã‚¿ã‚¤ãƒ—</summary>
 		Private _type As Type
 
-#Region " ƒRƒ“ƒXƒgƒ‰ƒNƒ^ "
+#Region " ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ "
 
 		''' <summary>
-		''' ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		''' ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		''' </summary>
-		''' <param name="typ">ƒNƒ‰ƒXƒ^ƒCƒv</param>
+		''' <param name="typ">ã‚¯ãƒ©ã‚¹ã‚¿ã‚¤ãƒ—</param>
 		''' <remarks></remarks>
 		Public Sub New(ByVal typ As Type)
 			_type = typ
 		End Sub
 
 #End Region
-#Region " ƒvƒƒpƒeƒB "
+#Region " ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ "
 
 		''' <summary>
-		''' ƒNƒ‰ƒXƒ^ƒCƒvƒvƒƒpƒeƒB
+		''' ã‚¯ãƒ©ã‚¹ã‚¿ã‚¤ãƒ—ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
 		''' </summary>
 		''' <value></value>
 		''' <returns></returns>
@@ -48,10 +48,10 @@ Namespace Attr
 #End Region
 
 		''' <summary>
-		''' ƒAƒXƒyƒNƒg‚ğì¬‚·‚é
+		''' ã‚¢ã‚¹ãƒšã‚¯ãƒˆã‚’ä½œæˆã™ã‚‹
 		''' </summary>
-		''' <param name="method">ƒƒ\ƒbƒh</param>
-		''' <returns>ƒAƒXƒyƒNƒg</returns>
+		''' <param name="method">ãƒ¡ã‚½ãƒƒãƒ‰</param>
+		''' <returns>ã‚¢ã‚¹ãƒšã‚¯ãƒˆ</returns>
 		''' <remarks></remarks>
 		Public Function CreateAspect(ByVal method As MethodBase) As IAspect
 			Dim pointcut As IPointcut
@@ -63,10 +63,10 @@ Namespace Attr
 		End Function
 
 		''' <summary>
-		''' ƒAƒXƒyƒNƒg‚ğì¬‚·‚é
+		''' ã‚¢ã‚¹ãƒšã‚¯ãƒˆã‚’ä½œæˆã™ã‚‹
 		''' </summary>
-		''' <param name="method">ƒƒ\ƒbƒh</param>
-		''' <returns>ƒAƒXƒyƒNƒg</returns>
+		''' <param name="method">ãƒ¡ã‚½ãƒƒãƒ‰</param>
+		''' <returns>ã‚¢ã‚¹ãƒšã‚¯ãƒˆ</returns>
 		''' <remarks></remarks>
 		Public Function CreateAspect(ByVal method As EventInfo) As IAspect
 			Dim pointcut As IPointcut

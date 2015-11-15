@@ -1,25 +1,25 @@
-Imports System.Data.Common
+ï»¿Imports System.Data.Common
 
 Namespace Db.Helper
 
 	''' <summary>
-	''' DBƒAƒNƒZƒX‚ÌŠeƒvƒƒpƒCƒ_[‚É‘Î‰‚µ‚½ƒwƒ‹ƒp[‚Ì’ŠÛƒNƒ‰ƒX
+	''' DBã‚¢ã‚¯ã‚»ã‚¹ã®å„ãƒ—ãƒ­ãƒ‘ã‚¤ãƒ€ãƒ¼ã«å¯¾å¿œã—ãŸãƒ˜ãƒ«ãƒ‘ãƒ¼ã®æŠ½è±¡ã‚¯ãƒ©ã‚¹
 	''' </summary>
 	''' <remarks>
-	''' ŠeDBƒxƒ“ƒ_[–ˆ‚ÉˆÙ‚È‚é•”•ª‚ğ‹zû‚·‚éˆ×‚ÌƒNƒ‰ƒX‚Å‚·B<br/>
+	''' å„DBãƒ™ãƒ³ãƒ€ãƒ¼æ¯ã«ç•°ãªã‚‹éƒ¨åˆ†ã‚’å¸åã™ã‚‹ç‚ºã®ã‚¯ãƒ©ã‚¹ã§ã™ã€‚<br/>
 	''' </remarks>
 	Public MustInherit Class DbAccessHelper
 		Implements IDisposable
 
-		''' <summary>Œ³‚Æ‚È‚éƒf[ƒ^ƒx[ƒXƒAƒNƒZƒXƒNƒ‰ƒXƒCƒ“ƒXƒ^ƒ“ƒX</summary>
+		''' <summary>å…ƒã¨ãªã‚‹ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‚¢ã‚¯ã‚»ã‚¹ã‚¯ãƒ©ã‚¹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</summary>
 		Protected targetDba As IDao
-		''' <summary>“–ƒNƒ‰ƒX‚Åg—p‚·‚éƒf[ƒ^ƒx[ƒXƒAƒNƒZƒXƒNƒ‰ƒXƒCƒ“ƒXƒ^ƒ“ƒX</summary>
+		''' <summary>å½“ã‚¯ãƒ©ã‚¹ã§ä½¿ç”¨ã™ã‚‹ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‚¢ã‚¯ã‚»ã‚¹ã‚¯ãƒ©ã‚¹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</summary>
 		Protected myDba As IDao
 
 		''' <summary>
-		''' ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		''' ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		''' </summary>
-		''' <param name="dba">g—p‚·‚éƒf[ƒ^ƒx[ƒXƒAƒNƒZƒX</param>
+		''' <param name="dba">ä½¿ç”¨ã™ã‚‹ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‚¢ã‚¯ã‚»ã‚¹</param>
 		''' <remarks></remarks>
 		Public Sub New(ByVal dba As IDao)
 			Me.targetDba = dba
@@ -28,16 +28,16 @@ Namespace Db.Helper
 
 #Region " IDisposable Support "
 
-		Private disposedValue As Boolean = False		' d•¡‚·‚éŒÄ‚Ño‚µ‚ğŒŸo‚·‚é‚É‚Í
+		Private disposedValue As Boolean = False		' é‡è¤‡ã™ã‚‹å‘¼ã³å‡ºã—ã‚’æ¤œå‡ºã™ã‚‹ã«ã¯
 
 		' IDisposable
 		Protected Overridable Sub Dispose(ByVal disposing As Boolean)
 			If Not Me.disposedValue Then
 				If disposing Then
-					' TODO: –¾¦“I‚ÉŒÄ‚Ño‚³‚ê‚½‚Æ‚«‚Éƒ}ƒl[ƒW ƒŠƒ\[ƒX‚ğ‰ğ•ú‚µ‚Ü‚·
+					' TODO: æ˜ç¤ºçš„ã«å‘¼ã³å‡ºã•ã‚ŒãŸã¨ãã«ãƒãƒãƒ¼ã‚¸ ãƒªã‚½ãƒ¼ã‚¹ã‚’è§£æ”¾ã—ã¾ã™
 				End If
 
-				' TODO: ‹¤—L‚ÌƒAƒ“ƒ}ƒl[ƒW ƒŠƒ\[ƒX‚ğ‰ğ•ú‚µ‚Ü‚·
+				' TODO: å…±æœ‰ã®ã‚¢ãƒ³ãƒãƒãƒ¼ã‚¸ ãƒªã‚½ãƒ¼ã‚¹ã‚’è§£æ”¾ã—ã¾ã™
 				If Me.myDba IsNot Nothing Then
 					Me.myDba.Dispose()
 				End If
@@ -45,9 +45,9 @@ Namespace Db.Helper
 			Me.disposedValue = True
 		End Sub
 
-		' ‚±‚ÌƒR[ƒh‚ÍA”jŠü‰Â”\‚Èƒpƒ^[ƒ“‚ğ³‚µ‚­À‘•‚Å‚«‚é‚æ‚¤‚É Visual Basic ‚É‚æ‚Á‚Ä’Ç‰Á‚³‚ê‚Ü‚µ‚½B
+		' ã“ã®ã‚³ãƒ¼ãƒ‰ã¯ã€ç ´æ£„å¯èƒ½ãªãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’æ­£ã—ãå®Ÿè£…ã§ãã‚‹ã‚ˆã†ã« Visual Basic ã«ã‚ˆã£ã¦è¿½åŠ ã•ã‚Œã¾ã—ãŸã€‚
 		Public Sub Dispose() Implements IDisposable.Dispose
-			' ‚±‚ÌƒR[ƒh‚ğ•ÏX‚µ‚È‚¢‚Å‚­‚¾‚³‚¢BƒNƒŠ[ƒ“ƒAƒbƒv ƒR[ƒh‚ğã‚Ì Dispose(ByVal disposing As Boolean) ‚É‹Lq‚µ‚Ü‚·B
+			' ã“ã®ã‚³ãƒ¼ãƒ‰ã‚’å¤‰æ›´ã—ãªã„ã§ãã ã•ã„ã€‚ã‚¯ãƒªãƒ¼ãƒ³ã‚¢ãƒƒãƒ— ã‚³ãƒ¼ãƒ‰ã‚’ä¸Šã® Dispose(ByVal disposing As Boolean) ã«è¨˜è¿°ã—ã¾ã™ã€‚
 			Dispose(True)
 			GC.SuppressFinalize(Me)
 		End Sub
