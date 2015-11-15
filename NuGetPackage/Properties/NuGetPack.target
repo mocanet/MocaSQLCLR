@@ -2,6 +2,7 @@
 <Project DefaultTargets="BuildNuGetPackage" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
     <SemVer Condition=" '$(ConfigurationName)' == 'Debug' ">-Beta</SemVer>
+    <NuGetExePath Condition=" '$(NuGetExePath)' == '' ">nuget.exe</NuGetExePath>
   </PropertyGroup>
 
   <Target Name="GetVersionInfo">
