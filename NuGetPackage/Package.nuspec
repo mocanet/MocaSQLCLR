@@ -10,10 +10,10 @@
 		<projectUrl>https://github.com/mocanet/MocaSQLCLR</projectUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>
-      Use is di & aop framework in SQLCLR.
+      Use is di &amp; aop framework in SQLCLR.
     </description>
     <summary>
-      Use is di & aop framework in SQLCLR.
+      Use is di &amp; aop framework in SQLCLR.
     </summary>
 		<copyright>Copyright © 2014 MiYABiS All Rights Reserved.</copyright>
 		<language>en-US</language>
