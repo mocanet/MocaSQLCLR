@@ -19,6 +19,12 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MocaSQLCLR40", "MocaSQLCLR\
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MocaSQLCLR45", "MocaSQLCLR\MocaSQLCLR45.vbproj", "{09F51ECE-844D-45A7-9ABE-DCB36BB5517F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DB7DED84-D0C0-404D-A90D-855015C732C9}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE.md = LICENSE.md
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
