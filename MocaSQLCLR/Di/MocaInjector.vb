@@ -39,8 +39,8 @@ Namespace Di
 			_analyzer.Add(AttributeAnalyzerTargets.Field, New ImplementationAttributeAnalyzer)
 			_analyzer.Add(AttributeAnalyzerTargets.Field, New DaoAttributeAnalyzer)
 			_analyzer.Add(AttributeAnalyzerTargets.Field, New TableAttributeAnalyzer)
-			_analyzer.Add(AttributeAnalyzerTargets.Method, New AspectAttributeAnalyzer)
-			_analyzer.Add(AttributeAnalyzerTargets.Method, New TransactionAttributeAnalyzer)
+            _analyzer.Add(AttributeAnalyzerTargets.Method, New TransactionAttributeAnalyzer)
+            _analyzer.Add(AttributeAnalyzerTargets.Method, New AspectAttributeAnalyzer)
 
 			_analyzer.AddIgnoreNamespace("System")
 			_analyzer.AddIgnoreNamespace("Microsoft")

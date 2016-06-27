@@ -36,6 +36,8 @@ Namespace Db
 
 #End Region
 
+#Region " Methods "
+
 		''' <summary>
 		''' 入力パラメータ値を設定する
 		''' </summary>
@@ -73,6 +75,8 @@ Namespace Db
 		''' <returns></returns>
 		''' <remarks></remarks>
 		Function ExecuteNonQuery() As Integer
+
+#End Region
 
 	End Interface
 

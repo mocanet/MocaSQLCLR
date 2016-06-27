@@ -49,6 +49,8 @@ Namespace Db
 
 #End Region
 
+#Region " Methods "
+
 		''' <summary>
 		''' DataSet内の先頭テーブルを返す
 		''' </summary>
@@ -103,6 +105,8 @@ Namespace Db
 		''' <returns>存在しないときは Nothing をかえす</returns>
 		''' <remarks></remarks>
 		Function NextResult(Of T)() As IList(Of T)
+
+#End Region
 
 	End Interface
 
