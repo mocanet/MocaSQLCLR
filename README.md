@@ -3,6 +3,8 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/8ejrv9ri22tbb90l?svg=true)](https://ci.appveyor.com/project/miyabis/mocasqlclr)
 [![NuGet](https://img.shields.io/nuget/v/Moca.NETSQLCLR.svg)](https://www.nuget.org/packages/Moca.NETSQLCLR/)
 
+This is SQLCLR version of [Moca.NET Core](https://github.com/mocanet/MocaCore).
+
 
 How to get
 ==========
