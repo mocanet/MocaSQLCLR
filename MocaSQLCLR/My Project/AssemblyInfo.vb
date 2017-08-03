@@ -8,12 +8,11 @@ Imports System.Runtime.InteropServices
 
 ' アセンブリ属性の値を確認します。
 
-<Assembly: AssemblyTitle("Moca.NET SQLCLR")> 
-<Assembly: AssemblyDescription("Moca.NET SQLCLR")> 
-<Assembly: AssemblyCompany("MiYABiS")> 
-<Assembly: AssemblyProduct("Moca.NET SQLCLR")> 
-<Assembly: AssemblyCopyright("Copyright © 2014 MiYABiS All Rights Reserved.")> 
-<Assembly: AssemblyTrademark("")> 
+<Assembly: AssemblyDescription("Moca.NET SQLCLR")>
+<Assembly: AssemblyCompany("MiYABiS")>
+<Assembly: AssemblyProduct("Moca.NET Framework")>
+<Assembly: AssemblyCopyright("© MiYABiS All Rights Reserved.")>
+<Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)> 
 
@@ -31,8 +30,38 @@ Imports System.Runtime.InteropServices
 ' 既定値にすることができます:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("3.5.1")>
-<Assembly: AssemblyFileVersion("3.5.1")>
 
 ' プログラム要素が CLS (Common Language Specification) に準拠しているかどうかを示します
-<Assembly: System.CLSCompliant(True)> 
+<Assembly: System.CLSCompliant(True)>
+
+
+
+<Assembly: AssemblyVersion("5.0.0")>
+<Assembly: AssemblyFileVersion("3.0.0")>
+<Assembly: AssemblyInformationalVersion("3.0.0")>
+
+
+#If net20 Then
+<Assembly: AssemblyTitle("Moca.NET SQLCLR .NET 2.0")>
+#End If
+#If net35 Then
+<Assembly: AssemblyTitle("Moca.NET SQLCLR .NET 3.5")>
+#End If
+#If net40 Then
+<Assembly: AssemblyTitle("Moca.NET SQLCLR .NET 4.0")>
+#End If
+#If net45 Then
+<Assembly: AssemblyTitle("Moca.NET SQLCLR .NET 4.5")>
+#End If
+#If net452 Then
+<Assembly: AssemblyTitle("Moca.NET SQLCLR .NET 4.5.2")>
+#End If
+#If net46 Then
+<Assembly: AssemblyTitle("Moca.NET SQLCLR .NET 4.6")>
+#End If
+#If net462 Then
+<Assembly: AssemblyTitle("Moca.NET SQLCLR .NET 4.6.2")>
+#End If
+#If net47 Then
+<Assembly: AssemblyTitle("Moca.NET SQLCLR .NET 4.7")>
+#End If

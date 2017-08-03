@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|AnyCPU">
+      <Configuration>Debug</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|AnyCPU">
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MocaSQLCLR\MocaSQLCLR20.vbproj" />
+    <ProjectReference Include="..\MocaSQLCLR\MocaSQLCLR35.vbproj" />
+    <ProjectReference Include="..\MocaSQLCLR\MocaSQLCLR40.vbproj" />
+    <ProjectReference Include="..\MocaSQLCLR\MocaSQLCLR45.vbproj" />
+    <ProjectReference Include="..\MocaSQLCLR\MocaSQLCLR452.vbproj" />
+    <ProjectReference Include="..\MocaSQLCLR\MocaSQLCLR46.vbproj" />
+    <ProjectReference Include="..\MocaSQLCLR\MocaSQLCLR462.vbproj" />
+    <ProjectReference Include="..\MocaSQLCLR\MocaSQLCLR47.vbproj" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>f0590517-8b93-4834-9fd8-0dfed32af047</ProjectGuid>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Id>Moca.NETSQLCLR</Id>
+    <Version>3.0.0-beta01</Version>
+    <Title>Moca.NET SQLCLR</Title>
+    <Authors>MiYABiS</Authors>
+    <Owners>MiYABiS</Owners>
+    <Summary>Use is DI with AOP framework in SQLCLR.</Summary>
+    <Description>Use is DI with AOP framework in SQLCLR.</Description>
+    <ReleaseNotes>
+    </ReleaseNotes>
+    <ProjectUrl>https://github.com/mocanet/MocaSQLCLR</ProjectUrl>
+    <LicenseUrl>https://opensource.org/licenses/MS-PL</LicenseUrl>
+    <Copyright>Copyright © 2014 MiYABiS All Rights Reserved.</Copyright>
+    <Tags>Moca.NET</Tags>
+    <IconUrl>https://avatars3.githubusercontent.com/u/14543303?s=256</IconUrl>
+    <EmbedSourceFiles>true</EmbedSourceFiles>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NuProjPath>..\packages\NuProj.0.11.30\tools\</NuProjPath>
+  </PropertyGroup>
+  <Import Project="$(NuProjPath)\NuProj.props" Condition="Exists('$(NuProjPath)\NuProj.props')" />
+  <Import Project="$(NuProjPath)\NuProj.targets" />
+</Project>
